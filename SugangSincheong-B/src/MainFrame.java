@@ -6,21 +6,20 @@ import javax.swing.JFrame;
 public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private EAccount eAccount;
+	@SuppressWarnings("deprecation")
 	public MainFrame() {
 		// attributes
-		this.setSize(400, 600);
-		
+		this.setSize(500, 500);
+		setLocationRelativeTo(null);
 		// components
 		LayoutManager layoutManager = new BorderLayout();
-		this.setLayout(layoutManager);
+		this.setLayout(layoutManager);  
 		
-		LoginPanel loginPanel = new LoginPanel();
-		this.add(loginPanel, BorderLayout.NORTH);
+		SugnasincheongPanel sugangsincheongPanel = new SugnasincheongPanel();
+		this.add(sugangsincheongPanel, BorderLayout.CENTER);
 		
-		SugnasincheongPanel sugnasincheongPanel = new SugnasincheongPanel();
-		this.add(sugnasincheongPanel, BorderLayout.CENTER);
-		
-		SuccessPanel successPanel = new SuccessPanel();
-		this.add(successPanel, BorderLayout.SOUTH);
+		LoginDialog loginDialog = new LoginDialog(null, sugangsincheongPanel);
+		loginDialog.show();
+		loginDialog.setLocation(530,50);
 	}
 }

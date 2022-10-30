@@ -1,36 +1,29 @@
-
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.Insets;
+import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
 
-public class LoginPanel extends JPanel {
+public class LoginDialog extends JDialog {
 	private EAccount eAccount;
-	
-	private static final long serialVersionUID = 1L;
 
-	private JTextField tfId;
-	private JPasswordField tfPassword;
-	private JLabel lbPassword ;
-	private JLabel lbTitle;
-	private SLogin sLogin;
+	private static final long serialVersionUID = 1L;
+	JPanel idPanel;
 	private JLabel lbId;
+	JTextField tfId;
+	JPanel pwPanel;
+	JPasswordField tfPassword;
+	private JLabel lbPassword;
+	JPanel buttonPanel;
 	private JButton btLogin;
+	private SLogin sLogin;
 	
-	private String changePasswordType(char[] password) { //g
+	SugnasincheongPanel sugangsincheongPanel;
+	
+	String changePasswordType(char[] password) {
 		String GoodPassword = "";
 		for (char cha : password) {         
 	         Character.toString(cha);       // cha에 저장된 값 string으로 변환
@@ -40,36 +33,45 @@ public class LoginPanel extends JPanel {
 		return GoodPassword;
 	}
 	
-	public LoginPanel() {
-		LayoutManager layoutManager = new GridLayout(3, 2);
+	public LoginDialog(Frame parent, SugnasincheongPanel sugangsincheongPanel) {
+		super(parent, "로그인", false); //modal
+		this.setSize(400,150);
+		this.sugangsincheongPanel = sugangsincheongPanel;
+		
+		LayoutManager layoutManager = new FlowLayout();
 		this.setLayout(layoutManager);
 		
 		//아이디 
+		idPanel = new JPanel();
+		this.add(idPanel);
+		
 		lbId = new JLabel("아이디: ");
-		this.add(lbId);
+		idPanel.add(lbId);
 	
 		
 		this.tfId = new JTextField();
 		this.tfId.setColumns(10);
-		this.add(this.tfId);
+		idPanel.add(this.tfId); 
 		
 		//비밀번호 
+		pwPanel = new JPanel();
+		this.add(pwPanel);
 		lbPassword = new JLabel("비밀번호: ");
-		this.add(lbPassword);
+		pwPanel.add(lbPassword);
 		
 		this.tfPassword = new JPasswordField();
 		this.tfPassword.setColumns(10);
-		this.add(this.tfPassword);
+		pwPanel.add(this.tfPassword);
 		
 		//로그인 버튼 
+		buttonPanel = new JPanel();
+		this.add(buttonPanel);
 		btLogin = new JButton("로그인");
-		this.add(btLogin);
+		buttonPanel.add(btLogin);
 		
 		ActionHandler actionHandler = new ActionHandler();
 		btLogin.addActionListener(actionHandler);
 		
-//		SuccessPanel successPanel = new SuccessPanel();
-//		this.add(successPanel);
 		this.sLogin = new SLogin();
 	}
 	
@@ -82,21 +84,19 @@ public class LoginPanel extends JPanel {
 		
 		if (vLogin == null) { //로그인 안 될 때 
 			JOptionPane.showMessageDialog(null,"로그인에 실패했습니다. " );
-			JLabel text = new JLabel("dd" );
+
 		} else  { //로그인 될 때
 			if (vLogin.getId().compareTo(id) == 0) {
 				if(newPw != null && newPw.compareTo(vLogin.getPassword()) == 0) {
-					JOptionPane.showMessageDialog(null,"환영합니다 ~  " + vLogin.getName() + "님");
-					System.out.println("로그인에 성공했습니다." );
+					JOptionPane.showMessageDialog(null,"로그인에 성공했습니다. " + vLogin.getName() + "님!");	
+					this.sugangsincheongPanel.hello(vLogin);
+					this.setVisible(false);
 				}
 				else 
 					JOptionPane.showMessageDialog(null,"비밀번호를 입력해주세요." );
 			} 
-	
-		} 
-
+		}
 	}
-	
 
 	private class ActionHandler implements ActionListener {
 		@Override
