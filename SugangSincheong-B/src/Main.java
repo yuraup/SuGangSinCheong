@@ -5,7 +5,7 @@ import javax.swing.JTextArea;
 public class Main {
 
 	public static void main(String[] args) {
-		MainFrame mainFrame = new MainFrame();
+		PMainFrame mainFrame = new PMainFrame();
 		mainFrame.setVisible(true);	
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setTitle("수강신청 프로그램 "); 

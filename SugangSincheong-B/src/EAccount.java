@@ -12,8 +12,9 @@ public class EAccount {
 	public EAccount() {
 	}
 
-	public VLogin getLogin(String id, String name) {
-		VLogin vLogin = null;
+	public VAccount getLogin(String id, String name) {
+		VAccount vAccount = null;
+		//		VAccount vAccount = ;
 		try {
 			File file = new File("data/account");
 			Scanner scanner = new Scanner(file);
@@ -34,17 +35,17 @@ public class EAccount {
 			scanner.close();
 			
 			if (found) {
-				vLogin = new VLogin();
-				vLogin.setId(this.id);
-				vLogin.setPassword(this.password);
-				vLogin.setName(this.name);
+				vAccount = new VAccount(this.id, this.password, this.name);
+//				vAccount.setId(this.id);
+//				vAccount.setPassword(this.password);
+//				vAccount.setName(this.name);
 
 			}			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return vLogin;
+		return vAccount;
 	}
 
 }

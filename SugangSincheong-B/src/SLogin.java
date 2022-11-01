@@ -6,10 +6,10 @@ public class SLogin {
 		this.eAccount = new EAccount();
 	}
 
-	public VLogin login(String id, String password) {
-		VLogin vLogin = this.eAccount.getLogin(id, password);
+	public VAccount login(String id, String password) {
+		VAccount vAccount = this.eAccount.getLogin(id, password);
 		
-		return vLogin;
+		return vAccount;
 	}
 
 }

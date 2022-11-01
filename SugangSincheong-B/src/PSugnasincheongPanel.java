@@ -6,12 +6,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class SugnasincheongPanel extends JPanel {
+public class PSugnasincheongPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JLabel text2 = new JLabel(" ");
 	String userName = "";
 	
-	public SugnasincheongPanel () {
+	public PSugnasincheongPanel () {
 		LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layoutManager);
 		

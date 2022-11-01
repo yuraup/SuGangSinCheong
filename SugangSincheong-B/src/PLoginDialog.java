@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class LoginDialog extends JDialog {
+public class PLoginDialog extends JDialog {
 	private EAccount eAccount;
 
 	private static final long serialVersionUID = 1L;
@@ -20,8 +20,8 @@ public class LoginDialog extends JDialog {
 	JPanel buttonPanel;
 	private JButton btLogin;
 	private SLogin sLogin;
-	
-	SugnasincheongPanel sugangsincheongPanel;
+	PAccountPanel pAccountPanel;
+	VAccount vAccount;
 	
 	String changePasswordType(char[] password) {
 		String GoodPassword = "";
@@ -33,14 +33,14 @@ public class LoginDialog extends JDialog {
 		return GoodPassword;
 	}
 	
-	public LoginDialog(Frame parent, SugnasincheongPanel sugangsincheongPanel) {
+	public PLoginDialog(Frame parent, PAccountPanel pAccountPanel) {
 		super(parent, "로그인", false); //modal
 		this.setSize(400,150);
-		this.sugangsincheongPanel = sugangsincheongPanel;
+		this.pAccountPanel = pAccountPanel;
 		
 		LayoutManager layoutManager = new FlowLayout();
 		this.setLayout(layoutManager);
-		
+		this.setModal(rootPaneCheckingEnabled);
 		//아이디 
 		idPanel = new JPanel();
 		this.add(idPanel);
@@ -80,20 +80,16 @@ public class LoginDialog extends JDialog {
 		char[] password =  this.tfPassword.getPassword();
 		String newPw = 	changePasswordType(password);
 		
-		VLogin vLogin = sLogin.login(id, newPw);
+		VAccount vAccount = sLogin.login(id, newPw);
 		
-		if (vLogin == null) { //로그인 안 될 때 
+		if (vAccount == null) { //로그인 안 될 때 
 			JOptionPane.showMessageDialog(null,"로그인에 실패했습니다. " );
 
 		} else  { //로그인 될 때
-			if (vLogin.getId().compareTo(id) == 0) {
-				if(newPw != null && newPw.compareTo(vLogin.getPassword()) == 0) {
-					JOptionPane.showMessageDialog(null,"로그인에 성공했습니다. " + vLogin.getName() + "님!");	
-					this.sugangsincheongPanel.hello(vLogin);
+			if (vAccount.getId().compareTo(id) == 0) {
+					JOptionPane.showMessageDialog(null,"로그인에 성공했습니다." + vAccount.getName() + "님!");	
+					this.pAccountPanel.getUserName(vAccount.getName());
 					this.setVisible(false);
-				}
-				else 
-					JOptionPane.showMessageDialog(null,"비밀번호를 입력해주세요." );
 			} 
 		}
 	}
