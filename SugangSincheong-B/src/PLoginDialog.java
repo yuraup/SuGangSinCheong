@@ -33,10 +33,10 @@ public class PLoginDialog extends JDialog {
 		return GoodPassword;
 	}
 	
-	public PLoginDialog(Frame parent, PAccountPanel pAccountPanel) {
+	public PLoginDialog(Frame parent) {
 		super(parent, "로그인", false); //modal
 		this.setSize(400,150);
-		this.pAccountPanel = pAccountPanel;
+		setLocationRelativeTo(null);
 		
 		LayoutManager layoutManager = new FlowLayout();
 		this.setLayout(layoutManager);
@@ -87,9 +87,9 @@ public class PLoginDialog extends JDialog {
 
 		} else  { //로그인 될 때
 			if (vAccount.getId().compareTo(id) == 0) {
-					JOptionPane.showMessageDialog(null,"로그인에 성공했습니다." + vAccount.getName() + "님!");	
-					this.pAccountPanel.getUserName(vAccount.getName());
-					this.setVisible(false);
+				PMainFrame pMainFrame = (PMainFrame)this.getParent();
+				pMainFrame.setVLogin(vAccount);
+				this.dispose();
 			} 
 		}
 	}

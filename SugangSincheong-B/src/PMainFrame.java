@@ -5,25 +5,35 @@ import javax.swing.JFrame;
 
 public class PMainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private EAccount eAccount;
 	private PAccountPanel accountPanel;
-	@SuppressWarnings("deprecation")
+	
+	private VAccount vAccount;
+	private PSugnasincheongPanel sugnasincheongPanel;
+	public void setVLogin(VAccount vAccount) {
+		this.vAccount = vAccount;
+	}
 	public PMainFrame() {
+		this.vAccount = null;
+		
 		// attributes
-		this.setSize(500, 500);
+		this.setSize(1200, 1000);
 		setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		// components
+		// vAccount setting 
+		PLoginDialog loginDialog = new PLoginDialog(this);
+		loginDialog.setVisible(true);
+		
 		LayoutManager layoutManager = new BorderLayout();
 		this.setLayout(layoutManager);  
 		
-		PSugnasincheongPanel sugangsincheongPanel = new PSugnasincheongPanel();
-		this.add(sugangsincheongPanel, BorderLayout.CENTER);
-		
-		this.accountPanel = new PAccountPanel(); //this = mainFrame
-		//과제는위 코드에 VAccount를 넘기셈 .내아이디비번회원정보 다 VAccount에담아서 넘기셈 
+		this.accountPanel = new PAccountPanel(this.vAccount); //this = mainFrame
 		this.add(this.accountPanel, BorderLayout.NORTH);
 		
-		PLoginDialog loginDialog = new PLoginDialog(null, this.accountPanel);
-		loginDialog.show();
-	} //로그인이라는 함수는 로그인 뷰에서 가지고 와야 함. 
+		this.sugnasincheongPanel = new PSugnasincheongPanel();
+		this.add(sugnasincheongPanel, BorderLayout.CENTER);
+		
+
+	} 
 }

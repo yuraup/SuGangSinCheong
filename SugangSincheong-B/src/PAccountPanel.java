@@ -5,12 +5,9 @@ import javax.swing.*;
 
 public class PAccountPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-
-	public PAccountPanel() {
-	}
 	
-	public String getUserName(String name) {
-		JLabel JName = new JLabel(name);
+	public PAccountPanel(VAccount vAccount) {
+		JLabel JName = new JLabel(vAccount.getName());
 		this.add(JName);
 		
 		JLabel JInsa = new JLabel("님 안녕하세요!");
@@ -27,6 +24,5 @@ public class PAccountPanel extends JPanel {
 		JLabel JText = new JLabel("입니다. ");
 		this.add(JText);
 		
-		return "이름";
 	}
 }

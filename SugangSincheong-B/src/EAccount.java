@@ -12,7 +12,7 @@ public class EAccount {
 	public EAccount() {
 	}
 
-	public VAccount getLogin(String id, String name) {
+	public VAccount getLogin(String id) {
 		VAccount vAccount = null;
 		//		VAccount vAccount = ;
 		try {
@@ -35,10 +35,10 @@ public class EAccount {
 			scanner.close();
 			
 			if (found) {
-				vAccount = new VAccount(this.id, this.password, this.name);
-//				vAccount.setId(this.id);
-//				vAccount.setPassword(this.password);
-//				vAccount.setName(this.name);
+				vAccount = new VAccount();
+				vAccount.setId(this.id);
+				vAccount.setPassword(this.password);
+				vAccount.setName(this.name);
 
 			}			
 		} catch (FileNotFoundException e) {

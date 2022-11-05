@@ -1,15 +1,13 @@
 
-public class VAccount { //코드의 효율성을 위해서 
+public class VAccount {
 	private String id;
 	private String password;
 	private String name;
 	
-	public VAccount(String id, String pw, String name) {
-		this.id = id;
-		this.password = pw;
-		this.name = name;
+	public VAccount() {
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -32,11 +30,6 @@ public class VAccount { //코드의 효율성을 위해서
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	
-	public void hello() {
-		
 	}
 
 }
