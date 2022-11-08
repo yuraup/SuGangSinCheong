@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -7,6 +8,7 @@ public class PAccountPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public PAccountPanel(VAccount vAccount) {
+		this.setBackground(new Color(255, 245, 158));
 		JLabel JName = new JLabel(vAccount.getName());
 		this.add(JName);
 		

@@ -16,7 +16,7 @@ public class EAccount {
 		VAccount vAccount = null;
 		//		VAccount vAccount = ;
 		try {
-			File file = new File("data/account");
+			File file = new File("account/account");
 			Scanner scanner = new Scanner(file);
 			// file read
 			boolean found = false;

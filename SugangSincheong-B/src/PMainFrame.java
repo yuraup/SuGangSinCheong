@@ -16,7 +16,7 @@ public class PMainFrame extends JFrame {
 		this.vAccount = null;
 		
 		// attributes
-		this.setSize(1200, 1000);
+		this.setSize(1800, 1000);
 		setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
