@@ -1,12 +1,3 @@
-/VAccount.class
-/ActionHandler.class
-/PLoginDialog$ActionHandler.class
-/data/
-/PDirectoryPanel.class
+/PDirectoryPanel$PLecture.class
 /PDirectoryPanel$PDirectory.class
-/VDirectory.class
-/SDirectory.class
-/EDirectory.class
-/PDirectoryPanel$ActionHandler.class
-/MyMouseListener.class
-/PDirectoryPanel$MyMouseListener.class
+/ELecture.class

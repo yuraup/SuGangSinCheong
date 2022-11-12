@@ -11,11 +11,12 @@ public class PSugnasincheongPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public PSugnasincheongPanel () {
-		LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
+		LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
 		this.setLayout(layoutManager);
 		
 		PDirectoryPanel pDirectoryPanel = new PDirectoryPanel();
 		this.add(pDirectoryPanel);		
+		
 		this.setBackground(new Color(255, 204, 213));
 		this.setVisible(true);
 	}
