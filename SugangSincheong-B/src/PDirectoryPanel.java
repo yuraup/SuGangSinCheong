@@ -17,8 +17,6 @@ public class PDirectoryPanel extends JPanel {
 	private PLecture lectureTable;
 	
 	String title;
-//	String nextChoice = "seoul";
-//	String majorChoice = "ict";
 	Vector<VDirectory> vDirectories;
 	
 	Vector<String> row;
@@ -38,13 +36,13 @@ public class PDirectoryPanel extends JPanel {
 		scrollPane.setViewportView(this.campusTable);
 		subPanel1.add(scrollPane);
 
-		title ="캠퍼d";
+		title ="대학";
 		scrollPane = new JScrollPane();
 		this.collegeTable = new PDirectory();
 		scrollPane.setViewportView(this.collegeTable);
 		subPanel1.add(scrollPane);
 		
-		title ="캠퍼스dd";
+		title ="학과";
 		scrollPane = new JScrollPane();
 		this.departmentTable = new PDirectory();
 		scrollPane.setViewportView(this.departmentTable);
@@ -52,7 +50,6 @@ public class PDirectoryPanel extends JPanel {
 		
 		this.add(subPanel1);
 		
-		title ="강좌";
 		JPanel subPanel2 = new JPanel();
 		layoutManager = new BoxLayout(subPanel2, BoxLayout.Y_AXIS);
 		subPanel2.setLayout(layoutManager);
@@ -79,7 +76,7 @@ public class PDirectoryPanel extends JPanel {
 		private DefaultTableModel tableModel;
 		public PDirectory() {
 			Vector<String> header = new Vector<String>();
-			header.add("Test");
+			header.add(title);
 			this.tableModel = new DefaultTableModel(header, 0);
 			this.setModel(this.tableModel);
 			
@@ -105,11 +102,11 @@ public class PDirectoryPanel extends JPanel {
 		private DefaultTableModel tableModel;
 		public PLecture() {
 			Vector<String> header = new Vector<String>();
-			header.add("Test");
-			header.add("Test");
-			header.add("Test");
-			header.add("Test");
-			header.add("Test");
+			header.add("강좌번호");
+			header.add("강좌명");
+			header.add("담당교수");
+			header.add("학점");
+			header.add("시간");
 			this.tableModel = new DefaultTableModel(header, 0);
 			this.setModel(this.tableModel);
 			
