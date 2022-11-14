@@ -1,3 +1,4 @@
+package ValueObject;
 import java.util.Scanner;
 
 public class VLecture {
@@ -7,26 +8,21 @@ public class VLecture {
 	private String credit;
 	private String time;
 	
-	
 public String getId() {
 		return id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public String getProfessor() {
 		return professor;
 	}
 
-
 	public String getCredit() {
 		return credit;
 	}
-
 
 	public String getTime() {
 		return time;

@@ -1,3 +1,4 @@
+package ValueObject;
 
 public class VAccount {
 	private String id;

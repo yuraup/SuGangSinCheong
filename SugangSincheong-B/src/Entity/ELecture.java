@@ -1,7 +1,10 @@
+package Entity;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
+
+import ValueObject.VLecture;
 
 public class ELecture {
 	public Vector<VLecture> getLectures(String fileName) {

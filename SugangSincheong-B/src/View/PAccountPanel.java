@@ -1,8 +1,11 @@
+package View;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.*;
+
+import ValueObject.VAccount;
 
 public class PAccountPanel extends JPanel {
 	private static final long serialVersionUID = 1L;

@@ -1,4 +1,8 @@
+package Service;
 import java.util.Vector;
+
+import Entity.EDirectory;
+import ValueObject.VDirectory;
 
 public class SDirectory {
 	private EDirectory eDirectory;

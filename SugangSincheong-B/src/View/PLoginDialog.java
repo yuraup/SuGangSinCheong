@@ -1,3 +1,4 @@
+package View;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -6,6 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import Entity.EAccount;
+import Service.SLogin;
+import ValueObject.VAccount;
 
 public class PLoginDialog extends JDialog {
 	private EAccount eAccount;
