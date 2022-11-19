@@ -7,7 +7,6 @@ import java.util.Vector;
 import ValueObject.VDirectory;
 
 public class EDirectory {
-
 	public Vector<VDirectory> getDirectories(String fileName) {
 		Vector<VDirectory> vDirectories = new Vector<VDirectory>();
 		try {
@@ -15,7 +14,8 @@ public class EDirectory {
 			while (scanner.hasNext()) {
 				VDirectory vDirectory = new VDirectory();
 				vDirectory.read(scanner);
-				vDirectories.add(vDirectory);
+				vDirectories.add(vDirectory);	
+				
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -23,5 +23,4 @@ public class EDirectory {
 		}
 		return vDirectories;
 	}
-
 }

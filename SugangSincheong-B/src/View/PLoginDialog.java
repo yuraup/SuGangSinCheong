@@ -1,19 +1,14 @@
 package View;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
-import Entity.EAccount;
 import Service.SLogin;
 import ValueObject.VAccount;
 
 public class PLoginDialog extends JDialog {
-	private EAccount eAccount;
 
 	private static final long serialVersionUID = 1L;
 	JPanel idPanel;
@@ -29,13 +24,13 @@ public class PLoginDialog extends JDialog {
 	VAccount vAccount;
 	
 	String changePasswordType(char[] password) {
-		String GoodPassword = "";
+		String newPw = "";
 		for (char cha : password) {         
 	         Character.toString(cha);       // cha에 저장된 값 string으로 변환
 	       // pw 에 저장하기, pw 에 값이 비어있으면 저장, 값이 있으면 이어서 저장 삼항연산자
-	         GoodPassword += (GoodPassword.equals("")) ? ""+cha+"" : ""+cha+"";   
+	         newPw += (newPw.equals("")) ? ""+cha+"" : ""+cha+"";   
 	     }
-		return GoodPassword;
+		return newPw;
 	}
 	
 	public PLoginDialog(Frame parent) {
@@ -53,7 +48,6 @@ public class PLoginDialog extends JDialog {
 		lbId = new JLabel("아이디: ");
 		idPanel.add(lbId);
 	
-		
 		this.tfId = new JTextField();
 		this.tfId.setColumns(10);
 		idPanel.add(this.tfId); 

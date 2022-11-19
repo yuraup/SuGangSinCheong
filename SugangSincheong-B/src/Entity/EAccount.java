@@ -10,14 +10,13 @@ public class EAccount {
 	private String id;
 	private String password;
 	private String name;
-	// ...
 	
 	public EAccount() {
 	}
 
-	public VAccount getLogin(String id) {
+	public VAccount getLogin(String id, String password) {
 		VAccount vAccount = null;
-		//		VAccount vAccount = ;
+		
 		try {
 			File file = new File("account/account");
 			Scanner scanner = new Scanner(file);
@@ -42,7 +41,6 @@ public class EAccount {
 				vAccount.setId(this.id);
 				vAccount.setPassword(this.password);
 				vAccount.setName(this.name);
-
 			}			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -50,5 +48,4 @@ public class EAccount {
 		}		
 		return vAccount;
 	}
-
 }

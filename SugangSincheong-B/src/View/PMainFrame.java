@@ -1,9 +1,7 @@
 package View;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
-
 import javax.swing.JFrame;
-
 import ValueObject.VAccount;
 
 public class PMainFrame extends JFrame {

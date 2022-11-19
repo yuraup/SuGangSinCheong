@@ -10,9 +10,7 @@ public class SLogin {
 	}
 
 	public VAccount login(String id, String password) {
-		VAccount vAccount = this.eAccount.getLogin(id);
-		
+		VAccount vAccount = this.eAccount.getLogin(id, password);
 		return vAccount;
 	}
-
 }
