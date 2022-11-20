@@ -28,7 +28,7 @@ public class PMainFrame extends JFrame {
 		
 		LayoutManager layoutManager = new BorderLayout();
 		this.setLayout(layoutManager);  
-		
+		System.out.println("vAccount: " + vAccount);
 		this.accountPanel = new PAccountPanel(this.vAccount); //this = mainFrame
 		this.add(this.accountPanel, BorderLayout.NORTH);
 		

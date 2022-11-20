@@ -27,7 +27,7 @@ public class PDirectoryPanel extends JPanel {
    private PLecture lectureTable;
    String title = "";
    
-   public PDirectoryPanel() {
+   public PDirectoryPanel() { //GUI부분 
       LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
       this.setLayout(layoutManager);
       
@@ -51,7 +51,7 @@ public class PDirectoryPanel extends JPanel {
       this.collegeTable = new PDirectory();
       scrollPane.setViewportView(this.collegeTable);
       this.collegeTable.getSelectionModel().addListSelectionListener(this.listSelectionHandler); 
-      System.out.println("궁금:" + this.listSelectionHandler);
+
       subPanel1.add(scrollPane);
 
       title ="학과";
@@ -77,57 +77,59 @@ public class PDirectoryPanel extends JPanel {
       this.add(subPanel2);
  
       this.updateTable(null, 0);
-      
+       
    }
    
-   private class ListSelectionHandler implements ListSelectionListener {
+   private class ListSelectionHandler implements ListSelectionListener { //이벤트 부분 LastIndex 
 	      @Override
 	      public void valueChanged(ListSelectionEvent event) {
 	         //row 클릭시 이벤트 발생 
-	        
 	       if (!event.getValueIsAdjusting()) { //mouse release ,결과만 봄
-	    	   System.out.println(event.getSource().toString());
+//	    	   System.out.println(event.getSource().toString());
+	   
 	    	   int rowIndex = event.getLastIndex();
-	    	   updateTable(event.getSource(), rowIndex); //여기 맞나 
+//	    	   System.out.println("마지막 인덱스: " + event.getLastIndex());
+	    	   updateTable(event.getSource(), rowIndex); //여기 맞나
 	       } else {
-	    	  
-	       } 
+	       	} 
 	      }
 	   }
    
-   private void updateTable (Object object, int selectedIndex) {//틀 유지,초기화 할=기 
+   private void updateTable (Object object, int selectedIndex) {//어떤 테이블인지 전달,선택된 인덴스 전달 
+	   System.out.println("오브젝트:" + object + " / 선택된 인덱스: " + selectedIndex );
+	   
 	   String fileName = "null";
-	   	if (object == null) {
+	   	if (object == null) { //초기 실행시 선택 안 한 상태 
 	   		  fileName = "root";
-	   		System.out.println("root1" + fileName);
 		      fileName = this.campusTable.setData(fileName);
-		      System.out.println("dhdldld" + fileName);
 		      fileName = this.collegeTable.setData(fileName);
 		      fileName = this.departmentTable.setData(fileName);
 		      this.lectureTable.setData(fileName);
 		      
-	   	} else if (object == this.campusTable.getSelectionModel()) {
+	   	} else if (object == this.campusTable.getSelectionModel()) { //캠퍼스 디렉토리
 	   			fileName = this.campusTable.getvDirectories().get(selectedIndex).getFileName();
+	   			System.out.println("campus1: " + object + fileName);
 	   			fileName = this.collegeTable.setData(fileName);
+	   			System.out.println("campus2: " + object + fileName);
 	   			fileName = this.departmentTable.setData(fileName);
+	   			System.out.println("campus3: " + object + fileName);
 		    	this.lectureTable.setData(fileName);
 		      
-	   	} else if (object == this.collegeTable.getSelectionModel()) {
-	   			fileName = this.campusTable.getvDirectories().get(selectedIndex).getFileName();
+	   	} else if (object == this.collegeTable.getSelectionModel()) { //대학 디렉토리 
+	   			fileName = this.collegeTable.getvDirectories().get(selectedIndex).getFileName();
 	   			fileName = this.departmentTable.setData(fileName);
 	   			this.lectureTable.setData(fileName);
 	   			
-	   	} else if (object == this.departmentTable.getSelectionModel()) {
-	   		fileName = this.campusTable.getvDirectories().get(selectedIndex).getFileName();
+	   	} else if (object == this.departmentTable.getSelectionModel()) { //학과 
+	   		fileName = this.departmentTable.getvDirectories().get(selectedIndex).getFileName();
 	   		this.lectureTable.setData(fileName);
 	   
 	   	} else if (object == this.lectureTable.getSelectionModel()) 
 	   	{
-	   
 	   	}
    }
-   
-   private class PDirectory extends JTable {
+    
+   private class PDirectory extends JTable { //디렉토리 틀 
       private static final long serialVersionUID = 1L;
       Vector<VDirectory> vDirectories;
 
@@ -158,7 +160,7 @@ public class PDirectoryPanel extends JPanel {
       }
    }
    
-   private class PLecture extends JTable {
+   private class PLecture extends JTable { //강의 틀 
       private static final long serialVersionUID = 1L;
 
       private DefaultTableModel tableModel;
@@ -188,7 +190,7 @@ public class PDirectoryPanel extends JPanel {
             row.add(vLecture.getTime());
             this.tableModel.addRow(row);
          }
-//         this.setRowSelectionInterval(0, 0); //default selection
+//         this.setRowSelectionInterval(1, 1); //default selection
       }
    }
 }

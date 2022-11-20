@@ -10,6 +10,8 @@ public class EAccount {
 	private String id;
 	private String password;
 	private String name;
+	private String grade;
+	private String department;
 	
 	public EAccount() {
 	}
@@ -26,6 +28,8 @@ public class EAccount {
 				this.id = scanner.next();
 				this.password = scanner.next();
 				this.name = scanner.next();
+				this.grade = scanner.next();
+				this.department = scanner.next();
 				
 				
 				if (this.id.compareTo(id) == 0) {
@@ -41,6 +45,8 @@ public class EAccount {
 				vAccount.setId(this.id);
 				vAccount.setPassword(this.password);
 				vAccount.setName(this.name);
+				vAccount.setGrade(this.grade);
+				vAccount.setDepartment(this.department);
 			}			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
