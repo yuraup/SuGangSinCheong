@@ -1,3 +1,4 @@
+
 package View;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -100,4 +101,3 @@ public class PLoginDialog extends JDialog {
 		}		
 	}
 }
-

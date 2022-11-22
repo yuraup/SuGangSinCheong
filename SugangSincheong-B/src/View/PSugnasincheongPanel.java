@@ -1,24 +1,43 @@
 package View;
 import java.awt.Color;
 import java.awt.LayoutManager;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
-import java.util.Scanner;
 
 import javax.swing.*;
 
 public class PSugnasincheongPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
+	private PDirectoryPanel directoryPanel;
+	private PControlPanel1 controlPanel1;
+	private PControlPanel2 controlPanel2;
+	private PMiriDamgiPanel miriDamgiPanel;
+	private PSincheongPanel SincheongPanel;
 	
 	public PSugnasincheongPanel () {
 		LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
 		this.setLayout(layoutManager);
 		
-		PDirectoryPanel pDirectoryPanel = new PDirectoryPanel();
-		this.add(pDirectoryPanel);		
+		this.directoryPanel = new PDirectoryPanel();
+		this.add(this.directoryPanel);		
 		
-		this.setBackground(new Color(255, 204, 213));
+		this.controlPanel1 = new PControlPanel1();
+		this.add(this.controlPanel1);
+		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		this.miriDamgiPanel = new PMiriDamgiPanel();
+		scrollPane.setViewportView(this.miriDamgiPanel);
+		this.add(scrollPane);
+		
+		
+		this.controlPanel2 = new PControlPanel2();
+		this.add(this.controlPanel2);	
+		
+		scrollPane = new JScrollPane();
+		this.SincheongPanel = new PSincheongPanel();
+		scrollPane.setViewportView(this.SincheongPanel);
+		this.add(scrollPane);
+	
+		
 		this.setVisible(true);
 	}
 }

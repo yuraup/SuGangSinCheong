@@ -13,6 +13,7 @@ public class PMyPage extends JDialog{
 	private static final long serialVersionUID = 1L;
 	
 	public PMyPage(Frame parent, VAccount vAccount) {
+		
 		super(parent, "마이페이지", false); //modal
 		this.setSize(400, 200);
 		setLocationRelativeTo(null);
@@ -21,11 +22,14 @@ public class PMyPage extends JDialog{
 		JPanel subPanel;
 		
 		JLabel nameTitle = new JLabel("이름: ");
-		JLabel nameInfo = new JLabel(vAccount.getName());
+		JLabel nameInfo = new JLabel("d");
+//		JLabel nameInfo = new JLabel(vAccount.getName());
 		JLabel gradeTitle = new JLabel("학년: ");
-		JLabel gradeInfo = new JLabel(vAccount.getGrade());
+		JLabel gradeInfo = new JLabel("d");
+//		JLabel gradeInfo = new JLabel(vAccount.getGrade());
 		JLabel departmentTitle = new JLabel("학과: ");
-		JLabel departmentInfo = new JLabel(vAccount.getDepartment());
+		JLabel departmentInfo = new JLabel("학d과: ");
+//		JLabel departmentInfo = new JLabel(vAccount.getDepartment());
 		
 		myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 		this.add(myPanel);

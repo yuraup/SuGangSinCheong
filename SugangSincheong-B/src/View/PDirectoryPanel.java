@@ -59,7 +59,6 @@ public class PDirectoryPanel extends JPanel {
       this.departmentTable = new PDirectory();
       scrollPane.setViewportView(this.departmentTable);
       this.departmentTable.getSelectionModel().addListSelectionListener(this.listSelectionHandler); 
-      System.out.println("궁금2:" + this.listSelectionHandler);
       subPanel1.add(scrollPane);
    
       this.add(subPanel1);
@@ -108,11 +107,11 @@ public class PDirectoryPanel extends JPanel {
 		      
 	   	} else if (object == this.campusTable.getSelectionModel()) { //캠퍼스 디렉토리
 	   			fileName = this.campusTable.getvDirectories().get(selectedIndex).getFileName();
-	   			System.out.println("campus1: " + object + fileName);
+//	   			System.out.println("campus1: " + object + fileName);
 	   			fileName = this.collegeTable.setData(fileName);
-	   			System.out.println("campus2: " + object + fileName);
+//	   			System.out.println("campus2: " + object + fileName);
 	   			fileName = this.departmentTable.setData(fileName);
-	   			System.out.println("campus3: " + object + fileName);
+//	   			System.out.println("campus3: " + object + fileName);
 		    	this.lectureTable.setData(fileName);
 		      
 	   	} else if (object == this.collegeTable.getSelectionModel()) { //대학 디렉토리 
