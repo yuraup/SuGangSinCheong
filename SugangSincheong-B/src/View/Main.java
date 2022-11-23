@@ -19,6 +19,7 @@ public class Main {
 		VAccount account = this.loginDialog.login();
 		if (account != null) {
 			System.out.println("로그인 성공 " + account);
+			loginDialog.dispose();
 			//f로그인 성공 
 			PMainFrame mainFrame = new PMainFrame(account);
 			mainFrame.setVisible(true);	

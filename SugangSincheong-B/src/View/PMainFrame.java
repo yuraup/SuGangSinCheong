@@ -13,9 +13,8 @@ public class PMainFrame extends JFrame {
 	public void setVLogin(VAccount vAccount) {
 		this.vAccount = vAccount;
 	}
-	public PMainFrame(VAccount vAccount) {
+	public PMainFrame(VAccount vAccount) { 
 		this.vAccount = vAccount;
-		System.out.println("메인프레임 vAccount: " + this.vAccount);
 		// attributes
 		this.setSize(1800, 1000);
 		setLocationRelativeTo(null);
