@@ -1,5 +1,8 @@
 package View;
 
+import java.util.Vector;
+
+import ValueObject.VLecture;
 
 public class PSincheongPanel extends PLectureTable {
 
@@ -7,4 +10,13 @@ public class PSincheongPanel extends PLectureTable {
 	public PSincheongPanel () {
 		
 	}
+	public Vector<VLecture> getSelectedLecture() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void addLectures(Vector<VLecture> lectures) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

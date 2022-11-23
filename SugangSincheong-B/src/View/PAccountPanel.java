@@ -16,6 +16,7 @@ public class PAccountPanel extends JPanel implements ActionListener {
 	private PMyPage pMyPage;
 	
 	public PAccountPanel(VAccount vAccount) {
+		System.out.println("어카운트판넬 vAccount: " + vAccount);
 		this.setBackground(new Color(255, 245, 158));
 		JLabel name = new JLabel(vAccount.getName());
 		this.add(name);

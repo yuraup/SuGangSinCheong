@@ -192,5 +192,17 @@ public class PDirectoryPanel extends JPanel {
 //         this.setRowSelectionInterval(1, 1); //default selection
       }
    }
+
+public void addLectures(Vector<VLecture> lectures) {
+	// TODO Auto-generated method stub
+	
+}
+
+public Vector<VLecture> getSelectedLecture() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
 }
 

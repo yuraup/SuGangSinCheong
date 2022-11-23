@@ -1,13 +1,12 @@
 
 package View;
+
 import java.awt.FlowLayout;
-import java.awt.Frame;
 import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 import Service.SLogin;
 import ValueObject.VAccount;
+import View.Main.ActionHandler;
 
 public class PLoginDialog extends JDialog {
 
@@ -34,8 +33,8 @@ public class PLoginDialog extends JDialog {
 		return newPw;
 	}
 	
-	public PLoginDialog(Frame parent) {
-		super(parent, "로그인", false); //modal
+	public PLoginDialog(ActionHandler actionHandler) {
+//		super(parent, "로그인", false); //modal
 		this.setSize(400,150);
 		setLocationRelativeTo(null);
 		
@@ -69,35 +68,27 @@ public class PLoginDialog extends JDialog {
 		btLogin = new JButton("로그인");
 		buttonPanel.add(btLogin);
 		
-		ActionHandler actionHandler = new ActionHandler();
 		btLogin.addActionListener(actionHandler);
 		
 		this.sLogin = new SLogin();
 	}
 	
-	private void login() {
+	VAccount login() {
 		String id = this.tfId.getText();
 		char[] password =  this.tfPassword.getPassword();
 		String newPw = 	changePasswordType(password);
 		
 		VAccount vAccount = sLogin.login(id, newPw);
+		return vAccount;
 		
-		if (vAccount == null) { //로그인 안 될 때 
-			JOptionPane.showMessageDialog(null,"로그인에 실패했습니다. " );
-
-		} else  { //로그인 될 때
-			if (vAccount.getId().compareTo(id) == 0) {
-				PMainFrame pMainFrame = (PMainFrame)this.getParent();
-				pMainFrame.setVLogin(vAccount);
-				this.dispose();
-			} 
-		}
-	}
-
-	private class ActionHandler implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			login(); //로그인 함수 호출 
-		}		
+//		if (vAccount == null) { //로그인 안 될 때 
+//			JOptionPane.showMessageDialog(null,"로그인에 실패했습니다. " );
+//			return vAccount;
+//		} else  { //로그인 될 때
+//			if (vAccount.getId().compareTo(id) == 0) {
+//				return vAccount;
+//			} 
+//		}
+//		return vAccount;
 	}
 }

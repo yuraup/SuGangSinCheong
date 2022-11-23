@@ -6,11 +6,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import View.PSugnasincheongPanel.ActionHandler;
+
 public class PControlPanel2  extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JButton buttonRight;
 	private JButton buttonLeft;
-	public PControlPanel2 () {
+	public PControlPanel2 (String string, ActionHandler actionHandler) {
 		LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layoutManager);  
 		this.buttonRight = new JButton(">>");
