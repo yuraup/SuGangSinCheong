@@ -9,6 +9,7 @@ public class Main {
 	PLoginDialog loginDialog;
 	public Main () {
 	}
+	
 	private void initialize() {
 		ActionHandler actionHandler = new ActionHandler();
 		
@@ -20,7 +21,8 @@ public class Main {
 		if (account != null) {
 			System.out.println("로그인 성공 " + account);
 			loginDialog.dispose();
-			//f로그인 성공 
+			
+			//로그인 성공 
 			PMainFrame mainFrame = new PMainFrame(account);
 			mainFrame.setVisible(true);	
 			mainFrame.setTitle("수강신청 프로그램 "); 
@@ -35,6 +37,7 @@ public class Main {
 	public class ActionHandler implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			System.out.println("run");
 			run(); //로그인 함수 호출 
 		}		
 	}

@@ -84,10 +84,7 @@ public class PDirectoryPanel extends JPanel {
 	      public void valueChanged(ListSelectionEvent event) {
 	         //row 클릭시 이벤트 발생 
 	       if (!event.getValueIsAdjusting()) { //mouse release ,결과만 봄
-//	    	   System.out.println(event.getSource().toString());
-	   
 	    	   int rowIndex = event.getLastIndex();
-//	    	   System.out.println("마지막 인덱스: " + event.getLastIndex());
 	    	   updateTable(event.getSource(), rowIndex); //여기 맞나
 	       } else {
 	       	} 
@@ -95,8 +92,8 @@ public class PDirectoryPanel extends JPanel {
 	   }
    
    private void updateTable (Object object, int selectedIndex) {//어떤 테이블인지 전달,선택된 인덴스 전달 
-	   System.out.println("오브젝트:" + object + " / 선택된 인덱스: " + selectedIndex );
-	   
+//	   System.out.println("오브젝트:" + object + " / 선택된 인덱스: " + selectedIndex );
+//	   
 	   String fileName = "null";
 	   	if (object == null) { //초기 실행시 선택 안 한 상태 
 	   		  fileName = "root";
@@ -107,11 +104,8 @@ public class PDirectoryPanel extends JPanel {
 		      
 	   	} else if (object == this.campusTable.getSelectionModel()) { //캠퍼스 디렉토리
 	   			fileName = this.campusTable.getvDirectories().get(selectedIndex).getFileName();
-//	   			System.out.println("campus1: " + object + fileName);
 	   			fileName = this.collegeTable.setData(fileName);
-//	   			System.out.println("campus2: " + object + fileName);
 	   			fileName = this.departmentTable.setData(fileName);
-//	   			System.out.println("campus3: " + object + fileName);
 		    	this.lectureTable.setData(fileName);
 		      
 	   	} else if (object == this.collegeTable.getSelectionModel()) { //대학 디렉토리 

@@ -26,7 +26,7 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		JLabel login = new JLabel("로그인 시간은 ");
 		this.add(login);
 		
-		this.vAccount = a(vAccount);
+		this.vAccount = setAccount(vAccount);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		
 		JLabel time = new JLabel(simpleDateFormat.format(new Date()));
@@ -67,7 +67,6 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		} else if (buttonRoute == "마이페이지") {
 			this.pMyPage = new PMyPage(null, this.vAccount);
 			pMyPage.setVisible(true);
-			System.out.println("마이페이지 눌렸음 ");
 			
 		} else if (buttonRoute == "학교소식") {
 			newsList();
@@ -90,8 +89,7 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		return randomMessage;
 	}
 	
-	public VAccount a (VAccount vAccount) {
-		System.out.println("마이페이지2 vAccount" + vAccount);
+	public VAccount setAccount (VAccount vAccount) {
 		this.vAccount = vAccount;
 		return this.vAccount;
 	}
