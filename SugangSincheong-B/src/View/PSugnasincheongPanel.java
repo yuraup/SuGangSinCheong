@@ -31,7 +31,7 @@ import ValueObject.VLecture;
       this.directoryPanel = new PDirectoryPanel();
       this.add(this.directoryPanel);
       
-      this.controlPanel1 = new PControlPanel1("1", actionHandler);
+      this.controlPanel1 = new PControlPanel1("1", actionHandler); //id = 1 
       this.add(this.controlPanel1);
       
       JScrollPane scrollPane = new JScrollPane();
@@ -39,7 +39,7 @@ import ValueObject.VLecture;
       scrollPane.setViewportView(this.miridamgiPanel);
       this.add(scrollPane);
       
-      this.controlPanel2 = new PControlPanel2("2", actionHandler);
+      this.controlPanel2 = new PControlPanel2("2", actionHandler); // id = 2
       this.add(this.controlPanel2);
       
       scrollPane = new JScrollPane();
@@ -49,7 +49,7 @@ import ValueObject.VLecture;
    }
    
    private void moveFromLecturesToMiridamgi() {
-      Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture();
+      VLecture lectures = this.directoryPanel.getSelectedLecture();
       this.miridamgiPanel.addLectures(lectures);
    }
    private void moveFromMiridamgiToLectures() {
@@ -60,10 +60,10 @@ import ValueObject.VLecture;
       Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
       this.sincheongPanel.addLectures(lectures);
    }
-   private void moveFromSincheongToMiridamgi() {
-      Vector<VLecture> lectures = this.sincheongPanel.getSelectedLecture();
-      this.miridamgiPanel.addLectures(lectures);
-   }
+//   private void moveFromSincheongToMiridamgi() {
+//      Vector<VLecture> lectures = this.sincheongPanel.getSelectedLecture();
+//      this.miridamgiPanel.addLectures(lectures);
+//   }
    
    public class ActionHandler implements ActionListener {
       @Override
@@ -79,7 +79,7 @@ import ValueObject.VLecture;
             moveFromMiridamgiToSincheong();
          } else if(e.getActionCommand().compareTo("2<<") == 0) {
             System.out.println("2<<");
-            moveFromSincheongToMiridamgi();
+//            moveFromSincheongToMiridamgi();
          }
          
       }

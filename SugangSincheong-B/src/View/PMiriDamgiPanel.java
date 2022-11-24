@@ -6,18 +6,29 @@ import ValueObject.VLecture;
 
 public class PMiriDamgiPanel extends PLectureTable {
 	private static final long serialVersionUID = 1L;
-
-	public PMiriDamgiPanel () {
-		
+	
+	public VLecture setLectures (VLecture lectures) {
+	            Vector<String> row = new Vector<String>();
+	            row.add(lectures.getId());
+	            row.add(lectures.getName());
+	            row.add(lectures.getProfessor());
+	            row.add(lectures.getCredit());
+	            row.add(lectures.getTime());
+	            this.tableModel.addRow(row);
+		return lectures;
 	}
+//
+//	public PMiriDamgiPanel (Vector<VLecture> vLecture) {
+//		this.lectures = setLectures(vLecture);
+//		this.addLectures(getSelectedLecture(lectures));
+//	}
 
-	public void addLectures(Vector<VLecture> lectures) {
-		// TODO Auto-generated method stub
-		
+	public void addLectures(VLecture lecture) {
+		setLectures(lecture);
 	}
 
 	public Vector<VLecture> getSelectedLecture() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 }

@@ -16,6 +16,7 @@ public class PControlPanel1 extends JPanel{
 	public PControlPanel1(String panelId, ActionHandler actionHandler) {
 		LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layoutManager);  
+		
 		this.buttonRight = new JButton(">>");
 		this.buttonRight.addActionListener(actionHandler);
 		this.buttonRight.setActionCommand(panelId+this.buttonRight.getText());

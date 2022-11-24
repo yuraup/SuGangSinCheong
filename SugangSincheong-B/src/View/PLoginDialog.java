@@ -51,10 +51,9 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		LayoutManager layoutManager = new FlowLayout();
 		this.setLayout(layoutManager);
 		this.setModal(rootPaneCheckingEnabled);
-		//위 판넬
+		
 		topPanel = new JPanel();
 		this.add(topPanel);
-		//아래 판넬
 		middleUpPanel = new JPanel();
 		this.add(middleUpPanel);
 		middleDownPanel = new JPanel();

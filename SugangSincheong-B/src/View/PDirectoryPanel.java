@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.LayoutManager;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -26,6 +27,9 @@ public class PDirectoryPanel extends JPanel {
    private PDirectory departmentTable;
    private PLecture lectureTable;
    String title = "";
+   VLecture LectureDatas;
+   //2. 선언 return 담을 곳 선언 
+   private Vector<VLecture> a;
    
    public PDirectoryPanel() { //GUI부분 
       LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -86,12 +90,13 @@ public class PDirectoryPanel extends JPanel {
 	       if (!event.getValueIsAdjusting()) { //mouse release ,결과만 봄
 	    	   int rowIndex = event.getLastIndex();
 	    	   updateTable(event.getSource(), rowIndex); //여기 맞나
+	    	   System.out.println("dd" + event.getSource());
 	       } else {
 	       	} 
 	      }
 	   }
    
-   private void updateTable (Object object, int selectedIndex) {//어떤 테이블인지 전달,선택된 인덴스 전달 
+   private Object updateTable (Object object, int selectedIndex) {//어떤 테이블인지 전달,선택된 인덴스 전달 
 //	   System.out.println("오브젝트:" + object + " / 선택된 인덱스: " + selectedIndex );
 //	   
 	   String fileName = "null";
@@ -119,7 +124,14 @@ public class PDirectoryPanel extends JPanel {
 	   
 	   	} else if (object == this.lectureTable.getSelectionModel()) 
 	   	{
+	   		ArrayList<String> lectureData = new ArrayList<>();
+	   		for(int i=0;i<5; i++) {
+	   			lectureData.add(this.lectureTable.getModel().getValueAt(selectedIndex, i).toString());
+	   		}
+	   		LectureDatas = new VLecture(lectureData);
+	   		//1. return
 	   	}
+		return a;
    }
     
    private class PDirectory extends JTable { //디렉토리 틀 
@@ -166,6 +178,7 @@ public class PDirectoryPanel extends JPanel {
          header.add("시간");
          
          this.tableModel = new DefaultTableModel(header, 0);
+         
          this.setModel(this.tableModel);
       }
       
@@ -188,15 +201,13 @@ public class PDirectoryPanel extends JPanel {
    }
 
 public void addLectures(Vector<VLecture> lectures) {
-	// TODO Auto-generated method stub
 	
 }
 
-public Vector<VLecture> getSelectedLecture() {
-	// TODO Auto-generated method stub
-	return null;
+public VLecture getSelectedLecture() {
+//3. 선언한 값을 받아와서 리턴한다 . 
+	return LectureDatas;
 }
-
 
 }
 

@@ -26,6 +26,8 @@ public class PMyPage extends JDialog{
 		JLabel nameInfo = new JLabel(vAccount.getName());
 		JLabel gradeTitle = new JLabel("학년: ");
 		JLabel gradeInfo = new JLabel(vAccount.getGrade());
+		JLabel studentCodeTitle = new JLabel("학번: ");
+		JLabel studentCodeInfo = new JLabel(vAccount.getStudentCode());
 		JLabel departmentTitle = new JLabel("학과: ");
 		JLabel departmentInfo = new JLabel(vAccount.getDepartment());
 		
@@ -50,5 +52,11 @@ public class PMyPage extends JDialog{
 		myPanel.add(subPanel);
 		subPanel.add(gradeTitle);
 		subPanel.add(gradeInfo);
+		
+		//5
+		subPanel  = new JPanel();
+		myPanel.add(subPanel);
+		subPanel.add(studentCodeTitle);
+		subPanel.add(studentCodeInfo);
 	}
 }

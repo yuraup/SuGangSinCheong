@@ -6,6 +6,7 @@ public class VAccount {
 	private String name;
 	private String grade;
 	private String department;
+	private String studentCode;
 	
 	public VAccount() {
 		// TODO Auto-generated constructor stub
@@ -48,9 +49,15 @@ public class VAccount {
 		return department;
 	}
 
-	
 	public void setDepartment(String department) {
 		this.department = department;
 	}
+	
+	public String getStudentCode() {
+		return studentCode;
+	}
 
+	public void setStudentCode(String studentCode) {
+		this.studentCode = studentCode;
+	}
 }

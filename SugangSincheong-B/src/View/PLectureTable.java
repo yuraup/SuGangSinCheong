@@ -24,7 +24,6 @@ public class PLectureTable extends JTable{
 		         this.tableModel = new DefaultTableModel(header, 0);
 		         System.out.println("실행됨");
 		         this.setModel(this.tableModel);
-//		         this.setModel();
 		      }
 		      
 		      public void setData(String fileName) {
