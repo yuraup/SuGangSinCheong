@@ -16,6 +16,7 @@ public class Main {
 		this.loginDialog = new PLoginDialog(actionHandler);
 		this.loginDialog.setVisible(true);
 	}
+	
 	private void run() {
 		VAccount account = this.loginDialog.login();
 		if (account != null) {

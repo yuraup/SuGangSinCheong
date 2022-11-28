@@ -17,11 +17,6 @@ public class PMiriDamgiPanel extends PLectureTable {
 	            this.tableModel.addRow(row);
 		return lectures;
 	}
-//
-//	public PMiriDamgiPanel (Vector<VLecture> vLecture) {
-//		this.lectures = setLectures(vLecture);
-//		this.addLectures(getSelectedLecture(lectures));
-//	}
 
 	public void addLectures(VLecture lecture) {
 		setLectures(lecture);

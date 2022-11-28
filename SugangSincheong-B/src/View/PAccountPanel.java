@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+
+import Global.Locale;
+
 import java.util.Date;
 
 import javax.swing.*;
@@ -20,19 +23,19 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		JLabel name = new JLabel(vAccount.getName());
 		this.add(name);
 		
-		JLabel insa = new JLabel("님 안녕하세요!");
+		JLabel insa = new JLabel(Locale.AccountPanel.INSA_POSTFIX);
 		this.add(insa);
 		
-		JLabel login = new JLabel("로그인 시간은 ");
+		JLabel login = new JLabel(Locale.AccountPanel.LOGINTYPE_PROFIX);
 		this.add(login);
 		
 		this.vAccount = setAccount(vAccount);
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Locale.TIME_FORMAT);
 		
 		JLabel time = new JLabel(simpleDateFormat.format(new Date()));
 		this.add(time);
 		
-		JLabel text = new JLabel("입니다. ");
+		JLabel text = new JLabel(Locale.LOGINTYPE_POSTFIX);
 		this.add(text);
 		
 		JButton myPage = new JButton("마이페이지");

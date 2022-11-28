@@ -88,6 +88,7 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		middleDownPanel.add(buttonPanel);
 		
 		btLogin = new JButton("로그인");
+		this.getRootPane().setDefaultButton(btLogin); //엔터시 로그인 되도록 default 추가
 		buttonPanel.add(btLogin);
 		
 		JLabel line = new JLabel("--------------------------------");

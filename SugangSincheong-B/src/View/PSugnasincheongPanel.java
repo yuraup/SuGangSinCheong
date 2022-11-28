@@ -49,8 +49,8 @@ import ValueObject.VLecture;
    }
    
    private void moveFromLecturesToMiridamgi() {
-      VLecture lectures = this.directoryPanel.getSelectedLecture();
-      this.miridamgiPanel.addLectures(lectures);
+//      VLecture lectures = this.directoryPanel.getSelectedLecture();
+//      this.miridamgiPanel.addLectures(lectures);
    }
    private void moveFromMiridamgiToLectures() {
       Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();

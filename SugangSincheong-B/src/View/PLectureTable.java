@@ -41,7 +41,6 @@ public class PLectureTable extends JTable{
 		            row.add(vLecture.getTime());
 		            this.tableModel.addRow(row);
 		         }
-		         
 		         this.setRowSelectionInterval(0, 0); //default selection
 		      }
 		   
