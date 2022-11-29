@@ -2,6 +2,8 @@ package View;
 
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,23 +15,27 @@ import javax.swing.JTextField;
 public class PIdFindDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 	
-	JPanel idPanel;
-	JLabel lbName;
-	JTextField tfName;
-	JPanel studentCodePanel;
-	JPasswordField tfStudentCode;
-	JLabel lbStudentCode;
-	JPanel buttonPanel;
-	JButton btConfirm;
+	private JPanel idPanel;
+	private JLabel lbName;
+	private JTextField tfName;
+	private JPanel studentCodePanel;
+	private JPasswordField tfStudentCode;
+	private JLabel lbStudentCode;
+	private JPanel buttonPanel;
+	private JButton btConfirm;
+	
+	private ActionHandler action;
 	
 	public PIdFindDialog () {
 		this.setSize(210,300);
 		this.setTitle("아이디 찾기"); 
-		setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);
 		
 		LayoutManager layoutManager = new FlowLayout();
 		this.setLayout(layoutManager);
 		this.setModal(rootPaneCheckingEnabled);
+		
+		this.action = new ActionHandler();
 		
 		idPanel = new JPanel();
 		this.add(idPanel);
@@ -56,8 +62,25 @@ public class PIdFindDialog extends JDialog {
 		this.add(buttonPanel);
 		
 		btConfirm = new JButton("확인");
+		btConfirm.addActionListener(this.action);
+		System.out.println("ㅇ" + action);
 		buttonPanel.add(btConfirm);
 		
 		
 	}
+	
+	private void findId() {
+		System.out.println("눌렸니?");
+		if(tfName.getText() != null && tfStudentCode.getPassword() != null) {
+			System.out.println("아이디 찾고 싶어요..");
+		}
+	}
+	
+	private class ActionHandler implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			findId();
+			}
+		}
 }

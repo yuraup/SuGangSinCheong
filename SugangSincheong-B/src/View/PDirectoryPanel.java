@@ -28,8 +28,6 @@ public class PDirectoryPanel extends JPanel {
    private PLecture lectureTable;
    
    String title = "";
-   //2. 선언 return 담을 곳 선언 
-//   private Vector<VLecture> a;
    
    public PDirectoryPanel() { //GUI부분 
       LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -209,10 +207,11 @@ public void addLectures(Vector<VLecture> lectures) {
 	
 }
 
-//public VLecture getSelectedLecture() {
-////3. 선언한 값을 받아와서 리턴한다 . 
-//
-//}
+
+public  Vector<VLecture> getSelectedLecture(Vector<VLecture> vLectures) {
+	//3. 선언한 값을 받아와서 리턴한다 . 
+	return vLectures;
+}
 
 }
 

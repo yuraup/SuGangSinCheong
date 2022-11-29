@@ -115,6 +115,7 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		VAccount vAccount = sLogin.login(id, newPw);
 		return vAccount;
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

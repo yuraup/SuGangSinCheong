@@ -22,11 +22,10 @@ import ValueObject.VLecture;
    private PSincheongPanel sincheongPanel;
    
    public PSugnasincheongPanel() {
-
+	  LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
+	  this.setLayout(layoutManager);
+	     
       ActionHandler actionHandler = new ActionHandler();
-      
-      LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
-      this.setLayout(layoutManager);
       
       this.directoryPanel = new PDirectoryPanel();
       this.add(this.directoryPanel);
@@ -49,7 +48,7 @@ import ValueObject.VLecture;
    }
    
    private void moveFromLecturesToMiridamgi() {
-//      VLecture lectures = this.directoryPanel.getSelectedLecture();
+//	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture();
 //      this.miridamgiPanel.addLectures(lectures);
    }
    private void moveFromMiridamgiToLectures() {

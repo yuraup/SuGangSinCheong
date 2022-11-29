@@ -26,10 +26,11 @@ public class PMyPage extends JDialog{
 		JLabel nameInfo = new JLabel(vAccount.getName());
 		JLabel gradeTitle = new JLabel("학년: ");
 		JLabel gradeInfo = new JLabel(vAccount.getGrade());
-		JLabel studentCodeTitle = new JLabel("학번: ");
-		JLabel studentCodeInfo = new JLabel(vAccount.getStudentCode());
 		JLabel departmentTitle = new JLabel("학과: ");
 		JLabel departmentInfo = new JLabel(vAccount.getDepartment());
+		JLabel studentCodeTitle = new JLabel("학번: ");
+		JLabel studentCodeInfo = new JLabel( Integer.toString(vAccount.getStudentCode()) );
+
 		
 		myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 		this.add(myPanel);

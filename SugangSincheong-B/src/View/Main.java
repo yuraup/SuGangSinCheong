@@ -3,6 +3,8 @@ package View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import ValueObject.VAccount;
 
 public class Main {
@@ -28,7 +30,7 @@ public class Main {
 			mainFrame.setVisible(true);	
 			mainFrame.setTitle("수강신청 프로그램 "); 
 			mainFrame.setLocationRelativeTo(null); //윈도우 창 가운데에 띄움 
-		} else {
+		} else if (account == null) {
 			System.out.println("로그인 실패 " + account);
 		}
 		
