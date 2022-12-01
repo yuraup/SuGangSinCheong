@@ -13,10 +13,11 @@ public class VAccount {
 	}
 
 	public String getId() {
+		System.out.println("오잉 id : "+ id);
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(String id) { 
 		this.id = id;
 	}
 
@@ -54,7 +55,6 @@ public class VAccount {
 	}
 	
 	public int getStudentCode() {
-		System.out.println("오잉 학번: "+ studentCode);
 		return studentCode;
 	}
 

@@ -19,7 +19,7 @@ public class Main {
 		this.loginDialog.setVisible(true);
 	}
 	
-	private void run() {
+	private void run() { //실행 
 		VAccount account = this.loginDialog.login();
 		if (account != null) {
 			System.out.println("로그인 성공 " + account);

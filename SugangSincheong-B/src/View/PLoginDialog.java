@@ -113,6 +113,7 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		String newPw = 	changePasswordType(password);
 		
 		VAccount vAccount = sLogin.login(id, newPw);
+		System.out.println("login vAccount:" + vAccount);
 		return vAccount;
 	}
 	

@@ -13,12 +13,14 @@ public class PMainFrame extends JFrame {
 	private VAccount vAccount;
 	private PSugnasincheongPanel sugnasincheongPanel;
 	
-	public void setVLogin(VAccount vAccount) {
+	public VAccount setVLogin(VAccount vAccount) {
 		this.vAccount = vAccount;
+		return this.vAccount;
 	}
 	
 	public PMainFrame(VAccount vAccount) { 
-		this.vAccount = vAccount;
+	
+		this.vAccount = setVLogin(vAccount); //이게 아닌가여.. 
 		// attributes
 		this.setSize(Constants.CMainFrame.WIDTH, Constants.CMainFrame.HEIGHT);
 		setLocationRelativeTo(null);
@@ -27,6 +29,7 @@ public class PMainFrame extends JFrame {
 		// components
 		LayoutManager layoutManager = new BorderLayout();
 		this.setLayout(layoutManager);
+		System.out.println("메인프레임: " + this.vAccount);
 		
 		// vAccount setting 
 		this.accountPanel = new PAccountPanel(this.vAccount); //this = mainFrame

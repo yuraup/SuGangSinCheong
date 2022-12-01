@@ -8,9 +8,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import Service.SLogin;
+import ValueObject.VAccount;
 
 public class PPwFindDialog  extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -24,6 +28,8 @@ public class PPwFindDialog  extends JDialog {
 	private JPanel buttonPanel;
 	private JButton btConfirm;
 	private ActionHandler action;
+	private SLogin sLogin;
+	VAccount vAccount;
 
 	public PPwFindDialog () {
 		this.setSize(210,300);
@@ -63,20 +69,37 @@ public class PPwFindDialog  extends JDialog {
 		btConfirm = new JButton("확인");
 		btConfirm.addActionListener(this.action);
 		buttonPanel.add(btConfirm);
+		this.sLogin = new SLogin();
 	}
 	
-	private void findId() {
-		System.out.println("눌렸니?");
-		if(lbId.getText() != null && tfStudentCode.getPassword() != null) {
-			System.out.println("비번 찾고 싶어요..");
+	private static int parseInt (char[] a) {
+		int temp = 0;
+		for (int i = 0; i < a.length; i++) {
+			int value = Integer.parseInt(String.valueOf(a[i]));
+			temp = temp * 10 + value;
 		}
+		System.out.println("temp:" + temp);
+		return temp;
+	}
+	
+	private VAccount findPw() {
+		System.out.println("패스워드 눌렸니?");
+		if(tfId.getText() != null &&  tfStudentCode.getPassword() != null) {
+			int newStudentCode = parseInt(tfStudentCode.getPassword());
+
+			VAccount vAccount = sLogin.findPw(tfId.getText() , newStudentCode);
+			
+			System.out.println("비번 찾고 싶어요..");
+			JOptionPane.showMessageDialog(null, "비밀번호: " + vAccount.getPassword(), "비밀번호를 찾았습니다.", JOptionPane.INFORMATION_MESSAGE);
+			System.out.println("비밀번호 정보: " + vAccount.getPassword());
+		}
+		return vAccount;
 	}
 	
 	private class ActionHandler implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			findId();
+			findPw();
 			}
 		}
 	

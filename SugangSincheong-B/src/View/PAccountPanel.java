@@ -23,8 +23,12 @@ public class PAccountPanel extends JPanel implements ActionListener {
 	private PMyPage pMyPage;
 	
 	public PAccountPanel(VAccount vAccount) {
+
 		this.setBackground(new Color(255, 245, 158));
-		JLabel name = new JLabel(vAccount.getName());
+		this.vAccount = setAccount(vAccount);
+		System.out.println("PAccountPanel: " + this.vAccount); //얘는 값이 잇ㄴ.. 왜져 ?? 뜨는 아하 아하! 아하.. 왜지 
+		System.out.println("PAccountPane name : " + vAccount.getName()); //vAccounts는 들어오는데 네임이 안 들어오아ㅛ... 그리고 아이디찾기 쪽에서도 안 들어와여... 왜지...
+		JLabel name = new JLabel(vAccount.getName()); //얘 안 됨... ? 
 		this.add(name);
 		
 		JLabel insa = new JLabel(Locale.AccountPanel.INSA_POSTFIX);
@@ -32,8 +36,7 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		
 		JLabel login = new JLabel(Locale.AccountPanel.LOGINTYPE_PROFIX);
 		this.add(login);
-		
-		this.vAccount = setAccount(vAccount);
+
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Locale.TIME_FORMAT);
 		
 		JLabel time = new JLabel(simpleDateFormat.format(new Date()));
