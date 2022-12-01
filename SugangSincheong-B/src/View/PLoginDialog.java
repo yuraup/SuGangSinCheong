@@ -30,6 +30,7 @@ public class PLoginDialog extends JDialog implements ActionListener {
 	private SLogin sLogin;
 	private JButton btFindId;
 	private JButton btFindPw;
+	private JButton btSignUp;
 	PAccountPanel pAccountPanel;
 	VAccount vAccount;
 	
@@ -45,7 +46,7 @@ public class PLoginDialog extends JDialog implements ActionListener {
 	
 	public PLoginDialog(ActionHandler actionHandler) {
 //		super(parent, "로그인", false); //modal
-		this.setSize(290,300);
+		this.setSize(310,300);
 		setLocationRelativeTo(null);
 		
 		LayoutManager layoutManager = new FlowLayout();
@@ -96,6 +97,9 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		
 		bottomPanel = new JPanel();
 		this.add(bottomPanel);
+		btSignUp = new JButton("회원가입");
+		btSignUp.addActionListener(this);
+		bottomPanel.add(btSignUp);
 		btFindId = new JButton("아이디찾기");
 		btFindId.addActionListener(this);
 		bottomPanel.add(btFindId);
@@ -132,7 +136,7 @@ public class PLoginDialog extends JDialog implements ActionListener {
 			pPwFindDialog.setVisible(true);
 		} else if (buttonRoute == "회원가입") {
 			PSignUpDialog pSignUpDialog = new PSignUpDialog();
-//			pSignUpDialog.setVisible(true);
+			pSignUpDialog.setVisible(true);
 		}
 	}
 }
