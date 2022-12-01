@@ -130,6 +130,9 @@ public class PLoginDialog extends JDialog implements ActionListener {
 			System.out.println("비밀번호찾기");
 			PPwFindDialog pPwFindDialog = new PPwFindDialog();
 			pPwFindDialog.setVisible(true);
+		} else if (buttonRoute == "회원가입") {
+			PSignUpDialog pSignUpDialog = new PSignUpDialog();
+//			pSignUpDialog.setVisible(true);
 		}
 	}
 }

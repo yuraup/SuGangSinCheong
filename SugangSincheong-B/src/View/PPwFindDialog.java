@@ -38,60 +38,59 @@ public class PPwFindDialog  extends JDialog {
 		
 		LayoutManager layoutManager = new FlowLayout();
 		this.setLayout(layoutManager);
-		this.setModal(rootPaneCheckingEnabled);
+		this.setModal(rootPaneCheckingEnabled); //모달
 		
+		//확인 버튼 이벤트 핸들러 
 		this.action = new ActionHandler();
 		
-		idPanel = new JPanel();
+		// id UI
+		idPanel = new JPanel(); 
 		this.add(idPanel);
 		
-		lbId = new JLabel("아이디: ");
-		idPanel.add(lbId);
-	
-		this.tfId = new JTextField();
-		this.tfId.setColumns(10);
-		idPanel.add(this.tfId); 
+			lbId = new JLabel("아이디: ");
+			idPanel.add(lbId);
 		
-		studentCodePanel = new JPanel();
+			this.tfId = new JTextField();
+			this.tfId.setColumns(10);
+			idPanel.add(this.tfId); 
+		
+		//학번 UI
+		studentCodePanel = new JPanel(); 
 		this.add(studentCodePanel);
 		
-		lbStudentCode = new JLabel("학번: ");
-		studentCodePanel.add(lbStudentCode);
-		
-		this.tfStudentCode = new JPasswordField();
-		this.tfStudentCode.setColumns(10);
-		studentCodePanel.add(this.tfStudentCode);
+			lbStudentCode = new JLabel("학번: ");
+			studentCodePanel.add(lbStudentCode);
+			
+			this.tfStudentCode = new JPasswordField();
+			this.tfStudentCode.setColumns(10);
+			studentCodePanel.add(this.tfStudentCode);
 		
 		//로그인 버튼 
-		buttonPanel = new JPanel();
+		buttonPanel = new JPanel(); 
 		this.add(buttonPanel);
 		
-		btConfirm = new JButton("확인");
-		btConfirm.addActionListener(this.action);
-		buttonPanel.add(btConfirm);
+			btConfirm = new JButton("확인");
+			btConfirm.addActionListener(this.action);
+			buttonPanel.add(btConfirm);
+		
+		
 		this.sLogin = new SLogin();
 	}
 	
-	private static int parseInt (char[] a) {
-		int temp = 0;
-		for (int i = 0; i < a.length; i++) {
-			int value = Integer.parseInt(String.valueOf(a[i]));
-			temp = temp * 10 + value;
+	private static int parseInt (char[] beforeStudentCode) {  // char[] 타입을 int로 변환 
+		int afterStudentCode = 0;
+		for (int i = 0; i < beforeStudentCode.length; i++) {
+			int value = Integer.parseInt(String.valueOf(beforeStudentCode[i]));
+			afterStudentCode = afterStudentCode * 10 + value;
 		}
-		System.out.println("temp:" + temp);
-		return temp;
+		return afterStudentCode;
 	}
 	
-	private VAccount findPw() {
-		System.out.println("패스워드 눌렸니?");
+	private VAccount findPw() { // id와 학번 입력시 비밀번호 찾기 기능 수행 
 		if(tfId.getText() != null &&  tfStudentCode.getPassword() != null) {
 			int newStudentCode = parseInt(tfStudentCode.getPassword());
-
 			VAccount vAccount = sLogin.findPw(tfId.getText() , newStudentCode);
-			
-			System.out.println("비번 찾고 싶어요..");
 			JOptionPane.showMessageDialog(null, "비밀번호: " + vAccount.getPassword(), "비밀번호를 찾았습니다.", JOptionPane.INFORMATION_MESSAGE);
-			System.out.println("비밀번호 정보: " + vAccount.getPassword());
 		}
 		return vAccount;
 	}

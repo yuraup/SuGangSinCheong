@@ -9,47 +9,48 @@ import ValueObject.VAccount;
 
 public class Main {
 	PLoginDialog loginDialog;
-	public Main () {
-	}
-	
-	private void initialize() {
-		ActionHandler actionHandler = new ActionHandler();
-		
-		this.loginDialog = new PLoginDialog(actionHandler);
-		this.loginDialog.setVisible(true);
-	}
-	
-	private void run() { //실행 
-		VAccount account = this.loginDialog.login();
-		if (account != null) {
-			System.out.println("로그인 성공 " + account);
-			loginDialog.dispose();
-			
-			//로그인 성공 
-			PMainFrame mainFrame = new PMainFrame(account);
-			mainFrame.setVisible(true);	
-			mainFrame.setTitle("수강신청 프로그램 "); 
-			mainFrame.setLocationRelativeTo(null); //윈도우 창 가운데에 띄움 
-		} else if (account == null) {
-			System.out.println("로그인 실패 " + account);
-		}
-		
-	}
-	
-	private void finish() {
-	}
-	public class ActionHandler implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("run");
-			run(); //로그인 함수 호출 
-		}		
-	}
+	PMainFrame mainFrame;
 	
 	public static void main(String[] args) {
 		Main main = new Main();
 		main.initialize();
-		main.run();
-		main.finish();
 	}
+	
+	public Main () {
+		ActionHandler actionHandler = new ActionHandler();
+		this.loginDialog = new PLoginDialog(actionHandler);
+	}
+	
+	private void initialize() {
+		this.loginDialog.setVisible(true);
+	}
+	
+	private void run(VAccount account) { //실행 
+		this.mainFrame = new PMainFrame(account);
+		mainFrame.setTitle("수강신청 프로그램 ");
+		mainFrame.setLocationRelativeTo(null);
+		this.mainFrame.setVisible(true);
+		
+	}
+	
+	private void finish() {
+		System.exit(0);
+	}
+	
+	public class ActionHandler implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			VAccount account = loginDialog.login();
+			if (account != null) {
+				run(account);
+				loginDialog.dispose();
+			} else {
+				System.out.println("로그인 실패 " + account);
+				JOptionPane.showMessageDialog(null, "로그인에 실패했습니다. 프로그램을 다시 실행해주세요. ", "로그인 실패 : 접속 차단 ", JOptionPane.INFORMATION_MESSAGE);
+				finish();
+			}
+			
+		}		
+	}
+	
 }
