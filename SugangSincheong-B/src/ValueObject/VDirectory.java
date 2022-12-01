@@ -20,4 +20,5 @@ public class VDirectory {
 		this.name = scanner.next();
 		this.fileName = scanner.next();
 	}
+	
 }
