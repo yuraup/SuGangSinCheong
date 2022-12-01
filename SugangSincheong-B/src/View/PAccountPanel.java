@@ -1,7 +1,11 @@
 package View;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
@@ -77,8 +81,14 @@ public class PAccountPanel extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, cookieResult, "명지대학교 소식", JOptionPane.INFORMATION_MESSAGE);
 		
 		} else if (buttonRoute == "학교홈페이지") {
-			String mjuLink = "http://www.mju.ac.kr/";
-			JOptionPane.showMessageDialog(null, mjuLink, "명지대학교 이동", JOptionPane.INFORMATION_MESSAGE);
+			try {
+				Desktop.getDesktop().browse(new URI("http://www.mju.ac.kr/"));
+			} catch (IOException | URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+//			String mjuLink = "http://www.mju.ac.kr/";
+//			JOptionPane.showMessageDialog(null, mjuLink, "명지대학교 이동", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	

@@ -52,8 +52,7 @@ public class PDirectoryPanel extends JPanel {
 	      scrollPane = new JScrollPane();
 	      this.collegeTable = new PDirectory();
 	      scrollPane.setViewportView(this.collegeTable);
-	      this.collegeTable.getSelectionModel().addListSelectionListener(this.listSelectionHandler); 
-	
+	      this.collegeTable.getSelectionModel().addListSelectionListener(this.listSelectionHandler);
 	      subPanel1.add(scrollPane);
 	
 	      title ="학과";
@@ -86,23 +85,23 @@ public class PDirectoryPanel extends JPanel {
 	      public void valueChanged(ListSelectionEvent event) {
 	         //row 클릭시 이벤트 발생 
 	       if (!event.getValueIsAdjusting()) { //mouse release ,결과만 봄
-	    	   updateTable(event.getSource()); //여기 맞나
+	    	   updateTable(event.getSource()); 
 	       } else {
 	       	} 
 	      }
 	   }
 
 	private void updateTable(Object selectedTable) {
-		int[] selectedIndex;;
+		int[] selectedIndex; //하나만  
 		String fileName = null;
 		
 		if (selectedTable == null) { // 초기 
 			this.campusTable.setData("root");
 		} else if (selectedTable == this.campusTable.getSelectionModel()) { //캠퍼스 디렉토리 
-			selectedIndex = this.campusTable.getSelectedRows();
+			selectedIndex = this.campusTable.getSelectedRows(); 
 			
-			if (selectedIndex.length > 0) {
-				fileName =  this.campusTable.getvDirectories().get(selectedIndex[0]).getFileName();
+			if (selectedIndex.length > 0) { //조건 줘서 막아버림. 배열 길이가 0이면 아무것도 안 함. 
+				fileName =  this.campusTable.getvDirectories().get(selectedIndex[0]).getFileName(); 
 				this.collegeTable.setData(fileName);
 			}
 		} else if (selectedTable == this.collegeTable.getSelectionModel()) { //대학 디렉토리 		
@@ -124,7 +123,6 @@ public class PDirectoryPanel extends JPanel {
 			}
 		}
 	}
-
     
    private class PDirectory extends JTable { //디렉토리 틀 
       private static final long serialVersionUID = 1L;
@@ -199,7 +197,7 @@ public class PDirectoryPanel extends JPanel {
             row.add(vLecture.getTime());
             this.tableModel.addRow(row);
          }
-//         this.setRowSelectionInterval(1, 1); //default selection
+         this.setRowSelectionInterval(0, 0); //default selection
       }
    }
 

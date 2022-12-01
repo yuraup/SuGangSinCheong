@@ -13,4 +13,9 @@ public class SLogin {
 		VAccount vAccount = this.eAccount.getLogin(id, password);
 		return vAccount;
 	}
+	
+	public VAccount findId(String name, int studentCode) {
+		VAccount vAccount = this.eAccount.getFindId(name, studentCode);
+		return vAccount;
+	}
 }

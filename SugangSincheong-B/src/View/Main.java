@@ -35,6 +35,7 @@ public class Main {
 		}
 		
 	}
+	
 	private void finish() {
 	}
 	public class ActionHandler implements ActionListener {

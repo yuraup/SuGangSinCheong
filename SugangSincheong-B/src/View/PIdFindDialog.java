@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import Service.SLogin;
+import ValueObject.VAccount;
+
 public class PIdFindDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 	
@@ -23,6 +26,9 @@ public class PIdFindDialog extends JDialog {
 	private JLabel lbStudentCode;
 	private JPanel buttonPanel;
 	private JButton btConfirm;
+	private SLogin sLogin;
+	
+	VAccount vAccount;
 	
 	private ActionHandler action;
 	
@@ -66,14 +72,40 @@ public class PIdFindDialog extends JDialog {
 		System.out.println("ㅇ" + action);
 		buttonPanel.add(btConfirm);
 		
-		
+		this.sLogin = new SLogin();
+		char[] a = tfStudentCode.getPassword();
 	}
 	
-	private void findId() {
-		System.out.println("눌렸니?");
-		if(tfName.getText() != null && tfStudentCode.getPassword() != null) {
-			System.out.println("아이디 찾고 싶어요..");
+//	private void findId() {
+//		System.out.println("눌렸니?");
+//		if(tfName.getText() != null && tfStudentCode.getPassword() != null) {
+//			System.out.println("아이디 찾고 싶어요..");
+//		}
+//	}
+//	
+	private static int parseInt (char[] a) {
+		int temp = 0;
+		for (int i = 0; i < a.length; i++) {
+			int value = Integer.parseInt(String.valueOf(a[i]));
+			temp = temp * 10 + value;
 		}
+		System.out.println("temp:" + temp);
+		return temp;
+	}
+	
+	private VAccount findId() {
+		
+		System.out.println("눌렸니?");
+		if(lbName.getText() != null &&  tfStudentCode.getPassword() != null) {
+			int newStudentCode = parseInt(tfStudentCode.getPassword());
+
+			VAccount vAccount = sLogin.findId(lbName.getText() , newStudentCode);
+			
+			System.out.println("비번 찾고 싶어요..");
+			System.out.println("아이디정보: " + vAccount.getId());
+		}
+
+		return vAccount;
 	}
 	
 	private class ActionHandler implements ActionListener {

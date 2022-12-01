@@ -130,6 +130,5 @@ public class PLoginDialog extends JDialog implements ActionListener {
 			PPwFindDialog pPwFindDialog = new PPwFindDialog();
 			pPwFindDialog.setVisible(true);
 		}
-		
 	}
 }

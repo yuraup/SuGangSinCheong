@@ -6,7 +6,5 @@ public class Constants {
 		
 		public final static int WIDTH = 1800;
 		public final static int HEIGHT = 1000;
-//		public final static int X = 100;
-//		public final static int Y = 100;
 	}
 }
