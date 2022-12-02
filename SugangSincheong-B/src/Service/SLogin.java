@@ -14,11 +14,13 @@ public class SLogin {
 		return vAccount;
 	}
 	
+	//아이디 찾기 
 	public VAccount findId(String name, int studentCode) {
 		VAccount vAccount = this.eAccount.getFindId(name, studentCode);
 		return vAccount;
 	}
 	
+	//비밀번호 찾기
 	public VAccount findPw(String id, int studentCode) {
 		System.out.println("SLogin id: " + id);
 		VAccount vAccount = this.eAccount.getFindPw(id, studentCode);

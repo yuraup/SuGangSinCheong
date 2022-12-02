@@ -8,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 import Service.SLecture;
 import ValueObject.VLecture;
 
-
 	public class PLectureTable extends JTable{
 	      private static final long serialVersionUID = 1L;
 	      private String directoryName;
@@ -45,6 +44,6 @@ import ValueObject.VLecture;
 	            this.tableModel.addRow(row);
 	         }
 	         this.setRowSelectionInterval(0, 0); //default selection
-	      }
-	   
+	     }
 }
+	   

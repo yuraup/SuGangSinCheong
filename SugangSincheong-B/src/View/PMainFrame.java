@@ -38,4 +38,9 @@ public class PMainFrame extends JFrame {
 		this.sugnasincheongPanel = new PSugnasincheongPanel();
 		this.add(sugnasincheongPanel, BorderLayout.CENTER);
 	} 
+	
+//	public void initialize() {
+//		this.setTitle("수강신청 프로그램 ");
+//		this.setLocationRelativeTo(null);
+//	}
 }

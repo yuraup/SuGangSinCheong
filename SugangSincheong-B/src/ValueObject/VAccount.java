@@ -13,7 +13,6 @@ public class VAccount {
 	}
 
 	public String getId() {
-		System.out.println("오잉 id : "+ id);
 		return id;
 	}
 
@@ -41,7 +40,6 @@ public class VAccount {
 		return grade;
 	}
 
-	
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
