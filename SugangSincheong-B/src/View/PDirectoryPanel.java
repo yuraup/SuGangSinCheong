@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -38,6 +39,7 @@ public class PDirectoryPanel extends JPanel {
 		      
 			      layoutManager = new BoxLayout(subPanel1, BoxLayout.X_AXIS);
 			      subPanel1.setLayout(layoutManager);
+			      
 			      
 			      title ="캠퍼스";
 			      JScrollPane scrollPane = new JScrollPane();
@@ -163,7 +165,6 @@ public class PDirectoryPanel extends JPanel {
 		   }
 
 	public void addLectures(Vector<VLecture> lectures) {
-		// TODO Auto-generated method stub
 		
 	}
 	public  Vector<VLecture> getSelectedLecture() {

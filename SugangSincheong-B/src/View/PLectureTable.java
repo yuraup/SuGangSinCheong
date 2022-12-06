@@ -25,12 +25,10 @@ import ValueObject.VLecture;
 	         header.add("시간");
 	         
 	         this.tableModel = new DefaultTableModel(header, 0);
-	         System.out.println("실행됨");
 	         this.setModel(this.tableModel);
 	      }
 	      
 	      public void setData(String fileName) {
-	    	  System.out.println("실행d안 됨");
 	         SLecture sLecture = new SLecture();
 	         Vector<VLecture> vLectures = sLecture.getLectures(directoryName + fileName);
 	         this.tableModel.setNumRows(0);

@@ -7,7 +7,6 @@ import ValueObject.VLecture;
 public class PSincheongPanel extends PLectureTable {
 	public PSincheongPanel() {
 		super("department/");
-		// TODO Auto-generated constructor stub
 	}
 
 	private static final long serialVersionUID = 1L;

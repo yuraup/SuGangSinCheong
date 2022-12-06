@@ -1,7 +1,10 @@
 
 package View;
 
+import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +37,8 @@ public class PLoginDialog extends JDialog implements ActionListener {
 	PAccountPanel pAccountPanel;
 	VAccount vAccount;
 	
+	LayoutManager layoutManager = new GridBagLayout();
+	
 	String changePasswordType(char[] password) {
 		String newPw = "";
 		for (char cha : password) {         
@@ -45,67 +50,45 @@ public class PLoginDialog extends JDialog implements ActionListener {
 	}
 	
 	public PLoginDialog(ActionHandler actionHandler) {
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 //		super(parent, "로그인", false); //modal
-		this.setSize(310,300);
+		this.setSize(550,450);
 		setLocationRelativeTo(null);
 		
-		LayoutManager layoutManager = new FlowLayout();
 		this.setLayout(layoutManager);
 		this.setModal(rootPaneCheckingEnabled);
+		GridBagConstraints gridBagConstraints =  new GridBagConstraints();
 		
-		topPanel = new JPanel();
-		this.add(topPanel);
-		middleUpPanel = new JPanel();
-		this.add(middleUpPanel);
-		middleDownPanel = new JPanel();
-		this.add(middleDownPanel);
-		bottomPanel = new JPanel();
-		this.add(bottomPanel);
-		
-		//아이디 
-		idPanel = new JPanel();
-		topPanel.add(idPanel);
-		
-		lbId = new JLabel("아이디: ");
-		idPanel.add(lbId);
+		this.lbId = new JLabel("아이디: ");
+		gridsert(this.lbId, 0, 0, 1, 1);
 	
 		this.tfId = new JTextField();
-		this.tfId.setColumns(10);
-		idPanel.add(this.tfId); 
-		
-		//비밀번호 
-		pwPanel = new JPanel();
-		middleUpPanel.add(pwPanel);
-		
+		gridsert(this.tfId, 1, 0, 1, 1);
+
 		lbPassword = new JLabel("비밀번호: ");
-		pwPanel.add(lbPassword);
+		gridsert(this.lbPassword, 0, 1, 1, 1);
 		
 		this.tfPassword = new JPasswordField();
-		this.tfPassword.setColumns(10);
-		pwPanel.add(this.tfPassword);
+		gridsert(this.tfPassword, 1, 1, 1, 1); // x y w h
 		
-		//로그인 버튼 
-		buttonPanel = new JPanel();
-		middleDownPanel.add(buttonPanel);
-		
-		btLogin = new JButton("로그인");
-		this.getRootPane().setDefaultButton(btLogin); //엔터시 로그인 되도록 default 추가
-		buttonPanel.add(btLogin);
+		this.btLogin = new JButton("로그인");
+		this.getRootPane().setDefaultButton(this.btLogin); //엔터시 로그인 되도록 default 추가
+		gridsert(this.btLogin, 1, 2, 1, 1); // x y w h
 		
 		JLabel line = new JLabel("--------------------------------");
-		bottomPanel.add(line);
-		
-		bottomPanel = new JPanel();
-		this.add(bottomPanel);
+		gridsert(line, 1, 3, 1, 1); // x y w h
+
 		btSignUp = new JButton("회원가입");
 		btSignUp.addActionListener(this);
-		bottomPanel.add(btSignUp);
+		gridsert(btSignUp, 1, 5, 1, 1); // x y w h
+
 		btFindId = new JButton("아이디찾기");
 		btFindId.addActionListener(this);
-		bottomPanel.add(btFindId);
+		gridsert(btFindId, 0, 5, 1, 1); // x y w h
+
 		btFindPw = new JButton("비밀번호찾기");
 		btFindPw.addActionListener(this);
-		bottomPanel.add(btFindPw);
+		gridsert(btFindPw, 2, 5, 1, 1); // x y w h
 		
 		btLogin.addActionListener(actionHandler);
 		this.sLogin = new SLogin();
@@ -119,6 +102,20 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		VAccount vAccount = sLogin.login(id, newPw);
 		System.out.println("login vAccount:" + vAccount);
 		return vAccount;
+	}
+	
+	public void gridsert(Component c, int x, int y, int w, int h) {
+		GridBagConstraints gridBagConstraints = new GridBagConstraints();
+		gridBagConstraints.fill= GridBagConstraints.BOTH;
+		
+		gridBagConstraints.gridx = x;
+		gridBagConstraints.gridy = y;
+		gridBagConstraints.gridwidth = w;
+		gridBagConstraints.gridheight = h;
+		
+		((GridBagLayout) layoutManager).setConstraints(c, gridBagConstraints);
+		this.add(c);
+        
 	}
 	
 
@@ -137,6 +134,6 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		} else if (buttonRoute == "회원가입") {
 			PSignUpDialog pSignUpDialog = new PSignUpDialog();
 			pSignUpDialog.setVisible(true);
-		}
+		} 
 	}
 }

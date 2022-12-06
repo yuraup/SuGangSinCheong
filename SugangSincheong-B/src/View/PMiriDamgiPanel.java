@@ -7,14 +7,12 @@ import ValueObject.VLecture;
 public class PMiriDamgiPanel extends PLectureTable {
 	public PMiriDamgiPanel() {
 		super("department/");
-		
-		
 	}
 
 	private static final long serialVersionUID = 1L;
 
 	public  Vector<VLecture> setLectures (Vector<VLecture> lectures) {
-		System.out.println("이유라바보"+lectures.get(0).getId());
+		System.out.println("미리담기 확인:"+lectures.get(0).getId());
 		Vector<String> row = new Vector<String>();
         row.add(lectures.get(0).getId());
         row.add(lectures.get(0).getName());

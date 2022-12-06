@@ -79,7 +79,7 @@ public class PSignUpDialog extends JDialog {
 				btConfirm.addActionListener(this.action);
 				idPanel.add(btConfirm);
 			
-				// pw  UI
+			// pw  UI
 			pwPanel = new JPanel(); 
 			this.add(pwPanel);
 					
@@ -102,53 +102,53 @@ public class PSignUpDialog extends JDialog {
 				btConfirm.addActionListener(this.action);
 				pwPanel.add(btConfirm);
 					
-				//이름 UI
-				namePanel = new JPanel(); 
-				this.add(namePanel);
+			//이름 UI
+			namePanel = new JPanel(); 
+			this.add(namePanel);
 				
-					lbName = new JLabel("이름: ");
-					namePanel.add(lbName);
-					this.tfName = new JTextField();
-					this.tfName.setColumns(10);
-					namePanel.add(this.tfName);			
+				lbName = new JLabel("이름: ");
+				namePanel.add(lbName);
+				this.tfName = new JTextField();
+				this.tfName.setColumns(10);
+				namePanel.add(this.tfName);			
 					
-				//학년 UI
-				gradePanel = new JPanel(); 
-				this.add(gradePanel);
+			//학년 UI
+			gradePanel = new JPanel(); 
+			this.add(gradePanel);
 					
-					lbGrade = new JLabel("학년(숫자만): ");
-					gradePanel.add(lbGrade);
-					this.tfGrade = new JTextField();
-					this.tfGrade.setColumns(10);
-					gradePanel.add(this.tfGrade);
+				lbGrade = new JLabel("학년(숫자만): ");
+				gradePanel.add(lbGrade);
+				this.tfGrade = new JTextField();
+				this.tfGrade.setColumns(10);
+				gradePanel.add(this.tfGrade);
 					
-				//학과 UI
-				departmentPanel = new JPanel(); 
-				this.add(departmentPanel);
+			//학과 UI
+			departmentPanel = new JPanel(); 
+			this.add(departmentPanel);
 						
-					lbDepartment = new JLabel("학과(~학과): ");
-					departmentPanel.add(lbDepartment);
-					this.tfDepartment = new JTextField();
-					this.tfDepartment.setColumns(10);
-					departmentPanel.add(this.tfDepartment);	
+				lbDepartment = new JLabel("학과(~학과): ");
+				departmentPanel.add(lbDepartment);
+				this.tfDepartment = new JTextField();
+				this.tfDepartment.setColumns(10);
+				departmentPanel.add(this.tfDepartment);	
 					
-				//학번 UI
-				studentCodePanel = new JPanel(); 
-				this.add(studentCodePanel);
+			//학번 UI
+			studentCodePanel = new JPanel(); 
+			this.add(studentCodePanel);
 				
-					lbStudentCode = new JLabel("학번: ");
-					studentCodePanel.add(lbStudentCode);
-					this.tfStudentCode = new JTextField();
-					this.tfStudentCode.setColumns(10);
-					studentCodePanel.add(this.tfStudentCode);
+				lbStudentCode = new JLabel("학번: ");
+				studentCodePanel.add(lbStudentCode);
+				this.tfStudentCode = new JTextField();
+				this.tfStudentCode.setColumns(10);
+				studentCodePanel.add(this.tfStudentCode);
 				
 				//회원가입 버튼 
-				buttonPanel = new JPanel(); 
-				this.add(buttonPanel);
+			buttonPanel = new JPanel(); 
+			this.add(buttonPanel);
 				
-					btConfirm = new JButton("가입");
-					btConfirm.addActionListener(this.action);
-					buttonPanel.add(btConfirm);
+				btConfirm = new JButton("가입");
+				btConfirm.addActionListener(this.action);
+				buttonPanel.add(btConfirm);
 	}
 	
 	private void idOverlapCheck() {
@@ -210,13 +210,14 @@ public class PSignUpDialog extends JDialog {
 			} else if (buttonRoute == "비밀번호 확인") {
 				pwDoubleCheck();
 			} else if (buttonRoute == "가입") {
-				if (idCheck == false && pwCheck == false) {
+				if (idCheck != true && pwCheck != true && tfId.getText() !=null && tfPw.getPassword() !=null
+						&& tfName.getText() != null && tfGrade.getText() !=null	&& tfDepartment.getText() !=null
+						&& tfStudentCode.getText() != null 
+					) {
 					createAccount();					
 				}
 
 			} 
 		}
 	}
-	
-
 }

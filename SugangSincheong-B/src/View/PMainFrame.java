@@ -20,7 +20,7 @@ public class PMainFrame extends JFrame {
 	
 	public PMainFrame(VAccount vAccount) { 
 	
-		this.vAccount = setVLogin(vAccount); //이게 아닌가여.. 
+		this.vAccount = setVLogin(vAccount);
 		// attributes
 		this.setSize(Constants.CMainFrame.WIDTH, Constants.CMainFrame.HEIGHT);
 		setLocationRelativeTo(null);
@@ -38,9 +38,4 @@ public class PMainFrame extends JFrame {
 		this.sugnasincheongPanel = new PSugnasincheongPanel();
 		this.add(sugnasincheongPanel, BorderLayout.CENTER);
 	} 
-	
-//	public void initialize() {
-//		this.setTitle("수강신청 프로그램 ");
-//		this.setLocationRelativeTo(null);
-//	}
 }
