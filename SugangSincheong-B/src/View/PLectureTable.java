@@ -1,5 +1,6 @@
 package View;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JTable;
@@ -45,5 +46,18 @@ import ValueObject.VLecture;
 	         }
 	         this.setRowSelectionInterval(0, 0); //default selection
 	     }
+	     
+	      public Vector<VLecture> getData(int index) {
+	    	  	  ArrayList<String> selectData = new ArrayList<>();
+	    	  	  for(int i =0;i<5; i++) {
+	    	  		  selectData.add(this.tableModel.getValueAt(index, i).toString());
+	    	  		  System.out.println(this.tableModel.getValueAt(index, i).toString());
+	    	  	  }
+	    		  VLecture VLectureData = new VLecture();
+	    		  VLectureData.setData(selectData);
+	    		  Vector<VLecture> a = new Vector<VLecture>();
+	    		  a.add(VLectureData);
+	    	  return a;
+	      }
 }
 	   

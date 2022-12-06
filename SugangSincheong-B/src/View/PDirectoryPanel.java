@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.LayoutManager;
+import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -114,12 +115,13 @@ public class PDirectoryPanel extends JPanel {
 						fileName = this.departmentTable.getvDirectories().get(selectedIndex[0]).getFileName();
 						this.lectureTable.setData(fileName);
 					}
-				} else if (selectedTable == this.lectureTable) { // 강좌	
-					selectedIndex = this.lectureTable.getSelectedRows();
-					if (selectedIndex.length > 0) {
-						
-					}
 				}
+//				else if (selectedTable == this.lectureTable) { // 강좌	
+//					selectedIndex = this.lectureTable.getSelectedRows();
+//					if (selectedIndex.length > 0) {
+//						
+//					}
+//				}
 			}
 		    
 		   private class PDirectory extends JTable { //디렉토리 틀 
@@ -164,8 +166,7 @@ public class PDirectoryPanel extends JPanel {
 		// TODO Auto-generated method stub
 		
 	}
-	public  Vector<VLecture> getSelectedLecture(Vector<VLecture> vLectures) {
-		//3. 선언한 값을 받아와서 리턴한다 . 
-		return vLectures;
+	public  Vector<VLecture> getSelectedLecture() {
+		return this.lectureTable.getData(this.lectureTable.getSelectedRows()[0]);
 	}
 }
