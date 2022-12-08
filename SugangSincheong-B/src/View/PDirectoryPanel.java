@@ -92,7 +92,7 @@ public class PDirectoryPanel extends JPanel {
 			      }
 			   }
 
-			private void updateTable(Object selectedTable) {
+			private void updateTable(Object selectedTable) { //동작이 가능하도록 
 				int[] selectedIndex; //하나만  
 				String fileName = null;
 				

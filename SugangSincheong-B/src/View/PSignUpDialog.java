@@ -1,6 +1,8 @@
 package View;
 
-import java.awt.FlowLayout;
+import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,37 +11,28 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Service.SLogin;
 import Service.SSignUp;
 import ValueObject.VAccount;
 
 public class PSignUpDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
-	private JPanel idPanel;
 	private JLabel lbId;
 	private JTextField tfId;
-	private JPanel pwPanel;
 	private JLabel lbPw;
 	private JPasswordField tfPw;
 	private JPasswordField tfRePw;
-	private JPanel namePanel;
 	private JLabel lbName;
 	private JTextField tfName;
-	private JPanel gradePanel;
 	private JLabel lbGrade;
 	private JTextField tfGrade;
-	private JPanel departmentPanel;
 	private JLabel lbDepartment;
 	private JTextField tfDepartment;
-	private JPanel studentCodePanel;
 	private JTextField tfStudentCode;
 	private JLabel lbStudentCode;
-	private JPanel buttonPanel;
 	private JButton btConfirm;
 	
 	private SSignUp sSignUp;
@@ -54,101 +47,74 @@ public class PSignUpDialog extends JDialog {
 	
 	VAccount vAccount;
 	
+	LayoutManager layoutManager = new GridBagLayout();
+	
 	public PSignUpDialog () {
-		this.setSize(350, 400);
+		this.setSize(450, 550);
 		this.setTitle("회원가입");
 		setLocationRelativeTo(null);
+	
 		
-		LayoutManager layoutManager = new FlowLayout();
 		this.setLayout(layoutManager);
 		this.setModal(rootPaneCheckingEnabled); //모달
 		
 		this.action = new ActionHandler();
 		
 			// id UI
-			idPanel = new JPanel(); 
-			this.add(idPanel);
-				
-				lbId = new JLabel("아이디: ");
-				idPanel.add(lbId);
-				this.tfId = new JTextField();
-				this.tfId.setColumns(10);
-				idPanel.add(this.tfId); 
-					
-				btConfirm = new JButton("중복 확인");
-				btConfirm.addActionListener(this.action);
-				idPanel.add(btConfirm);
+			lbId = new JLabel("아이디: ");
+			gridsert(this.lbId, 0, 0, 1, 1); // x y w h 
 			
+			this.tfId = new JTextField();
+			gridsert(this.tfId, 1, 0, 2, 1); 
+				
+			btConfirm = new JButton("중복 확인");
+			btConfirm.addActionListener(this.action);
+			gridsert(this.btConfirm, 2, 0, 1, 1); 
+		
 			// pw  UI
-			pwPanel = new JPanel(); 
-			this.add(pwPanel);
+			lbPw = new JLabel("비밀번호: ");
+			gridsert(this.lbPw, 0, 1, 1, 1); 
+			this.tfPw = new JPasswordField();
+			gridsert(this.tfPw, 1, 1, 2, 1); 
 					
-				lbPw = new JLabel("비밀번호: ");
-				pwPanel.add(lbPw);
-				this.tfPw = new JPasswordField();
-				this.tfPw.setColumns(10);
-				pwPanel.add(this.tfPw); 
-					
-				pwPanel = new JPanel(); 
-				this.add(pwPanel);
-						
-				lbPw = new JLabel("비밀번호 재확인: ");
-				pwPanel.add(lbPw);
-				this.tfRePw = new JPasswordField();
-				this.tfRePw.setColumns(10);
-				pwPanel.add(this.tfRePw); 
-					
-				btConfirm = new JButton("비밀번호 확인");
-				btConfirm.addActionListener(this.action);
-				pwPanel.add(btConfirm);
+			lbPw = new JLabel("비밀번호 확인: ");
+			gridsert(this.lbPw, 0, 2, 1, 1); 
+			
+			this.tfRePw = new JPasswordField();
+			gridsert(this.tfRePw, 1, 2, 2, 1); 
+
+			btConfirm = new JButton("비밀번호 확인");
+			btConfirm.addActionListener(this.action);
+			gridsert(this.btConfirm, 3, 2, 1, 1);
 					
 			//이름 UI
-			namePanel = new JPanel(); 
-			this.add(namePanel);
-				
-				lbName = new JLabel("이름: ");
-				namePanel.add(lbName);
-				this.tfName = new JTextField();
-				this.tfName.setColumns(10);
-				namePanel.add(this.tfName);			
+			lbName = new JLabel("이름: ");
+			gridsert(this.lbName, 0, 3, 1, 1); 
+			this.tfName = new JTextField();
+			gridsert(this.tfName, 1, 3, 2, 1);
 					
 			//학년 UI
-			gradePanel = new JPanel(); 
-			this.add(gradePanel);
-					
-				lbGrade = new JLabel("학년(숫자만): ");
-				gradePanel.add(lbGrade);
-				this.tfGrade = new JTextField();
-				this.tfGrade.setColumns(10);
-				gradePanel.add(this.tfGrade);
+			lbGrade = new JLabel("학년(숫자만): ");
+			gridsert(this.lbGrade, 0, 4, 1, 1); 
+			this.tfGrade = new JTextField();
+			gridsert(this.tfGrade, 1, 4, 2, 1); 	
 					
 			//학과 UI
-			departmentPanel = new JPanel(); 
-			this.add(departmentPanel);
-						
-				lbDepartment = new JLabel("학과(~학과): ");
-				departmentPanel.add(lbDepartment);
-				this.tfDepartment = new JTextField();
-				this.tfDepartment.setColumns(10);
-				departmentPanel.add(this.tfDepartment);	
+			lbDepartment = new JLabel("학과(~학과): ");
+			gridsert(this.lbDepartment, 0, 5, 2, 1); 
+			this.tfDepartment = new JTextField();
+			gridsert(this.tfDepartment, 1, 5, 2, 1); 
 					
 			//학번 UI
-			studentCodePanel = new JPanel(); 
-			this.add(studentCodePanel);
-				
-				lbStudentCode = new JLabel("학번: ");
-				studentCodePanel.add(lbStudentCode);
-				this.tfStudentCode = new JTextField();
-				this.tfStudentCode.setColumns(10);
-				studentCodePanel.add(this.tfStudentCode);
-				
-				//회원가입 버튼 
-			buttonPanel = new JPanel(); 
-			this.add(buttonPanel);
-				
-				btConfirm = new JButton("가입");
-				btConfirm.addActionListener(this.action);
-				buttonPanel.add(btConfirm);
+			lbStudentCode = new JLabel("학번: ");
+			gridsert(this.lbStudentCode, 0, 6, 1, 1); 
+			this.tfStudentCode = new JTextField();
+			gridsert(this.tfStudentCode, 1, 6, 2, 1); 
+			
+			//회원가입 버튼 
+			btConfirm = new JButton("가입");
+			btConfirm.addActionListener(this.action);
+			gridsert(this.btConfirm, 0, 7, 3, 1); 
 	}
 	
 	private void idOverlapCheck() {
@@ -175,7 +141,6 @@ public class PSignUpDialog extends JDialog {
 		if (pw.equals(pwRe)) {
 			JOptionPane.showMessageDialog(null, "확인되었습니다.");
 			pwCheck = false;
-			
 		} 
 		else {
 			pwCheck = true;
@@ -220,4 +185,19 @@ public class PSignUpDialog extends JDialog {
 			} 
 		}
 	}
+	
+	public void gridsert(Component c, int x, int y, int w, int h) { //GridBagLayout 
+		GridBagConstraints gridBagConstraints = new GridBagConstraints();
+		gridBagConstraints.fill= GridBagConstraints.BOTH;
+		
+		gridBagConstraints.gridx = x;
+		gridBagConstraints.gridy = y;
+		gridBagConstraints.gridwidth = w;
+		gridBagConstraints.gridheight = h;
+		
+		((GridBagLayout) layoutManager).setConstraints(c, gridBagConstraints);
+		this.add(c);
+        
+	}
+	
 }

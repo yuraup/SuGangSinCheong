@@ -26,8 +26,7 @@ public class PAccountPanel extends JPanel implements ActionListener {
 
 		this.setBackground(new Color(255, 245, 158));
 		this.vAccount = setAccount(vAccount);
-		System.out.println("PAccountPanel: " + this.vAccount); 
-		System.out.println("PAccountPane name : " + vAccount.getName()); 
+		
 		JLabel name = new JLabel(vAccount.getName()); 
 		this.add(name);
 		
@@ -46,23 +45,23 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		this.add(text);
 		
 		JButton myPage = new JButton("마이페이지");
-		myPage.setBackground(new Color(178, 223, 196));
-		myPage.addActionListener(this);
+			myPage.setBackground(new Color(178, 223, 196));
+			myPage.addActionListener(this);
 		this.add(myPage);
 		
 		JButton news = new JButton("학교소식");
-		news.setBackground(new Color(178, 223, 196));
-		news.addActionListener(this);
+			news.setBackground(new Color(178, 223, 196));
+			news.addActionListener(this);
 		this.add(news);
 		
 		JButton link = new JButton("학교홈페이지");
-		link.setBackground(new Color(178, 223, 196));
-		link.addActionListener(this);
+			link.setBackground(new Color(178, 223, 196));
+			link.addActionListener(this);
 		this.add(link);
 		
 		JButton exit = new JButton("종료");
-		exit.setBackground(new Color(178, 223, 196));
-		exit.addActionListener(this);
+			exit.setBackground(new Color(178, 223, 196));
+			exit.addActionListener(this);
 		this.add(exit);
 	}
 
@@ -85,7 +84,7 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		
 		} else if (buttonRoute == "학교홈페이지") {
 			try {
-				Desktop.getDesktop().browse(new URI("http://www.mju.ac.kr/"));
+				Desktop.getDesktop().browse(new URI("http://www.mju.ac.kr/")); //홈페이지 링크 연결
 			} catch (IOException | URISyntaxException e1) {
 				e1.printStackTrace();
 			}

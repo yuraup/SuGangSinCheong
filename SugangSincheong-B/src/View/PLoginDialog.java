@@ -2,7 +2,6 @@
 package View;
 
 import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
@@ -17,10 +16,6 @@ import View.Main.ActionHandler;
 public class PLoginDialog extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	JPanel topPanel;
-	JPanel middleUpPanel;
-	JPanel middleDownPanel;
-	JPanel bottomPanel;
 	
 	JPanel idPanel;
 	private JLabel lbId;
@@ -39,34 +34,23 @@ public class PLoginDialog extends JDialog implements ActionListener {
 	
 	LayoutManager layoutManager = new GridBagLayout();
 	
-	String changePasswordType(char[] password) {
-		String newPw = "";
-		for (char cha : password) {         
-	         Character.toString(cha);       // cha에 저장된 값 string으로 변환
-	       // pw 에 저장하기, pw 에 값이 비어있으면 저장, 값이 있으면 이어서 저장 삼항연산자
-	         newPw += (newPw.equals("")) ? ""+cha+"" : ""+cha+"";   
-	     }
-		return newPw;
-	}
 	
 	public PLoginDialog(ActionHandler actionHandler) {
-		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-//		super(parent, "로그인", false); //modal
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); //프로그램 터미널 종료
 		this.setSize(550,450);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(null); //중앙 정렬 
 		
 		this.setLayout(layoutManager);
 		this.setModal(rootPaneCheckingEnabled);
-		GridBagConstraints gridBagConstraints =  new GridBagConstraints();
 		
 		this.lbId = new JLabel("아이디: ");
-		gridsert(this.lbId, 0, 0, 1, 1);
+		gridsert(this.lbId, 0, 0, 1, 1); // x y w h 
 	
 		this.tfId = new JTextField();
-		gridsert(this.tfId, 1, 0, 1, 1);
+		gridsert(this.tfId, 1, 0, 1, 1); // x y w h
 
 		lbPassword = new JLabel("비밀번호: ");
-		gridsert(this.lbPassword, 0, 1, 1, 1);
+		gridsert(this.lbPassword, 0, 1, 1, 1); //x y w h
 		
 		this.tfPassword = new JPasswordField();
 		gridsert(this.tfPassword, 1, 1, 1, 1); // x y w h
@@ -104,7 +88,17 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		return vAccount;
 	}
 	
-	public void gridsert(Component c, int x, int y, int w, int h) {
+	String changePasswordType(char[] password) { //char -> String
+		String newPw = "";
+		for (char cha : password) {         
+	         Character.toString(cha);       // cha에 저장된 값 string으로 변환
+	       // pw 에 저장하기, pw 에 값이 비어있으면 저장, 값이 있으면 이어서 저장 삼항연산자
+	         newPw += (newPw.equals("")) ? ""+cha+"" : ""+cha+"";   
+	     }
+		return newPw;
+	}
+	
+	public void gridsert(Component c, int x, int y, int w, int h) { //GridBagLayout 
 		GridBagConstraints gridBagConstraints = new GridBagConstraints();
 		gridBagConstraints.fill= GridBagConstraints.BOTH;
 		
@@ -117,12 +111,11 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		this.add(c);
         
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String buttonRoute = e.getActionCommand();
-		if (buttonRoute == "아이디찾기") {
+		String buttonRoute = e.getActionCommand(); 
+		if (buttonRoute == "아이디찾기") { //버튼에 따라 액션이 다르도록 
 			System.out.println("아이디찾기");
 			PIdFindDialog pIdFindDialog = new PIdFindDialog();
 			pIdFindDialog.setVisible(true);

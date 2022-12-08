@@ -21,6 +21,7 @@ public class PMainFrame extends JFrame {
 	public PMainFrame(VAccount vAccount) { 
 	
 		this.vAccount = setVLogin(vAccount);
+		
 		// attributes
 		this.setSize(Constants.CMainFrame.WIDTH, Constants.CMainFrame.HEIGHT);
 		setLocationRelativeTo(null);
@@ -29,10 +30,9 @@ public class PMainFrame extends JFrame {
 		// components
 		LayoutManager layoutManager = new BorderLayout();
 		this.setLayout(layoutManager);
-		System.out.println("메인프레임: " + this.vAccount);
 		
 		// vAccount setting 
-		this.accountPanel = new PAccountPanel(this.vAccount); //this = mainFrame
+		this.accountPanel = new PAccountPanel(this.vAccount);
 		this.add(this.accountPanel, BorderLayout.NORTH);
 		
 		this.sugnasincheongPanel = new PSugnasincheongPanel();
