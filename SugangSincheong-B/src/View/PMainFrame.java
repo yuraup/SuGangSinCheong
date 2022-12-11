@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 import Global.Constants;
 import ValueObject.VAccount;
+import View.SugangSincheong.PSugnasincheongPanel;
 
 public class PMainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;

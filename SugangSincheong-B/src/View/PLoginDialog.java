@@ -16,14 +16,10 @@ import View.Main.ActionHandler;
 public class PLoginDialog extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	
-	JPanel idPanel;
 	private JLabel lbId;
 	JTextField tfId;
-	JPanel pwPanel;
 	JPasswordField tfPassword;
 	private JLabel lbPassword;
-	JPanel buttonPanel;
 	private JButton btLogin;
 	private SLogin sLogin;
 	private JButton btFindId;
@@ -36,8 +32,9 @@ public class PLoginDialog extends JDialog implements ActionListener {
 	
 	
 	public PLoginDialog(ActionHandler actionHandler) {
+		this.setTitle("수강신청 프로그램");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); //프로그램 터미널 종료
-		this.setSize(550,450);
+		this.setSize(550,400);
 		setLocationRelativeTo(null); //중앙 정렬 
 		
 		this.setLayout(layoutManager);

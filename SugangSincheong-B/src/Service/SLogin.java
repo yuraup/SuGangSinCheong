@@ -22,7 +22,6 @@ public class SLogin {
 	
 	//비밀번호 찾기
 	public VAccount findPw(String id, int studentCode) {
-		System.out.println("SLogin id: " + id);
 		VAccount vAccount = this.eAccount.getFindPw(id, studentCode);
 		return vAccount;
 	}

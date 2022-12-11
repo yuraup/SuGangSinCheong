@@ -114,7 +114,8 @@ public class EAccount {
 				
 				if (this.id.compareTo(id) == 0 && Integer.compare(studentCode, this.studentCode) == 0) {
 					System.out.println("비밀번호찾기 id:" +  id);
-					System.out.println("비밀번호찾기 studentCode:" +  studentCode);
+					System.out.println("비밀번호찾기 studentCode:" +  this.name);
+					System.out.println("비밀번호찾기 studentCode:" +  this.password);
 					found = true;
 				}
 			}
@@ -123,6 +124,10 @@ public class EAccount {
 			if (found) {
 				VAccount vAccount = new VAccount();
 				vAccount.setId(this.id);
+				vAccount.setPassword(this.password);
+				vAccount.setName(this.name);
+				vAccount.setGrade(this.grade);
+				vAccount.setDepartment(this.department);
 				vAccount.setStudentCode(this.studentCode);
 				return vAccount;
 			}			
@@ -179,7 +184,6 @@ public class EAccount {
 		
 		fileWriter.close();
 		} catch (Exception e) {
-				// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

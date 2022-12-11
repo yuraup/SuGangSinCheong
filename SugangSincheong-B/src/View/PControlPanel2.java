@@ -6,7 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import View.PSugnasincheongPanel.ActionHandler;
+import View.SugangSincheong.PSugnasincheongPanel.ActionHandler;
 
 public class PControlPanel2  extends JPanel{
 	private static final long serialVersionUID = 1L;

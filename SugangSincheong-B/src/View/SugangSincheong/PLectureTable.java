@@ -1,4 +1,4 @@
-package View;
+package View.SugangSincheong;
 
 import java.util.ArrayList;
 import java.util.Vector;

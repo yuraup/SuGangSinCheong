@@ -1,4 +1,4 @@
-package View;
+package View.SugangSincheong;
 
 import java.awt.LayoutManager;
 import java.util.Arrays;
@@ -136,7 +136,7 @@ public class PDirectoryPanel extends JPanel {
 		      private String directoryName;
 		      
 		      public PDirectory(String directoryName) {
-		    	  this.directoryName = directoryName;
+		    	 this.directoryName = directoryName;
 		         Vector<String> header = new Vector<String>(); 
 		         header.add(title);
 		         

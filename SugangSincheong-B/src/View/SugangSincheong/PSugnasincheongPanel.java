@@ -1,4 +1,4 @@
-package View;
+package View.SugangSincheong;
 
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import ValueObject.VLecture;
+import View.PControlPanel1;
+import View.PControlPanel2;
 
    public class PSugnasincheongPanel extends JPanel {
    private static final long serialVersionUID = 1L;
@@ -48,12 +50,12 @@ import ValueObject.VLecture;
    }
    
    private void moveFromLecturesToMiridamgi() {
-	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture();
+	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture(); //lectures 시작
       this.miridamgiPanel.addLectures(lectures);
    }
    private void moveFromMiridamgiToLectures() {
-      Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
-      this.directoryPanel.addLectures(lectures);
+//      Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
+//      this.directoryPanel.addLectures(lectures);
    }
    private void moveFromMiridamgiToSincheong() {
       Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
