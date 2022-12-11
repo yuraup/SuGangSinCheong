@@ -14,19 +14,18 @@ public class PMainFrame extends JFrame {
 	private VAccount vAccount;
 	private PSugnasincheongPanel sugnasincheongPanel;
 	
-	public VAccount setVLogin(VAccount vAccount) {
+	public VAccount setVLogin(VAccount vAccount) { //this.vAccount에 저장 
 		this.vAccount = vAccount;
 		return this.vAccount;
 	}
 	
 	public PMainFrame(VAccount vAccount) { 
-	
 		this.vAccount = setVLogin(vAccount);
 		
 		// attributes
 		this.setSize(Constants.CMainFrame.WIDTH, Constants.CMainFrame.HEIGHT);
-		setLocationRelativeTo(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null); //중앙 정렬 
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //종료 클릭시 터미널도 종료 
 		
 		// components
 		LayoutManager layoutManager = new BorderLayout();

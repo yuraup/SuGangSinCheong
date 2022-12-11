@@ -60,6 +60,7 @@ public class PMiriDamgiPanel extends PLectureTable {
 	}
 
 	public Vector<VLecture> getSelectedLecture() { //선택값을 반환 
+		sMiriDamgi.deleteLog(this.getData(this.getSelectedRows()[0]));
 		return this.getData(this.getSelectedRows()[0]); 
 	}
 }

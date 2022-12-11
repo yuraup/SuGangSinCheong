@@ -47,12 +47,13 @@ import ValueObject.VLecture;
 	     
 	      public Vector<VLecture> getData(int index) {
 	    	  	  ArrayList<String> selectData = new ArrayList<>();
+	    	  	  
 	    	  	  for(int i =0;i<5; i++) {
 	    	  		  selectData.add(this.tableModel.getValueAt(index, i).toString());
 	    	  		  System.out.println(this.tableModel.getValueAt(index, i).toString());
 	    	  	  }
 	    		  VLecture VLectureData = new VLecture();
-	    		  VLectureData.setData(selectData);
+	    		  VLectureData.setData(selectData); //0~5 
 	    		  Vector<VLecture> a = new Vector<VLecture>();
 	    		  a.add(VLectureData);
 	    	  return a;

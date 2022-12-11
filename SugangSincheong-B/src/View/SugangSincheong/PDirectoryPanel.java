@@ -1,11 +1,9 @@
 package View.SugangSincheong;
 
 import java.awt.LayoutManager;
-import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -165,9 +163,10 @@ public class PDirectoryPanel extends JPanel {
 		   }
 
 	public void addLectures(Vector<VLecture> lectures) {
-		
+		System.out.println("directory lectures:" + lectures);
 	}
 	public  Vector<VLecture> getSelectedLecture() {
+//		System.out.println("aa" + this.lectureTable.getSelectedRows()[]);
 		return this.lectureTable.getData(this.lectureTable.getSelectedRows()[0]);
 	}
 }

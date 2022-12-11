@@ -7,19 +7,20 @@ import ValueObject.VLecture;
 import ValueObject.VSincheong;
 
 public class PSincheongPanel extends PLectureTable {
+	private static final long serialVersionUID = 1L;
+	
 	SSincheong sSincheong = new SSincheong();
 	boolean checkLog;
 	
 	public PSincheongPanel() {
 		super("department/");
 		checkLog = sSincheong.initCheck();
-		if (checkLog == true) {
+		
+		if (checkLog == true) { //파일의 내용이 있는지 확인 
 			setInitMiridamgi();
 		}
 	}
 
-	private static final long serialVersionUID = 1L;
-	
 	public void setLectures (VSincheong vSincheong) {
 		Vector<String> row = new Vector<String>();
         row.add(vSincheong.getId());

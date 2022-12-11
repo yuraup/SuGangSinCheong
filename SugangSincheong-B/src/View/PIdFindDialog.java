@@ -65,7 +65,7 @@ public class PIdFindDialog extends JDialog {
 			this.tfStudentCode.setColumns(10);
 			studentCodePanel.add(this.tfStudentCode);
 		
-		//로그인 버튼 
+		//아이디 찾기 버튼 
 		buttonPanel = new JPanel(); //확인 버튼 UI 
 		this.add(buttonPanel);
 		
@@ -77,12 +77,13 @@ public class PIdFindDialog extends JDialog {
 		this.sLogin = new SLogin();
 	}
 
-	private static int parseInt (char[] beforeStudentCode) {  // char[] 타입을 int로 변환 
+	private static int parseInt (char[] beforeStudentCode) {  // 학번: char[] 타입을 int로 변환 
 		int afterStudentCode = 0;
 		for (int i = 0; i < beforeStudentCode.length; i++) {
 			int value = Integer.parseInt(String.valueOf(beforeStudentCode[i]));
 			afterStudentCode = afterStudentCode * 10 + value;
 		}
+		
 		return afterStudentCode;
 	}
 	
@@ -92,7 +93,7 @@ public class PIdFindDialog extends JDialog {
 
 			VAccount vAccount = sLogin.findId(tfName.getText() , newStudentCode);
 			JOptionPane.showMessageDialog(null, "아이디: " + vAccount.getId(), "아이디를 찾았습니다.", JOptionPane.INFORMATION_MESSAGE);
-		}
+		} 
 		return vAccount;
 	}
 	
@@ -100,7 +101,7 @@ public class PIdFindDialog extends JDialog {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			findId(); // 확인 버튼 클릭시 해당 함수 실행 
+			findId(); // 확인 버튼 클릭시 아이디 찾기
 			}
 		}
 }

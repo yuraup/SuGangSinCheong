@@ -49,13 +49,13 @@ import View.PControlPanel2;
       this.add(scrollPane);
    }
    
-   private void moveFromLecturesToMiridamgi() {
+   private void moveFromLecturesToMiridamgi() { //버튼 클릭시 발생할 함수 
 	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture(); //lectures 시작
       this.miridamgiPanel.addLectures(lectures);
    }
    private void moveFromMiridamgiToLectures() {
-//      Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
-//      this.directoryPanel.addLectures(lectures);
+      Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
+      this.directoryPanel.addLectures(lectures);
    }
    private void moveFromMiridamgiToSincheong() {
       Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
@@ -68,18 +68,14 @@ import View.PControlPanel2;
    
    public class ActionHandler implements ActionListener {
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void actionPerformed(ActionEvent e) { //버튼 이벤트 
          if(e.getActionCommand().compareTo("1>>") == 0) {
-            System.out.println("1>>");
             moveFromLecturesToMiridamgi();
          } else if(e.getActionCommand().compareTo("1<<") == 0) {
-            System.out.println("1<<");
             moveFromMiridamgiToLectures();
          } else if(e.getActionCommand().compareTo("2>>") == 0) {
-            System.out.println("2>>");
             moveFromMiridamgiToSincheong();
          } else if(e.getActionCommand().compareTo("2<<") == 0) {
-            System.out.println("2<<");
             moveFromSincheongToMiridamgi();
          }
          

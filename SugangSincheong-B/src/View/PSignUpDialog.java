@@ -39,8 +39,8 @@ public class PSignUpDialog extends JDialog {
 	
 	private ActionHandler action;
 	
-	private boolean idCheck = false;
-	private boolean pwCheck = false;
+	private boolean idCheck = true;
+	private boolean pwCheck = true;
 	
 	String pw = "";
 	String pwRe = "";
@@ -64,23 +64,23 @@ public class PSignUpDialog extends JDialog {
 			lbId = new JLabel("아이디: ");
 			gridsert(this.lbId, 0, 0, 1, 1); // x y w h 
 			
-			this.tfId = new JTextField();
-			gridsert(this.tfId, 1, 0, 2, 1); 
+			this.tfId = new JTextField(10);
+			gridsert(this.tfId, 1, 0, 1, 1); 
 				
 			btConfirm = new JButton("중복 확인");
 			btConfirm.addActionListener(this.action);
-			gridsert(this.btConfirm, 2, 0, 1, 1); 
+			gridsert(this.btConfirm, 3, 0, 1, 1); 
 		
 			// pw  UI
 			lbPw = new JLabel("비밀번호: ");
 			gridsert(this.lbPw, 0, 1, 1, 1); 
-			this.tfPw = new JPasswordField();
+			this.tfPw = new JPasswordField(10);
 			gridsert(this.tfPw, 1, 1, 2, 1); 
 					
 			lbPw = new JLabel("비밀번호 확인: ");
 			gridsert(this.lbPw, 0, 2, 1, 1); 
 			
-			this.tfRePw = new JPasswordField();
+			this.tfRePw = new JPasswordField(10);
 			gridsert(this.tfRePw, 1, 2, 2, 1); 
 
 			btConfirm = new JButton("비밀번호 확인");
@@ -90,25 +90,25 @@ public class PSignUpDialog extends JDialog {
 			//이름 UI
 			lbName = new JLabel("이름: ");
 			gridsert(this.lbName, 0, 3, 1, 1); 
-			this.tfName = new JTextField();
+			this.tfName = new JTextField(10);
 			gridsert(this.tfName, 1, 3, 2, 1);
 					
 			//학년 UI
 			lbGrade = new JLabel("학년(숫자만): ");
 			gridsert(this.lbGrade, 0, 4, 1, 1); 
-			this.tfGrade = new JTextField();
+			this.tfGrade = new JTextField(10);
 			gridsert(this.tfGrade, 1, 4, 2, 1); 	
 					
 			//학과 UI
 			lbDepartment = new JLabel("학과(~학과): ");
 			gridsert(this.lbDepartment, 0, 5, 2, 1); 
-			this.tfDepartment = new JTextField();
+			this.tfDepartment = new JTextField(10);
 			gridsert(this.tfDepartment, 1, 5, 2, 1); 
 					
 			//학번 UI
 			lbStudentCode = new JLabel("학번: ");
 			gridsert(this.lbStudentCode, 0, 6, 1, 1); 
-			this.tfStudentCode = new JTextField();
+			this.tfStudentCode = new JTextField(10);
 			gridsert(this.tfStudentCode, 1, 6, 2, 1); 
 			
 			//회원가입 버튼 
@@ -117,33 +117,38 @@ public class PSignUpDialog extends JDialog {
 			gridsert(this.btConfirm, 0, 7, 3, 1); 
 	}
 	
-	private void idOverlapCheck() {
+	private void idOverlapCheck() { //아이디 중복 체크 기능 (파일 읽음)
 		VAccount vAccount = new VAccount();
 		sSignUp = new SSignUp();
-		vAccount.setId(tfId.getText());
-		
-		if (sSignUp.check(vAccount)) {
+		vAccount.setId(this.tfId.getText());
+		if (this.tfId.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "아이디를 입력해주세요.");
+			idCheck = true;
+		} else if (sSignUp.check(vAccount) == false) {
 			JOptionPane.showMessageDialog(null, "이미 아이디가 존재합니다.");
 			idCheck = true;
-		} else {
+		} else if (sSignUp.check(vAccount) == true) {
 			JOptionPane.showMessageDialog(null, "가입 가능한 아이디입니다.");
 			idCheck = false;
 		}
 	}
 	
 	private void pwDoubleCheck () {
-		for (int i = 0; i < tfPw.getPassword().length; i++ ) {
-			pw += tfPw.getPassword()[i];
+		for (int i = 0; i < this.tfPw.getPassword().length; i++ ) {
+			this.pw += this.tfPw.getPassword()[i];
 		}
-		for (int j = 0; j < tfRePw.getPassword().length; j++) {
-			pwRe += tfRePw.getPassword()[j]; 
+		for (int j = 0; j < this.tfRePw.getPassword().length; j++) {
+			this.pwRe += this.tfRePw.getPassword()[j]; 
 		}
-		if (pw.equals(pwRe)) {
+		if (this.pw.contains("")) {
+			JOptionPane.showMessageDialog(null, "비밀번호를 입력해주세요.");
+			
+		} else if (this.pw.equals(this.pwRe) && !this.pw.contains("")) {
 			JOptionPane.showMessageDialog(null, "확인되었습니다.");
-			pwCheck = false;
-		} 
-		else {
 			pwCheck = true;
+			
+		} else {
+			pwCheck = false;
 			JOptionPane.showMessageDialog(null, "비밀번호 확인이 일치하지 않습니다.");	
 		} 
 	}
@@ -152,12 +157,12 @@ public class PSignUpDialog extends JDialog {
 			VAccount vAccount = new VAccount();
 			sSignUp = new SSignUp();
 			
-			vAccount.setId(tfId.getText());
-			vAccount.setPassword(pw);
-			vAccount.setName(tfName.getText());
-			vAccount.setGrade(tfGrade.getText());
-			vAccount.setDepartment(tfDepartment.getText());
-			vAccount.setStudentCode(Integer.parseInt(tfStudentCode.getText()));
+			vAccount.setId(this.tfId.getText());
+			vAccount.setPassword(this.pw);
+			vAccount.setName(this.tfName.getText());
+			vAccount.setGrade(this.tfGrade.getText());
+			vAccount.setDepartment(this.tfDepartment.getText());
+			vAccount.setStudentCode(Integer.parseInt(this.tfStudentCode.getText()));
 			
 			sSignUp.signUp(vAccount);
 			
@@ -174,12 +179,26 @@ public class PSignUpDialog extends JDialog {
 				idOverlapCheck();
 			} else if (buttonRoute == "비밀번호 확인") {
 				pwDoubleCheck();
-			} else if (buttonRoute == "가입") {
-				if (idCheck != true && pwCheck != true && tfId.getText() !=null && tfPw.getPassword() !=null
-						&& tfName.getText() != null && tfGrade.getText() !=null	&& tfDepartment.getText() !=null
-						&& tfStudentCode.getText() != null 
+			} else if (buttonRoute == "가입") { //경우의 수를 나눠 회원가입이 이루어지도록 함.
+			
+				if (idCheck == false && pwCheck == true && !tfName.getText().equals("") && !tfGrade.getText().equals("")
+						&& !tfDepartment.getText().equals("") && !tfStudentCode.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "비밀번호 확인이 필요합니다.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else if (idCheck == true && pwCheck == false && !tfName.getText().equals("") && !tfGrade.getText().equals("")
+						&& !tfDepartment.getText().equals("") && !tfStudentCode.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "아이디 중복 체크를 해주세요.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
+				} 
+				else if (idCheck == false && pwCheck == false && tfName.getText().equals("") || tfGrade.getText().equals("")
+						|| tfDepartment.getText().equals("") || tfStudentCode.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "회원정보가 모두 입력되지 않았습니다.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
+				}
+				else if (idCheck == false && pwCheck == false && !tfName.getText().equals("") && !tfGrade.getText().equals("")
+						&& !tfDepartment.getText().equals("") && !tfStudentCode.getText().equals("")
 					) {
 					createAccount();					
+				} else {
+					JOptionPane.showMessageDialog(null, "입력한 값을 다시 한 번 확인해주세요.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
 				}
 
 			} 

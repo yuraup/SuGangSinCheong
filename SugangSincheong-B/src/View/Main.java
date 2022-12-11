@@ -36,22 +36,28 @@ public class Main {
 	
 	private void finish() {
 		System.exit(0);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //종료 클릭시 터미널도 종료 
 	}
 	
 	public class ActionHandler implements ActionListener {
+		int loginCount = 0; //로그인 시도 횟수
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			VAccount account = loginDialog.login();
+			VAccount account = loginDialog.login(); 
+			
 			if (account != null) {
 				run(account);
 				loginDialog.dispose();
 			} else {
-				System.out.println("로그인 실패 " + account);
-				JOptionPane.showMessageDialog(null, "로그인에 실패했습니다. 프로그램을 다시 실행해주세요. ", "로그인 실패 : 접속 차단 ", JOptionPane.INFORMATION_MESSAGE);
-				finish();
+				loginCount = loginCount + 1;
+				JOptionPane.showMessageDialog(null, "로그인 실패" + loginCount +"회입니다.", "로그인 경고  ", JOptionPane.INFORMATION_MESSAGE);
+				
+				if (loginCount >= 3) {
+					JOptionPane.showMessageDialog(null, "3회 이상 로그인에 실패했습니다. 프로그램을 다시 실행해주세요. ", "로그인 실패 : 접속 차단 ", JOptionPane.INFORMATION_MESSAGE);
+					finish();	
+				}
 			}
-			
 		}		
 	}
-	
 }

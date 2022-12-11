@@ -8,19 +8,16 @@ import ValueObject.VDirectory;
 
 public class EDirectory {
 	public Vector<VDirectory> getDirectories(String fileName) {
-		System.out.println("eDirectory fileName: " + fileName );
+//		System.out.println("eDirectory fileName: " + fileName );
 		Vector<VDirectory> vDirectories = new Vector<VDirectory>();
 		try {
 			Scanner scanner = new Scanner(new File("directory/" + fileName));
-			System.out.println("scanner: " + scanner );
 			while (scanner.hasNext()) {
 				VDirectory vDirectory = new VDirectory();
 				vDirectory.read(scanner);
 				vDirectories.add(vDirectory);	
-				
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return vDirectories;

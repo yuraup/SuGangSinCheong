@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.Vector;
 
+import ValueObject.VLecture;
 import ValueObject.VMiriDamgi;
 
 public class EMiriDamgi {
@@ -70,7 +71,6 @@ public class EMiriDamgi {
 			File file = new File("miridamgiLog/miridamgiLog");
 			Scanner scanner = new Scanner(file);
 			// file read
-//			boolean found = false;
 			while (scanner.hasNext()) {
 				this.id = scanner.next();
 				this.name = scanner.next();
@@ -95,5 +95,35 @@ public class EMiriDamgi {
 			e.printStackTrace();
 		}
 		return row;	
+	}
+
+	public void deleteLog(Vector<VLecture> selectedRow) {
+		  try {
+		      //소스 파일읽기;
+			    File file = new File("miridamgiLog/miridamgiLog");
+				Scanner scanner = new Scanner(file); //파일의 경로를 넘김 경로 읽음  
+				
+				System.out.println("야옹: "+ scanner.hasNext());
+				
+				File newFile = new File("miridamgiLog/miridamgiLog"); //새 파일  
+				FileWriter fw = new FileWriter(newFile);
+				
+				// file read
+				System.out.println("미야: "+ scanner.hasNext());
+				while (scanner.hasNext()) { //read 
+					String text1 = scanner.nextLine(); //한 줄 
+					String[] nextText1 = text1.split(" "); //배열의 한 값만 id 
+					
+					if (!nextText1[0].equals(selectedRow.get(0).getId())) { //같지 않은 내용이 안으로 들어감 
+						fw.write(text1);
+						fw.write("\n");
+					}
+			}
+				scanner.close();
+				fw.close();
+
+		  } catch (Exception e) {
+			  e.printStackTrace();
+		  }
 	}
 }

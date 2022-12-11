@@ -17,7 +17,6 @@ public class ELecture {
 				vLectures.add(vLecture);
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return vLectures;
