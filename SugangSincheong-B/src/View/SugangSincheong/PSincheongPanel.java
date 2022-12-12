@@ -2,6 +2,8 @@ package View.SugangSincheong;
 
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import Service.SSincheong;
 import ValueObject.VLecture;
 import ValueObject.VSincheong;
@@ -49,15 +51,23 @@ public class PSincheongPanel extends PLectureTable {
 	public void addLectures(Vector<VLecture> lectures) {
 		VSincheong vSincheong = new VSincheong(); 
 		sSincheong = new SSincheong(); 
+		boolean checkDoublePoint = sSincheong.checkDouble(lectures);
 		
-		vSincheong.setId(lectures.get(0).getId());
-		vSincheong.setName(lectures.get(0).getName());
-		vSincheong.setProfessor(lectures.get(0).getProfessor());
-		vSincheong.setCredit(lectures.get(0).getCredit());
-		vSincheong.setTime(lectures.get(0).getTime());
-		
-		sSincheong.addMiridamgi(vSincheong);
-		setLectures(vSincheong);
+		if (checkDoublePoint) { //  true면 추가할 수 있게 
+			JOptionPane.showMessageDialog(null, "선택하신 강좌가 수강신청 목록에 추가되었습니다.");
+			
+			vSincheong.setId(lectures.get(0).getId());
+			vSincheong.setName(lectures.get(0).getName());
+			vSincheong.setProfessor(lectures.get(0).getProfessor());
+			vSincheong.setCredit(lectures.get(0).getCredit());
+			vSincheong.setTime(lectures.get(0).getTime());
+			
+			sSincheong.addMiridamgi(vSincheong);
+			setLectures(vSincheong);
+		} else {
+			JOptionPane.showMessageDialog(null, "선택하신 강좌가 수강신청 목록에 이미 존재합니다.");
+		}
+ 
 	}
 
 	public Vector<VLecture> getSelectedLecture() {

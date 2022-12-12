@@ -127,4 +127,31 @@ public class ESincheong {
 		  }
 		
 	}
+
+	public boolean checkDouble(Vector<VLecture> lectures) {
+		boolean checkDoublePoint = false; //중복 체크 변수 
+		
+	    File file = new File("sugangLog/sugangLog");
+		Scanner scanner;
+		try {
+			scanner = new Scanner(file);
+			while (scanner.hasNext()) {
+				this.id = scanner.next();
+				this.name = scanner.next();
+				this.professor = scanner.next();
+				this.credit = scanner.next();
+				this.time= scanner.next();
+			}
+			scanner.close();
+			
+			if (!lectures.get(0).getId().equals(this.id)) { //둘이 같지 않을 때 
+				checkDoublePoint = true; 
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} //파일의 경로를 넘김 경로 읽음
+		System.out.println("고양이가 울었나 볼까? " + checkDoublePoint);
+		return checkDoublePoint;
+	}
 }

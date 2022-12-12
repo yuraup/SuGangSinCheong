@@ -33,4 +33,9 @@ public class SSincheong {
 		this.eSincheong.deleteLog(selectedRow);
 		
 	}
+
+	public boolean checkDouble(Vector<VLecture> lectures) {
+		boolean checkDoublePoint = eSincheong.checkDouble(lectures);
+		return checkDoublePoint;
+	}
 }

@@ -64,7 +64,6 @@ public class PMiriDamgiPanel extends PLectureTable {
 			
 			sMiriDamgi.addMiridamgi(vMiridamgi); // 새로 추가 S
 			setLectures(vMiridamgi); //UI 부분 
-			System.out.println("야옹아 아오:" + vMiridamgi.getId());
 		} else {
 			JOptionPane.showMessageDialog(null, "선택하신 강좌가 미리담기에 이미 존재합니다.");
 		}

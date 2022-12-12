@@ -54,11 +54,8 @@ public class EMiriDamgi {
 				this.credit = scanner.next();
 				this.time= scanner.next();	
 				checkLog = true;
-				System.out.println("checkLog 읽음: " + checkLog);
 		}
 			scanner.close();
-
-			System.out.println("checkLog 안 읽음: " + checkLog);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}		
@@ -81,14 +78,14 @@ public class EMiriDamgi {
 				this.credit = scanner.next();
 				this.time= scanner.next();	
 
-					vMiriDamgi = new VMiriDamgi();
-					vMiriDamgi.setId(this.id);
-					vMiriDamgi.setName(this.name);
-					vMiriDamgi.setProfessor(this.professor);
-					vMiriDamgi.setCredit(this.credit);
-					vMiriDamgi.setTime(this.time);
-					row.add(vMiriDamgi);
-			
+				vMiriDamgi = new VMiriDamgi();
+				vMiriDamgi.setId(this.id);
+				vMiriDamgi.setName(this.name);
+				vMiriDamgi.setProfessor(this.professor);
+				vMiriDamgi.setCredit(this.credit);
+				vMiriDamgi.setTime(this.time);
+				
+				row.add(vMiriDamgi);
 		}
 			if (scanner.hasNext() == false) {
 				scanner.close();		
@@ -107,7 +104,7 @@ public class EMiriDamgi {
 			    File file = new File("miridamgiLog/miridamgiLog");
 				Scanner scanner = new Scanner(file); //파일의 경로를 넘김 경로 읽음  
 				
-				System.out.println("야옹" + scanner.hasNext()) ;
+				System.out.println("delete : " + scanner.hasNext()) ;
 				File newFile = new File("miridamgiLog/miridamgiLog"); //덮어 쓸 새 파일 
 				FileWriter fw = new FileWriter(newFile);
 				
@@ -119,7 +116,6 @@ public class EMiriDamgi {
 					if (!separatedText[0].equals(selectedRow.get(0).getId())) { //같지 않은 내용이 안으로 들어감 
 						fw.write(text);
 						fw.write("\n");
-						
 					}
 			}
 				scanner.close();
@@ -131,9 +127,8 @@ public class EMiriDamgi {
 		  }
 	}
 
-	public boolean checkDouble(Vector<VLecture> lectures) { //전달해 줘서 
-		boolean checkDoublePoint = false;
-		//if 문으로 비교하고 해도 되면 true 
+	public boolean checkDouble(Vector<VLecture> lectures) { // 미리담기 내역 중복 체크 
+		boolean checkDoublePoint = false; //중복 체크 변수 
 		
 	    File file = new File("miridamgiLog/miridamgiLog");
 		Scanner scanner;
