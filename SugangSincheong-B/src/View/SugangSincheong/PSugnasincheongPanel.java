@@ -50,20 +50,20 @@ import View.PControlPanel2;
    }
    
    private void moveFromLecturesToMiridamgi() { //버튼 클릭시 발생할 함수 
-	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture(); //lectures 시작
+	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture(); //lectures == 선택된 row Vector
       this.miridamgiPanel.addLectures(lectures);
    }
    private void moveFromMiridamgiToLectures() {
-      Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
-      this.directoryPanel.addLectures(lectures);
+	   this.miridamgiPanel.deleteLectures();
    }
    private void moveFromMiridamgiToSincheong() {
       Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
       this.sincheongPanel.addLectures(lectures);
    }
    private void moveFromSincheongToMiridamgi() {
-      Vector<VLecture> lectures = this.sincheongPanel.getSelectedLecture();
-      this.miridamgiPanel.addLectures(lectures);
+	  this.sincheongPanel.deleteLectures();
+//      Vector<VLecture> lectures = this.sincheongPanel.getSelectedLecture();
+//      this.miridamgiPanel.addLectures(lectures);
    }
    
    public class ActionHandler implements ActionListener {

@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.Vector;
 
+import ValueObject.VLecture;
 import ValueObject.VSincheong;
 
 public class ESincheong {
@@ -92,5 +93,38 @@ public class ESincheong {
 			e.printStackTrace();
 		}
 		return row;	
+	}
+
+	public void deleteLog(Vector<VLecture> selectedRow) {
+		String[] separatedText = null;
+		  try {
+		      //파일 읽기
+			    File file = new File("sugangLog/sugangLog");
+				Scanner scanner = new Scanner(file); //파일의 경로를 넘김 경로 읽음  
+				
+				System.out.println("야옹" + scanner.hasNext()) ;
+				
+				File newFile = new File("sugangLog/sugangLog"); //덮어 쓸 새 파일 
+				FileWriter fw = new FileWriter(newFile);
+				
+				// file read
+				while (scanner.hasNext()) { //read == true
+					String text = scanner.nextLine(); //한 줄 읽기
+					separatedText = text.split(" "); //공백 기준으로 한 줄을 나눠 담기
+					
+					if (!separatedText[0].equals(selectedRow.get(0).getId())) { //같지 않은 내용이 안으로 들어감 
+						fw.write(text);
+						fw.write("\n");
+						
+					}
+			}
+				scanner.close();
+				fw.close();
+		  }
+		  
+		  catch (Exception e) {
+			  e.printStackTrace();
+		  }
+		
 	}
 }

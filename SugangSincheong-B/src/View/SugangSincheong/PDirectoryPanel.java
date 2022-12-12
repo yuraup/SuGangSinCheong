@@ -163,7 +163,7 @@ public class PDirectoryPanel extends JPanel {
 		   }
 
 	public void addLectures(Vector<VLecture> lectures) {
-		System.out.println("directory lectures:" + lectures);
+		System.out.println("여기 안 돼 directory lectures:" + lectures);
 	}
 	public  Vector<VLecture> getSelectedLecture() {
 //		System.out.println("aa" + this.lectureTable.getSelectedRows()[]);

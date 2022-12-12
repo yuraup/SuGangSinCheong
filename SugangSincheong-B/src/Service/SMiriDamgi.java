@@ -27,13 +27,12 @@ public class SMiriDamgi {
 		return this.vMiridamgi; 
 	}
 
-	public void addMiridamgi(VMiriDamgi vMiridamgi) { //log를 파일에 저장하기 위해 만든 메소드
+	public void addMiridamgi(VMiriDamgi vMiridamgi) { //새로 선택한 항목을 저장하기 위해 만든 메소드
 		this.eMiriDamgi.getLectures(vMiridamgi);
 		
 	}
 
 	public void deleteLog(Vector<VLecture> selectedRow) {
 		this.eMiriDamgi.deleteLog(selectedRow);
-		
 	}
 }

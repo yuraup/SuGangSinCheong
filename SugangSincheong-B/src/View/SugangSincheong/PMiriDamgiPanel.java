@@ -12,7 +12,7 @@ public class PMiriDamgiPanel extends PLectureTable {
 	
 	public PMiriDamgiPanel() {
 		super("department/");
-		checkLog = sMiriDamgi.initCheck();
+		checkLog = sMiriDamgi.initCheck(); //파일에 내역이 있는지 
 		if (checkLog == true) {
 			setInitMiridamgi();
 		}
@@ -42,10 +42,11 @@ public class PMiriDamgiPanel extends PLectureTable {
         row.add(vMiridamgi.getProfessor());
         row.add(vMiridamgi.getCredit());
         row.add(vMiridamgi.getTime());
+        
         this.tableModel.addRow(row);
 	}
 
-	public void addLectures(Vector<VLecture> lectures) { //데이터를 model까지 보낸다.
+	public void addLectures(Vector<VLecture> lectures) { //추가한 데이터를 model까지 보낸다.
 		VMiriDamgi vMiridamgi = new VMiriDamgi(); 
 		sMiriDamgi = new SMiriDamgi(); 
 		
@@ -58,9 +59,16 @@ public class PMiriDamgiPanel extends PLectureTable {
 		sMiriDamgi.addMiridamgi(vMiridamgi);
 		setLectures(vMiridamgi);
 	}
+	
 
 	public Vector<VLecture> getSelectedLecture() { //선택값을 반환 
-		sMiriDamgi.deleteLog(this.getData(this.getSelectedRows()[0]));
 		return this.getData(this.getSelectedRows()[0]); 
+	}
+
+	public void deleteLectures() { //삭제한 내용 변경 함수 
+		Vector<VLecture> selectedRow = this.getData(this.getSelectedRows()[0]);  //선택한 row 
+	    this.tableModel.removeRow(this.getSelectedRows()[0]); //UI에서 row 삭제 
+		sMiriDamgi.deleteLog(selectedRow); // 파일에서 row 삭제 
+		
 	}
 }

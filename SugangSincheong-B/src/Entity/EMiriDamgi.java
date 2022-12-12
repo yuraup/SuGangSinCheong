@@ -86,6 +86,7 @@ public class EMiriDamgi {
 				vMiriDamgi.setTime(this.time);
 //				found = true;
 				row.add(vMiriDamgi);
+				
 		}
 			if (scanner.hasNext() == false) {
 				scanner.close();		
@@ -96,34 +97,37 @@ public class EMiriDamgi {
 		}
 		return row;	
 	}
-
+	
 	public void deleteLog(Vector<VLecture> selectedRow) {
+		String[] separatedText = null;
 		  try {
-		      //소스 파일읽기;
+		      //파일 읽기
 			    File file = new File("miridamgiLog/miridamgiLog");
 				Scanner scanner = new Scanner(file); //파일의 경로를 넘김 경로 읽음  
 				
-				System.out.println("야옹: "+ scanner.hasNext());
+				System.out.println("야옹" + scanner.hasNext()) ;
 				
-				File newFile = new File("miridamgiLog/miridamgiLog"); //새 파일  
+				File newFile = new File("miridamgiLog/miridamgiLog"); //덮어 쓸 새 파일 
 				FileWriter fw = new FileWriter(newFile);
 				
 				// file read
-				System.out.println("미야: "+ scanner.hasNext());
-				while (scanner.hasNext()) { //read 
-					String text1 = scanner.nextLine(); //한 줄 
-					String[] nextText1 = text1.split(" "); //배열의 한 값만 id 
+				while (scanner.hasNext()) { //read == true
+					String text = scanner.nextLine(); //한 줄 읽기
+					separatedText = text.split(" "); //공백 기준으로 한 줄을 나눠 담기
 					
-					if (!nextText1[0].equals(selectedRow.get(0).getId())) { //같지 않은 내용이 안으로 들어감 
-						fw.write(text1);
+					if (!separatedText[0].equals(selectedRow.get(0).getId())) { //같지 않은 내용이 안으로 들어감 
+						fw.write(text);
 						fw.write("\n");
+						
 					}
 			}
 				scanner.close();
 				fw.close();
-
-		  } catch (Exception e) {
+		  }
+		  
+		  catch (Exception e) {
 			  e.printStackTrace();
 		  }
+//		  return vMiriDamgi;	
 	}
 }

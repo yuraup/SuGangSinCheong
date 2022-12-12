@@ -64,4 +64,10 @@ public class PSincheongPanel extends PLectureTable {
 		return this.getData(this.getSelectedRows()[0]); 
 	}
 
+	public void deleteLectures() {
+		Vector<VLecture> selectedRow = this.getData(this.getSelectedRows()[0]);  //선택한 row 
+	    this.tableModel.removeRow(this.getSelectedRows()[0]); //UI에서 row 삭제 
+		sSincheong.deleteLog(selectedRow); // 파일에서 row 삭제 
+	}
+
 }

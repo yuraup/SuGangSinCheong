@@ -3,6 +3,7 @@ package Service;
 import java.util.Vector;
 
 import Entity.ESincheong;
+import ValueObject.VLecture;
 import ValueObject.VSincheong;
 
 public class SSincheong {
@@ -25,6 +26,11 @@ public class SSincheong {
 
 	public void addMiridamgi(VSincheong vSincheong) { //log를 파일에 저장하기 위해 만든 메소드
 		this.eSincheong.getLectures(vSincheong);
+		
+	}
+
+	public void deleteLog(Vector<VLecture> selectedRow) {
+		this.eSincheong.deleteLog(selectedRow);
 		
 	}
 }
