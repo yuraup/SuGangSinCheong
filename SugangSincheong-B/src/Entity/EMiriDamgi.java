@@ -20,6 +20,7 @@ public class EMiriDamgi {
 	
 	public void getLectures(VMiriDamgi vMiridamgi) { //미리담기에 적을 내용을 받아와 파일에 저장한다. 
 		try {
+			
 			this.id = vMiridamgi.getId();
 			this.name = vMiridamgi.getName();
 			this.professor = vMiridamgi.getProfessor();
@@ -33,12 +34,13 @@ public class EMiriDamgi {
 			fileWriter.write(str);
 			
 			fileWriter.close();
+			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 	}
 	
-	public boolean checkInitMiridamgi() {
+	public boolean checkInitMiridamgi() { // 초기 실행시 미리담기 내역이 있는지 체크한다.
 		try {
 			checkLog = false;
 			File file = new File("miridamgiLog/miridamgiLog");
@@ -63,13 +65,14 @@ public class EMiriDamgi {
 		return checkLog;
 	}
 
-	public Vector<VMiriDamgi>  getMiridamgiFile() {
+	public Vector<VMiriDamgi>  getMiridamgiFile() { //초기 실행시 미리담기 내역을 반환한다. 
 		Vector<VMiriDamgi> row = new Vector<VMiriDamgi>();
 		VMiriDamgi vMiriDamgi = null;
-		
 		try {
+			
 			File file = new File("miridamgiLog/miridamgiLog");
 			Scanner scanner = new Scanner(file);
+
 			// file read
 			while (scanner.hasNext()) {
 				this.id = scanner.next();
@@ -78,15 +81,14 @@ public class EMiriDamgi {
 				this.credit = scanner.next();
 				this.time= scanner.next();	
 
-				vMiriDamgi = new VMiriDamgi();
-				vMiriDamgi.setId(this.id);
-				vMiriDamgi.setName(this.name);
-				vMiriDamgi.setProfessor(this.professor);
-				vMiriDamgi.setCredit(this.credit);
-				vMiriDamgi.setTime(this.time);
-//				found = true;
-				row.add(vMiriDamgi);
-				
+					vMiriDamgi = new VMiriDamgi();
+					vMiriDamgi.setId(this.id);
+					vMiriDamgi.setName(this.name);
+					vMiriDamgi.setProfessor(this.professor);
+					vMiriDamgi.setCredit(this.credit);
+					vMiriDamgi.setTime(this.time);
+					row.add(vMiriDamgi);
+			
 		}
 			if (scanner.hasNext() == false) {
 				scanner.close();		
@@ -98,7 +100,7 @@ public class EMiriDamgi {
 		return row;	
 	}
 	
-	public void deleteLog(Vector<VLecture> selectedRow) {
+	public void deleteLog(Vector<VLecture> selectedRow) { // 삭제 기능 
 		String[] separatedText = null;
 		  try {
 		      //파일 읽기
@@ -106,7 +108,6 @@ public class EMiriDamgi {
 				Scanner scanner = new Scanner(file); //파일의 경로를 넘김 경로 읽음  
 				
 				System.out.println("야옹" + scanner.hasNext()) ;
-				
 				File newFile = new File("miridamgiLog/miridamgiLog"); //덮어 쓸 새 파일 
 				FileWriter fw = new FileWriter(newFile);
 				
@@ -128,6 +129,33 @@ public class EMiriDamgi {
 		  catch (Exception e) {
 			  e.printStackTrace();
 		  }
-//		  return vMiriDamgi;	
+	}
+
+	public boolean checkDouble(Vector<VLecture> lectures) { //전달해 줘서 
+		boolean checkDoublePoint = false;
+		//if 문으로 비교하고 해도 되면 true 
+		
+	    File file = new File("miridamgiLog/miridamgiLog");
+		Scanner scanner;
+		try {
+			scanner = new Scanner(file);
+			while (scanner.hasNext()) {
+				this.id = scanner.next();
+				this.name = scanner.next();
+				this.professor = scanner.next();
+				this.credit = scanner.next();
+				this.time= scanner.next();
+			}
+			scanner.close();
+			
+			if (!lectures.get(0).getId().equals(this.id)) { //둘이 같지 않을 때 
+				checkDoublePoint = true; 
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} //파일의 경로를 넘김 경로 읽음
+		System.out.println("고양이가 울었나 볼까? " + checkDoublePoint);
+		return checkDoublePoint;
 	}
 }

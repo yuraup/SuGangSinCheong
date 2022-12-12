@@ -11,8 +11,6 @@ public class SMiriDamgi {
 	private EMiriDamgi eMiriDamgi;
 	Vector<VMiriDamgi> vMiridamgi;
 	
-	
-	
 	public SMiriDamgi() {
 		this.eMiriDamgi = new EMiriDamgi();
 	}
@@ -34,5 +32,10 @@ public class SMiriDamgi {
 
 	public void deleteLog(Vector<VLecture> selectedRow) {
 		this.eMiriDamgi.deleteLog(selectedRow);
+	}
+
+	public boolean checkDouble(Vector<VLecture> lectures) {
+		boolean checkDoublePoint = eMiriDamgi.checkDouble(lectures);
+		return checkDoublePoint;
 	}
 }
