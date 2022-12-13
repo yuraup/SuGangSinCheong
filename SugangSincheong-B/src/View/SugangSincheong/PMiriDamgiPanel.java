@@ -35,10 +35,23 @@ public class PMiriDamgiPanel extends PLectureTable {
 		        row.add(initData.get(i).getTime());
 		        
 		        this.tableModel.addRow(row);
+		        rowCount += 1; //줄 개수담김 
 		}
 		System.out.println("현재 미리담기 수 :" + this.tableModel.getRowCount());
 		return rowCount;
 	}
+	
+	public int countingMiri () {
+		Vector<VMiriDamgi> initData = sMiriDamgi.getInitMiridamgi();
+		int rowCount = 0; // 신청 개수 
+		for (int i = 0; initData.size() > i; i++) {
+		        rowCount += 1; //줄 개수담김 
+		}
+		System.out.println("현재 미리담기 수 :" + this.tableModel.getRowCount());
+		return rowCount;
+	}
+	
+	
 	
 	public void setLectures (VMiriDamgi vMiridamgi) { //실행 중 새로 선택한 항목을 화면에 그린다.
 		Vector<String> row = new Vector<String>();
@@ -52,10 +65,11 @@ public class PMiriDamgiPanel extends PLectureTable {
         this.tableModel.addRow(row);
 	}
 	
-	public void addLectures(Vector<VLecture> lectures) { //추가한 데이터를 model까지 보낸다.
+	public boolean addLectures(Vector<VLecture> lectures) { //추가한 데이터를 model까지 보낸다.
 		VMiriDamgi vMiridamgi = new VMiriDamgi(); 
 		sMiriDamgi = new SMiriDamgi(); 
-		boolean checkDoublePoint = sMiriDamgi.checkDouble(lectures);
+		boolean checkDoublePoint = sMiriDamgi.checkDouble(lectures)
+				;
 		
 		if (checkDoublePoint) { //  true면 추가할 수 있게 
 			JOptionPane.showMessageDialog(null, "선택하신 강좌가 미리담기에 추가되었습니다.");
@@ -70,6 +84,7 @@ public class PMiriDamgiPanel extends PLectureTable {
 		} else {
 			JOptionPane.showMessageDialog(null, "선택하신 강좌가 미리담기에 이미 존재합니다.");
 		}
+		return checkDoublePoint;
 	}
 
 	public Vector<VLecture> getSelectedLecture() { //선택값을 반환 

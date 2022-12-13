@@ -8,8 +8,8 @@ import ValueObject.VDirectory;
 
 public class EDirectory {
 	public Vector<VDirectory> getDirectories(String fileName) {
-//		System.out.println("eDirectory fileName: " + fileName );
 		Vector<VDirectory> vDirectories = new Vector<VDirectory>();
+		
 		try {
 			Scanner scanner = new Scanner(new File("directory/" + fileName));
 			while (scanner.hasNext()) {

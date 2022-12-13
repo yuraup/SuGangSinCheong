@@ -7,13 +7,21 @@ import javax.swing.JPanel;
 public class PSincheongCountPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
+	JLabel number;
 	public PSincheongCountPanel (int sinCheongNum) {
-//		this.setBackground(new Color(255, 245, 158));
+		showCount(sinCheongNum);
+	}
+	
+	public void showCount (int sinCheongNum) {
 		
 		JLabel text = new JLabel("신청한 강좌 수 : "); 
 		this.add(text);
 		
-		JLabel number = new JLabel("3");
+		number = new JLabel(Integer.toString(sinCheongNum));
 		this.add(number);
+	}
+	
+	public void againShow (int miridamgiNumber) {
+		number.setText(Integer.toString(miridamgiNumber));
 	}
 }

@@ -20,9 +20,17 @@ import View.PControlPanel2;
    
    private PControlPanel1 controlPanel1;
    private PControlPanel2 controlPanel2;
-   private PMiriDamgiPanel miridamgiPanel;
-   private PSincheongPanel sincheongPanel;
    
+   private JPanel miridamgiBox;
+   private PMiriDamgiPanel miridamgiPanel;
+   private PCountPanel miriCountPanel;
+   
+   private JPanel sincheongBox;
+   private PSincheongPanel sincheongPanel;
+   private PSincheongCountPanel sincheongCountPanel;
+   
+   int miriNum;
+   int sinCheongNum;
    
    public PSugnasincheongPanel() { // UI 
 	  LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
@@ -36,41 +44,85 @@ import View.PControlPanel2;
       this.controlPanel1 = new PControlPanel1("1", actionHandler); //id = 1 
       this.add(this.controlPanel1);
       
+       //미리담기 판넬 
+      miridamgiBox = new JPanel();
+      
+	  LayoutManager smallManager = new BoxLayout(miridamgiBox, BoxLayout.Y_AXIS);
+	  miridamgiBox.setLayout(smallManager);
+      
+      
       JScrollPane scrollPane = new JScrollPane();
       this.miridamgiPanel = new PMiriDamgiPanel();
       scrollPane.setViewportView(this.miridamgiPanel);
-      this.add(scrollPane);
+      miridamgiBox.add(scrollPane);
+      
+      //count 
+      this.miriNum = this.miridamgiPanel.countingMiri();
+      this.miriCountPanel = new PCountPanel(miriNum);
+      miridamgiBox.add(miriCountPanel);
+//      System.out.println("오앙ㅇ" + this.miridamgiPanel.setInitMiridamgi());
+      this.add(miridamgiBox);
       
       this.controlPanel2 = new PControlPanel2("2", actionHandler); // id = 2
       this.add(this.controlPanel2);
       
+      //수강신청 판넬 
+      sincheongBox  = new JPanel();
+      
+	  LayoutManager small2Manager = new BoxLayout(sincheongBox, BoxLayout.Y_AXIS);
+	  sincheongBox.setLayout(small2Manager);
+      
       scrollPane = new JScrollPane();
       this.sincheongPanel = new PSincheongPanel();
       scrollPane.setViewportView(this.sincheongPanel);
-      this.add(scrollPane);
+      sincheongBox.add(scrollPane);
+      
+      //count 
+      this.sinCheongNum = this.sincheongPanel.countSincheong();
+      this.sincheongCountPanel = new PSincheongCountPanel(sinCheongNum);
+      sincheongBox.add(sincheongCountPanel);   
+      this.add(sincheongBox);
    }
-   
+
    private void moveFromLecturesToMiridamgi() { //목록 -> 미리담기 
 	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture(); //lectures == 선택된 row Vector
-      this.miridamgiPanel.addLectures(lectures); //미리담기에 추가 
+	  boolean checkDoublePoint = this.miridamgiPanel.addLectures(lectures); //미리담기에 추가 
       this.directoryPanel.deleteLectures(); //목록에서 삭제
       
+      if (checkDoublePoint) {
+    	  this.miriNum += 1;
+          this.miriCountPanel.againShow(miriNum);  
+      }
    }
    private void moveFromMiridamgiToLectures() { //미리담기 -> 목록 
 	   Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture(); //목록에 추가 
 	   this.directoryPanel.addLectures(lectures);//목록에 추가
 	   this.miridamgiPanel.deleteLectures(); // 미리담기에서 삭제 
- 
+	   
+	   this.miriNum -= 1;
+	   this.miriCountPanel.againShow(miriNum);
    }
    private void moveFromMiridamgiToSincheong() { // 미리담기 -> 수강신청 
       Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture(); 
       this.sincheongPanel.addLectures(lectures);//신청에 추가 
       this.miridamgiPanel.deleteLectures(); // 미리담기에서 삭제 
+      
+	   this.miriNum -= 1;  // 담기 패널 count -1
+	   this.miriCountPanel.againShow(miriNum);
+	   
+	   this.sinCheongNum += 1; // 신청 패널 count +1
+	   this.sincheongCountPanel.againShow(sinCheongNum);
    }
    private void moveFromSincheongToMiridamgi() { // 수강신청 -> 미리담기
 	  Vector<VLecture> lectures = this.sincheongPanel.getSelectedLecture(); 
 	  this.miridamgiPanel.addLectures(lectures);//미리담기에 추가 
 	  this.sincheongPanel.deleteLectures(); //수강신청에서 삭제 
+	  
+      this.miriNum += 1;
+      this.miriCountPanel.againShow(miriNum);
+      
+	   this.sinCheongNum -= 1; // 신청 패널 count -1
+	   this.sincheongCountPanel.againShow(sinCheongNum);
    }
    
    public class ActionHandler implements ActionListener {

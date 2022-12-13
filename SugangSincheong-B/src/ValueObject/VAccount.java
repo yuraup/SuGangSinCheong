@@ -9,7 +9,6 @@ public class VAccount {
 	private int studentCode;
 	
 	public VAccount() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getId() {

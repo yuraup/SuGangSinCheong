@@ -5,6 +5,7 @@ import ValueObject.VAccount;
 public class SLogin {
 	
 	private EAccount eAccount;
+	
 	public SLogin() {
 		this.eAccount = new EAccount();
 	}

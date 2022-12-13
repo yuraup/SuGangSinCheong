@@ -81,4 +81,14 @@ public class PSincheongPanel extends PLectureTable {
 		sSincheong.deleteLog(selectedRow); // 파일에서 row 삭제 
 	}
 
+	public int countSincheong() {
+		Vector<VSincheong> initData = sSincheong.getInitSincheong();
+		int rowCount = 0; // 신청 개수 
+		for (int i = 0; initData.size() > i; i++) {
+		        rowCount += 1; //줄 개수담김 
+		}
+		System.out.println("현재 신청 수 :" + this.tableModel.getRowCount());
+		return rowCount;
+	}
+
 }

@@ -142,7 +142,7 @@ public class EMiriDamgi {
 				this.time= scanner.next();
 			}
 			scanner.close();
-			
+			System.out.println("chekcodo:" + lectures.get(0).getId());
 			if (!lectures.get(0).getId().equals(this.id)) { //둘이 같지 않을 때 
 				checkDoublePoint = true; 
 			}
