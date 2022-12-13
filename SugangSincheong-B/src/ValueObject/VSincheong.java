@@ -1,8 +1,5 @@
 package ValueObject;
 
-import java.util.ArrayList;
-import java.util.Vector;
-
 public class VSincheong {
 	private String id;
 	private String name;
