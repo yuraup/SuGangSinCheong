@@ -15,6 +15,7 @@ public class PMiriDamgiPanel extends PLectureTable {
 	public PMiriDamgiPanel() {
 		super("department/");
 		checkLog = sMiriDamgi.initCheck(); //파일에 내역이 있는지 
+		
 		if (checkLog == true) {
 			setInitMiridamgi();
 		}

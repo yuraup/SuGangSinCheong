@@ -4,6 +4,7 @@ import java.awt.LayoutManager;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -12,8 +13,11 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import Service.SDirectory;
+import Service.SLecture;
+import Service.SMiriDamgi;
 import ValueObject.VDirectory;
 import ValueObject.VLecture;
+import ValueObject.VMiriDamgi;
 
 public class PDirectoryPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -24,8 +28,11 @@ public class PDirectoryPanel extends JPanel {
 	private PDirectory departmentTable;
 	
 	private PLectureTable lectureTable;
+	private SLecture sLecture;
+	int[] selectedIndex; //하나만  
 	
 	String title = "";
+	String fileName = null;
 	
 	   public PDirectoryPanel() { //GUI부분 
 		      LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -91,8 +98,6 @@ public class PDirectoryPanel extends JPanel {
 			   }
 
 			private void updateTable(Object selectedTable) { //동작이 가능하도록 
-				int[] selectedIndex; //하나만  
-				String fileName = null;
 				
 				if (selectedTable == null) { // 초기 
 					this.campusTable.setData("root/");
@@ -116,12 +121,12 @@ public class PDirectoryPanel extends JPanel {
 						this.lectureTable.setData(fileName);
 					}
 				}
-//				else if (selectedTable == this.lectureTable) { // 강좌	
-//					selectedIndex = this.lectureTable.getSelectedRows();
-//					if (selectedIndex.length > 0) {
-//						
-//					}
-//				}
+				else if (selectedTable == this.lectureTable) { // 강좌	
+					selectedIndex = this.lectureTable.getSelectedRows();
+					if (selectedIndex.length > 0) {
+					
+					}
+				}
 			}
 		    
 		   private class PDirectory extends JTable { //디렉토리 틀 
@@ -161,12 +166,37 @@ public class PDirectoryPanel extends JPanel {
 		         return vDirectories.get(0).getFileName();
 		      }
 		   }
-
-	public void addLectures(Vector<VLecture> lectures) {
-		System.out.println("여기 안 돼 directory lectures:" + lectures);
-	}
-	public  Vector<VLecture> getSelectedLecture() {
-//		System.out.println("aa" + this.lectureTable.getSelectedRows()[]);
+		   
+	public  Vector<VLecture> getSelectedLecture() { //선택된 row를 반환 
 		return this.lectureTable.getData(this.lectureTable.getSelectedRows()[0]);
 	}
+	public void deleteLectures() { // 목록에서 삭제 
+//		String fileName = this.lectureTable.getSelectedRows()[0];
+		Vector<VLecture> selectedRow = this.lectureTable.getData(this.lectureTable.getSelectedRows()[0]);  //선택한 row 
+		System.out.println("P디렉토리 삭제해줘:" + selectedRow.get(0).getName());
+		this.lectureTable.tableModel.removeRow(this.lectureTable.getSelectedRows()[0]); //UI에서 row 삭제 
+//		sLecture.deleteLog(selectedRow); // 파일에서 row 삭제 
+//		
+		
+	}
+	
+	public void addLectures(Vector<VLecture> lectures) { // 목록에 추가 
+		VLecture vLecture = new VLecture();
+		sLecture = new SLecture();
+		
+		
+		JOptionPane.showMessageDialog(null, "선택하신 강좌가 미리담기에서 삭제되었습니다.");
+		vLecture.setId(lectures.get(0).getId());
+		vLecture.setName(lectures.get(0).getName());
+		vLecture.setProfessor(lectures.get(0).getProfessor());
+		vLecture.setCredit(lectures.get(0).getCredit());
+		vLecture.setTime(lectures.get(0).getTime());
+		
+		this.lectureTable.setLectures(vLecture); //UI 부분 
+	}
+	
+	
+	
+	
+	
 }

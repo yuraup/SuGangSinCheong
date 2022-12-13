@@ -22,16 +22,6 @@ public class PSincheongPanel extends PLectureTable {
 			setInitMiridamgi();
 		}
 	}
-
-	public void setLectures (VSincheong vSincheong) {
-		Vector<String> row = new Vector<String>();
-        row.add(vSincheong.getId());
-        row.add(vSincheong.getName());
-        row.add(vSincheong.getProfessor());
-        row.add(vSincheong.getCredit());
-        row.add(vSincheong.getTime());
-        this.tableModel.addRow(row);
-	}
 	
 	public void setInitMiridamgi () { //예전 내역을 파일에서 불러와서 화면에 그린다.
 		Vector<VSincheong> initData = sSincheong.getInitSincheong();
@@ -46,6 +36,17 @@ public class PSincheongPanel extends PLectureTable {
 		        
 		        this.tableModel.addRow(row);
 		}
+	}
+	
+	public void setLectures (VSincheong vSincheong) {
+		Vector<String> row = new Vector<String>();
+        row.add(vSincheong.getId());
+        row.add(vSincheong.getName());
+        row.add(vSincheong.getProfessor());
+        row.add(vSincheong.getCredit());
+        row.add(vSincheong.getTime());
+        
+        this.tableModel.addRow(row);
 	}
 
 	public void addLectures(Vector<VLecture> lectures) {

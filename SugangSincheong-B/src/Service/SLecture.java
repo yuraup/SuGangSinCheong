@@ -14,4 +14,8 @@ public class SLecture {
 	public Vector<VLecture> getLectures(String fileName) {
 		return this.eLecture.getLectures(fileName);
 	}
+
+	public void deleteLog(Vector<VLecture> selectedRow) {
+		this.eLecture.deleteLog(selectedRow);
+	}
 }

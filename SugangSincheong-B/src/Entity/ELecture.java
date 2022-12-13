@@ -11,7 +11,7 @@ public class ELecture {
 		Vector<VLecture> vLectures = new Vector<VLecture>();
 		try {
 			Scanner scanner = new Scanner(new File("directory/"+fileName));
-			while (scanner.hasNext()) {
+			while (scanner.hasNext()) {  // true면 
 				VLecture vLecture = new VLecture();
 				vLecture.read(scanner);
 				vLectures.add(vLecture);
@@ -20,5 +20,10 @@ public class ELecture {
 			e.printStackTrace();
 		}
 		return vLectures;
+	}
+
+	public void deleteLog(Vector<VLecture> selectedRow) {
+		// TODO Auto-generated method stub
+		
 	}
 }

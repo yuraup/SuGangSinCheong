@@ -7,6 +7,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Service.SLecture;
+import ValueObject.VDirectory;
 import ValueObject.VLecture;
 
 	public class PLectureTable extends JTable{
@@ -30,7 +31,7 @@ import ValueObject.VLecture;
 	      
 	      public void setData(String fileName) {
 	         SLecture sLecture = new SLecture();
-	         Vector<VLecture> vLectures = sLecture.getLectures(directoryName + fileName);
+	         Vector<VLecture> vLectures = sLecture.getLectures(directoryName + fileName); //새 데이터를 받아옴
 	         this.tableModel.setNumRows(0);
 	         
 	         for (VLecture vLecture: vLectures) {
@@ -44,6 +45,18 @@ import ValueObject.VLecture;
 	         }
 	         this.setRowSelectionInterval(0, 0); //default selection
 	     }
+	      
+	      public void setLectures (VLecture vLecture) { //실행 중 새로 선택한 항목을 화면에 그린다.
+	  		Vector<String> row = new Vector<String>();
+
+	          row.add(vLecture.getId());
+	          row.add(vLecture.getName());
+	          row.add(vLecture.getProfessor());
+	          row.add(vLecture.getCredit());
+	          row.add(vLecture.getTime());
+	          
+	          this.tableModel.addRow(row);
+	  	}
 	     
 	      public Vector<VLecture> getData(int index) {
 	    	  	  ArrayList<String> selectData = new ArrayList<>();
@@ -58,5 +71,10 @@ import ValueObject.VLecture;
 	    		  a.add(VLectureData);
 	    	  return a;
 	      }
+
+//		public Vector<VLecture> getvDirectories() {
+//			// TODO Auto-generated method stub
+//			return a;
+//		}
 }
 	   

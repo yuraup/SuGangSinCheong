@@ -23,6 +23,7 @@ import View.PControlPanel2;
    private PMiriDamgiPanel miridamgiPanel;
    private PSincheongPanel sincheongPanel;
    
+   
    public PSugnasincheongPanel() {
 	  LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
 	  this.setLayout(layoutManager);
@@ -49,21 +50,28 @@ import View.PControlPanel2;
       this.add(scrollPane);
    }
    
-   private void moveFromLecturesToMiridamgi() { //버튼 클릭시 발생할 함수 
+   
+   private void moveFromLecturesToMiridamgi() { //목록 -> 미리담기 
 	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture(); //lectures == 선택된 row Vector
       this.miridamgiPanel.addLectures(lectures);
+      this.directoryPanel.deleteLectures();
+      
    }
-   private void moveFromMiridamgiToLectures() {
-	   this.miridamgiPanel.deleteLectures();
+   private void moveFromMiridamgiToLectures() { //미리담기 -> 목록 
+	   Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture(); //목록에 추가 
+	   this.directoryPanel.addLectures(lectures);//목록에 추가
+	   this.miridamgiPanel.deleteLectures(); // 미리담기에서 삭제 
+ 
    }
-   private void moveFromMiridamgiToSincheong() {
-      Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture();
-      this.sincheongPanel.addLectures(lectures);
+   private void moveFromMiridamgiToSincheong() { // 미리담기 -> 수강신청 
+      Vector<VLecture> lectures = this.miridamgiPanel.getSelectedLecture(); 
+      this.sincheongPanel.addLectures(lectures);//신청에 추가 
+      this.miridamgiPanel.deleteLectures(); // 미리담기에서 삭제 
    }
-   private void moveFromSincheongToMiridamgi() {
-	  this.sincheongPanel.deleteLectures();
-//      Vector<VLecture> lectures = this.sincheongPanel.getSelectedLecture();
-//      this.miridamgiPanel.addLectures(lectures);
+   private void moveFromSincheongToMiridamgi() { // 수강신청 -> 미리담기
+	  Vector<VLecture> lectures = this.sincheongPanel.getSelectedLecture(); 
+	  this.miridamgiPanel.addLectures(lectures);//미리담기에 추가 
+	  this.sincheongPanel.deleteLectures(); //수강신청에서 삭제 
    }
    
    public class ActionHandler implements ActionListener {
