@@ -12,7 +12,7 @@ public class VDirectory { //디렉토리 타입
 	public String getName() {
 		return name;
 	}
-	public String getFileName() {
+	public String getFileName() { //파일 네임 읽기 
 		return fileName;
 	}
 	public void read(Scanner scanner) { //스캐너로 읽은 정보를 vDirectory에 저장한다. 

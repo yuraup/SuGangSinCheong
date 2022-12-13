@@ -45,7 +45,7 @@ public class PDirectoryPanel extends JPanel {
 			      
 			      title ="캠퍼스";
 			      JScrollPane scrollPane = new JScrollPane();
-			      this.campusTable = new PDirectory("root/"); //directoryName 추가 
+			      this.campusTable = new PDirectory("root/"); //directoryName 전달 (폴더 이름) 
 			      scrollPane.setViewportView(this.campusTable);
 			      this.campusTable.getSelectionModel().addListSelectionListener(this.listSelectionHandler); 
 			      //이벤트 핸들러 모델에 붙임
@@ -100,9 +100,8 @@ public class PDirectoryPanel extends JPanel {
 					this.campusTable.setData("root/");
 				} else if (selectedTable == this.campusTable.getSelectionModel()) { //캠퍼스 디렉토리 
 					selectedIndex = this.campusTable.getSelectedRows(); 
-					
-					if (selectedIndex.length > 0) { //조건 줘서 막아버림. 배열 길이가 0이면 아무것도 안 함. 
-						fileName =  this.campusTable.getvDirectories().get(selectedIndex[0]).getFileName(); 
+					if (selectedIndex.length > 0) { //조건 줘서 막아버림. 배열 길이가 0 이상일 때만 동작이 가능하도록 했다.  
+						fileName =  this.campusTable.getvDirectories().get(selectedIndex[0]).getFileName(); //파일네임 파일에서 읽어오기 
 						this.collegeTable.setData(fileName);
 					}
 				} else if (selectedTable == this.collegeTable.getSelectionModel()) { //대학 디렉토리 		
@@ -121,7 +120,6 @@ public class PDirectoryPanel extends JPanel {
 				else if (selectedTable == this.lectureTable) { // 강좌	
 					selectedIndex = this.lectureTable.getSelectedRows();
 					if (selectedIndex.length > 0) {
-					
 					}
 				}
 			}
@@ -131,11 +129,11 @@ public class PDirectoryPanel extends JPanel {
 
 		      private DefaultTableModel tableModel;
 		      
-		      private Vector<VDirectory> vDirectories;
+		      private Vector<VDirectory> vDirectories; 
 		      private SDirectory sDirectory;
 		      private String directoryName;
 		      
-		      public PDirectory(String directoryName) {
+		      public PDirectory(String directoryName) { //폴더 이름을 받아온다. 
 		    	 this.directoryName = directoryName;
 		         Vector<String> header = new Vector<String>(); 
 		         header.add(title);
@@ -144,22 +142,22 @@ public class PDirectoryPanel extends JPanel {
 		         this.setModel(this.tableModel);
 		      }
 		      
-		      public Vector<VDirectory> getvDirectories() {
+		      public Vector<VDirectory> getvDirectories() { 
 		    	  return this.vDirectories;
 		      }
 		      
-		      public String setData(String fileName) {
+		      public String setData(String fileName) { //데이터를 파일네임에 맞춰서 바꾼다.
 		         this.sDirectory = new SDirectory();
 		         this.vDirectories = sDirectory.getDirectories(this.directoryName + fileName);
 		         
 		         this.tableModel.setNumRows(0);
 		         for (VDirectory vDirectory: this.vDirectories) {
 		            Vector<String> row = new Vector<String>();
-		            row.add(vDirectory.getName());
-		            this.tableModel.addRow(row);      
+		            row.add(vDirectory.getName()); //row에 이름 추가 
+		            this.tableModel.addRow(row); //테이블에 추가 
 		         }
 		         
-		         this.setRowSelectionInterval(0, 0);
+		         this.setRowSelectionInterval(0, 0); //기본 선택 
 		         return vDirectories.get(0).getFileName();
 		      }
 		   }
@@ -167,6 +165,7 @@ public class PDirectoryPanel extends JPanel {
 	public  Vector<VLecture> getSelectedLecture() { //선택된 row를 반환 
 		return this.lectureTable.getData(this.lectureTable.getSelectedRows()[0]); //인덱스를 배열 형태로 보낸다. 
 	}
+	
 	public void deleteLectures() { // 목록에서 삭제 
 		this.lectureTable.tableModel.removeRow(this.lectureTable.getSelectedRows()[0]); //row 삭제 
 	}

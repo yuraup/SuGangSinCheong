@@ -14,10 +14,10 @@ import ValueObject.VLecture;
 	      private String directoryName;
 	      DefaultTableModel tableModel;
 	      
-	      public PLectureTable(String directoryName) {
+	      public PLectureTable(String directoryName) { //폴더 이름 받음 
 	    	  this.directoryName = directoryName;
 	    	 
-	         Vector<String> header = new Vector<String>(); 
+	         Vector<String> header = new Vector<String>();  //머릿말 
 	         header.add("강좌번호");
 	         header.add("강좌명");
 	         header.add("담당교수");
@@ -28,7 +28,7 @@ import ValueObject.VLecture;
 	         this.setModel(this.tableModel);
 	      }
 	      
-	      public void setData(String fileName) {
+	      public void setData(String fileName) { //파일 이름 받음 
 	         SLecture sLecture = new SLecture();
 	         Vector<VLecture> vLectures = sLecture.getLectures(directoryName + fileName); //새 데이터를 받아옴
 	         this.tableModel.setNumRows(0);
@@ -40,7 +40,7 @@ import ValueObject.VLecture;
 	            row.add(vLecture.getProfessor());
 	            row.add(vLecture.getCredit());
 	            row.add(vLecture.getTime());
-	            this.tableModel.addRow(row);
+	            this.tableModel.addRow(row); 
 	         }
 	         this.setRowSelectionInterval(0, 0); //default selection
 	     }
@@ -57,7 +57,7 @@ import ValueObject.VLecture;
 	          this.tableModel.addRow(row);
 	  	}
 	     
-	      public Vector<VLecture> getData(int index) { //인덱스 번호를 받아와 값을 읽는다. 
+	      public Vector<VLecture> getData(int index) { //선택된 항목의 값의 데이터를 읽는다. 
 	    	  	  ArrayList<String> selectData = new ArrayList<>();
 	    	  	  
 	    	  	  for(int i =0;i<5; i++) { // index 4까지 lecture 정보를 담기 위한 for문 

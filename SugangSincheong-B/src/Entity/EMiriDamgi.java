@@ -104,7 +104,7 @@ public class EMiriDamgi {
 			    File file = new File("miridamgiLog/miridamgiLog");
 				Scanner scanner = new Scanner(file); 
 				
-				System.out.println("delete : " + scanner.hasNext()) ;
+				System.out.println(" ") ;
 				File newFile = new File("miridamgiLog/miridamgiLog"); //덮어 쓸 새 파일 
 				FileWriter fw = new FileWriter(newFile);
 				
@@ -146,7 +146,6 @@ public class EMiriDamgi {
 				checkDoublePoint = true; 
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		return checkDoublePoint;
