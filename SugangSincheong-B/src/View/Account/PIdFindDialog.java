@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import Service.SLogin;
 import ValueObject.VAccount;
 
-public class PIdFindDialog extends JDialog {
+public class PIdFindDialog extends JDialog { //아이디 찾기 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel idPanel;
@@ -76,20 +76,10 @@ public class PIdFindDialog extends JDialog {
 		
 		this.sLogin = new SLogin();
 	}
-
-	private static int parseInt (char[] beforeStudentCode) {  // 학번: char[] 타입을 int로 변환 
-		int afterStudentCode = 0;
-		for (int i = 0; i < beforeStudentCode.length; i++) {
-			int value = Integer.parseInt(String.valueOf(beforeStudentCode[i]));
-			afterStudentCode = afterStudentCode * 10 + value;
-		}
-		
-		return afterStudentCode;
-	}
 	
 	private VAccount findId() { // input 입력 완료시 아이디 검색 
 		if(tfName.getText() != null &&  tfStudentCode.getPassword() != null) {
-			int newStudentCode = parseInt(tfStudentCode.getPassword());
+			int newStudentCode = parseInt(tfStudentCode.getPassword()); //char[] 타입 
 
 			VAccount vAccount = sLogin.findId(tfName.getText() , newStudentCode);
 			JOptionPane.showMessageDialog(null, "아이디: " + vAccount.getId(), "아이디를 찾았습니다.", JOptionPane.INFORMATION_MESSAGE);
@@ -97,8 +87,16 @@ public class PIdFindDialog extends JDialog {
 		return vAccount;
 	}
 	
+	private static int parseInt (char[] beforeStudentCode) {  // 학번: char[] 타입을 int로 변환 
+		int afterStudentCode = 0;
+		for (int i = 0; i < beforeStudentCode.length; i++) {
+			int value = Integer.parseInt(String.valueOf(beforeStudentCode[i]));
+			afterStudentCode = afterStudentCode * 10 + value;
+		}
+		return afterStudentCode;
+	}
+	
 	private class ActionHandler implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			findId(); // 확인 버튼 클릭시 아이디 찾기

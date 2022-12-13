@@ -10,7 +10,6 @@ public class VSincheong {
 	private String credit;
 	private String time;
 
-	
 	public  String getId() {
 		return id;
 	}
@@ -18,7 +17,6 @@ public class VSincheong {
 	public void setId(String id) { 
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
@@ -52,20 +50,20 @@ public class VSincheong {
 		this.time = time;
 	}
 
-	public void read(Vector<VLecture> lectures) {
-		this.id = lectures.get(0).getId();
-		this.name = lectures.get(0).getName();
-		this.professor = lectures.get(0).getProfessor();
-		this.credit = lectures.get(0).getCredit();
-		this.time = lectures.get(0).getTime();
-	}
-	
-	public void setData(ArrayList<String> LectureData) {
-		this.id = LectureData.get(0);
-		this.name = LectureData.get(1);
-		this.professor = LectureData.get(2);
-		this.credit = LectureData.get(3);
-		this.time = LectureData.get(4);
-	}
+//	public void read(Vector<VLecture> lectures) { //읽기 
+//		this.id = lectures.get(0).getId();
+//		this.name = lectures.get(0).getName();
+//		this.professor = lectures.get(0).getProfessor();
+//		this.credit = lectures.get(0).getCredit();
+//		this.time = lectures.get(0).getTime();
+//	}
+//	
+//	public void setData(ArrayList<String> LectureData) {
+//		this.id = LectureData.get(0);
+//		this.name = LectureData.get(1);
+//		this.professor = LectureData.get(2);
+//		this.credit = LectureData.get(3);
+//		this.time = LectureData.get(4);
+//	}
 
 }

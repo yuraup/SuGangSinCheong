@@ -33,7 +33,7 @@ public class PMainFrame extends JFrame {
 		this.setLayout(layoutManager);
 		
 		// vAccount setting 
-		this.accountPanel = new PAccountPanel(this.vAccount);
+		this.accountPanel = new PAccountPanel(this.vAccount); 
 		this.add(this.accountPanel, BorderLayout.NORTH);
 		
 		this.sugnasincheongPanel = new PSugnasincheongPanel();

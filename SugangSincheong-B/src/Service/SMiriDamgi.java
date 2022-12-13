@@ -15,26 +15,26 @@ public class SMiriDamgi {
 		this.eMiriDamgi = new EMiriDamgi();
 	}
 	
-	public boolean initCheck() { //초기 파일 체크 
+	public boolean initCheck() { //초기 파일의 데이터가 있는지 체크 
 		boolean checkLog = eMiriDamgi.checkInitMiridamgi();
 		return checkLog;
 	}
 
-	public Vector<VMiriDamgi> getInitMiridamgi() {  //이미 담겼던 미리담기 내역을 반환한다. 
+	public Vector<VMiriDamgi> getInitMiridamgi() {  //전에 이미 담았던 미리담기 내역을 반환한다. 
 		this.vMiridamgi = this.eMiriDamgi.getMiridamgiFile();
 		return this.vMiridamgi; 
 	}
 
-	public void addMiridamgi(VMiriDamgi vMiridamgi) { //새로 선택한 항목을 저장하기 위해 만든 메소드
+	public void addMiridamgi(VMiriDamgi vMiridamgi) { //목록에서 선택한 열을 미리담기 파일에 저장한다. 
 		this.eMiriDamgi.getLectures(vMiridamgi);
 		
 	}
 
-	public void deleteLog(Vector<VLecture> selectedRow) {
+	public void deleteLog(Vector<VLecture> selectedRow) { //미리담기 파일에서 선택된 열을 삭제한다. 
 		this.eMiriDamgi.deleteLog(selectedRow);
 	}
 
-	public boolean checkDouble(Vector<VLecture> lectures) {
+	public boolean checkDouble(Vector<VLecture> lectures) { //미리담기 파일을 탐색해 중복 체크 
 		boolean checkDoublePoint = eMiriDamgi.checkDouble(lectures);
 		return checkDoublePoint;
 	}

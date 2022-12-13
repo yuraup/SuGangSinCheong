@@ -9,7 +9,8 @@ public class SLogin {
 	public SLogin() {
 		this.eAccount = new EAccount();
 	}
-
+	
+	//로그인 
 	public VAccount login(String id, String password) {
 		VAccount vAccount = this.eAccount.getLogin(id, password);
 		return vAccount;

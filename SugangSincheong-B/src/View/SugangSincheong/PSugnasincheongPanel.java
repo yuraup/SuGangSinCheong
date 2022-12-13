@@ -29,8 +29,8 @@ import View.PControlPanel2;
    private PSincheongPanel sincheongPanel;
    private PSincheongCountPanel sincheongCountPanel;
    
-   int miriNum;
-   int sinCheongNum;
+   int miriNum; // 미리담기 개수  
+   int sinCheongNum; // 수강신청 개수 
    
    public PSugnasincheongPanel() { // UI 
 	  LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
@@ -38,9 +38,11 @@ import View.PControlPanel2;
 	     
       ActionHandler actionHandler = new ActionHandler();
       
+      //디렉토리 
       this.directoryPanel = new PDirectoryPanel();
       this.add(this.directoryPanel);
       
+      //컨트롤 
       this.controlPanel1 = new PControlPanel1("1", actionHandler); //id = 1 
       this.add(this.controlPanel1);
       
@@ -59,9 +61,9 @@ import View.PControlPanel2;
       this.miriNum = this.miridamgiPanel.countingMiri();
       this.miriCountPanel = new PCountPanel(miriNum);
       miridamgiBox.add(miriCountPanel);
-//      System.out.println("오앙ㅇ" + this.miridamgiPanel.setInitMiridamgi());
       this.add(miridamgiBox);
       
+      //컨트롤 
       this.controlPanel2 = new PControlPanel2("2", actionHandler); // id = 2
       this.add(this.controlPanel2);
       

@@ -50,7 +50,7 @@ public class VMiriDamgi {
 		this.time = time;
 	}
 
-	public void read(Vector<VLecture> lectures) {
+	public void read(Vector<VLecture> lectures) { //읽기 
 		this.id = lectures.get(0).getId();
 		this.name = lectures.get(0).getName();
 		this.professor = lectures.get(0).getProfessor();
@@ -58,12 +58,11 @@ public class VMiriDamgi {
 		this.time = lectures.get(0).getTime();
 	}
 	
-	public void setData(ArrayList<String> LectureData) {
+	public void setData(ArrayList<String> LectureData) { //바꾸기 
 		this.id = LectureData.get(0);
 		this.name = LectureData.get(1);
 		this.professor = LectureData.get(2);
 		this.credit = LectureData.get(3);
 		this.time = LectureData.get(4);
 	}
-
 }

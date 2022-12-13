@@ -45,6 +45,7 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		JLabel text = new JLabel(Locale.LOGINTYPE_POSTFIX);
 		this.add(text);
 		
+		//버튼 
 		JButton myPage = new JButton("마이페이지");
 			myPage.setBackground(new Color(178, 223, 196));
 			myPage.addActionListener(this);
@@ -68,11 +69,10 @@ public class PAccountPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String buttonRoute = e.getActionCommand();
+		String buttonRoute = e.getActionCommand(); //버튼 선택에 따라 다른 이벤트 발생 
 		
-		if (buttonRoute == "종료") {
+		if (buttonRoute == "종료") { 
 			System.exit(0);
-			System.out.println("프로그램을 종료합니다. ");
 			
 		} else if (buttonRoute == "마이페이지") {
 			this.pMyPage = new PMyPage(null, this.vAccount);
@@ -92,12 +92,13 @@ public class PAccountPanel extends JPanel implements ActionListener {
 		}
 	}
 	
-	private String newsList() {
+	private String newsList() { //랜덤 메시지 
 		String[] luckyMessage = new String[5]; 
 		luckyMessage[0] = "ict SW경진대회 1회가 끝이 났습니다.";
 		luckyMessage[1] = "ict 취업 현황이 매우 긍정적입니다. ";
 		luckyMessage[2] = "교내 수강신청 일정은 12월 0일 ~ 12월 0일입니다.";
 		luckyMessage[3] = "2022 동계 방학 기숙사 신청기간은 00월 00일까지입니다.";
+		
 		String randomMessage = luckyMessage[(int)(Math.random()*4)]; //난수 발생시켜서 랜덤 메시지 출력 
 		return randomMessage;
 	}

@@ -13,7 +13,7 @@ import Service.SLogin;
 import ValueObject.VAccount;
 import View.Main.ActionHandler;
 
-public class PLoginDialog extends JDialog implements ActionListener {
+public class PLoginDialog extends JDialog implements ActionListener { // 로그인 
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lbId;
@@ -78,8 +78,7 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		String id = this.tfId.getText();
 		char[] password =  this.tfPassword.getPassword();
 		String newPw = 	changePasswordType(password);
-		VAccount vAccount = sLogin.login(id, newPw);
-		
+		VAccount vAccount = sLogin.login(id, newPw); //로그인 로직 
 		return vAccount;
 	}
 	
@@ -90,12 +89,11 @@ public class PLoginDialog extends JDialog implements ActionListener {
 	       // pw 에 저장하기, pw 에 값이 비어있으면 저장, 값이 있으면 이어서 저장 (삼항연산자)
 	         newPw += (newPw.equals("")) ? ""+cha+"" : ""+cha+"";   
 	     }
-		
 		return newPw;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {   //버튼에 따라 액션이 다르도록 설정
+	public void actionPerformed(ActionEvent e) {  //버튼에 따라 액션이 다르도록 설정
 		String buttonRoute = e.getActionCommand(); 
 		
 		if (buttonRoute == "아이디찾기") {

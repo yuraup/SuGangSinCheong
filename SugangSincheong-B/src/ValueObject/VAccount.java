@@ -1,6 +1,6 @@
 package ValueObject;
 
-public class VAccount {
+public class VAccount { //회원 정보 타입 
 	private String id;
 	private String password;
 	private String name;

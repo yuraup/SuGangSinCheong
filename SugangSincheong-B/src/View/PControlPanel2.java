@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import View.SugangSincheong.PSugnasincheongPanel.ActionHandler;
 
-public class PControlPanel2  extends JPanel{
+public class PControlPanel2  extends JPanel{ //미리담기 -> 수강신청 
 	private static final long serialVersionUID = 1L;
 	private JButton buttonRight;
 	private JButton buttonLeft;

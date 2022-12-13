@@ -8,12 +8,12 @@ import javax.swing.JPanel;
 
 import View.SugangSincheong.PSugnasincheongPanel.ActionHandler;
 
-public class PControlPanel1 extends JPanel{
+public class PControlPanel1 extends JPanel{ //목록 -> 미리담기
 	private static final long serialVersionUID = 1L;
 	private JButton buttonRight;
 	private JButton buttonLeft;
 	
-	public PControlPanel1(String panelId, ActionHandler actionHandler) {
+	public PControlPanel1(String panelId, ActionHandler actionHandler) { 
 		LayoutManager layoutManager = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layoutManager);  
 		

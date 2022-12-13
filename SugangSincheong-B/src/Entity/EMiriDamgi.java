@@ -18,36 +18,14 @@ public class EMiriDamgi {
 	private String time;
 	private boolean checkLog;
 	
-	public void getLectures(VMiriDamgi vMiridamgi) { //미리담기에 적을 내용을 받아와 파일에 저장한다. 
-		try {
-			
-			this.id = vMiridamgi.getId();
-			this.name = vMiridamgi.getName();
-			this.professor = vMiridamgi.getProfessor();
-			this.credit = vMiridamgi.getCredit();
-			this.time = vMiridamgi.getTime();
-				
-			File file = new File("miridamgiLog/miridamgiLog");
-			FileWriter fileWriter = new FileWriter(file, true);
-			
-			String str =id+" "+name+" "+professor+" "+credit+" "+time+"\n";
-			fileWriter.write(str);
-			
-			fileWriter.close();
-			
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-	}
-	
 	public boolean checkInitMiridamgi() { // 초기 실행시 미리담기 내역이 있는지 체크한다.
 		try {
-			checkLog = false;
+			checkLog = false; //초기값 
 			File file = new File("miridamgiLog/miridamgiLog");
 			Scanner scanner = new Scanner(file);
 			
 			// file read
-			while (scanner.hasNext()) {
+			while (scanner.hasNext()) { //있으면 
 				this.id = scanner.next();
 				this.name = scanner.next();
 				this.professor = scanner.next();
@@ -62,11 +40,11 @@ public class EMiriDamgi {
 		return checkLog;
 	}
 
-	public Vector<VMiriDamgi>  getMiridamgiFile() { //초기 실행시 미리담기 내역을 반환한다. 
+	public Vector<VMiriDamgi> getMiridamgiFile() { //초기 실행시 미리담기 데이터를 반환한다. 
 		Vector<VMiriDamgi> row = new Vector<VMiriDamgi>();
 		VMiriDamgi vMiriDamgi = null;
+		
 		try {
-			
 			File file = new File("miridamgiLog/miridamgiLog");
 			Scanner scanner = new Scanner(file);
 
@@ -97,12 +75,34 @@ public class EMiriDamgi {
 		return row;	
 	}
 	
-	public void deleteLog(Vector<VLecture> selectedRow) { // 선택된 항목 삭제 기능 
-		String[] separatedText = null;
+	public void getLectures(VMiriDamgi vMiridamgi) { //목록에서 선택된 내용을 가져와 미리담기 파일에 저장한다. 
+		try {
+			this.id = vMiridamgi.getId();
+			this.name = vMiridamgi.getName();
+			this.professor = vMiridamgi.getProfessor();
+			this.credit = vMiridamgi.getCredit();
+			this.time = vMiridamgi.getTime();
+				
+			File file = new File("miridamgiLog/miridamgiLog");
+			FileWriter fileWriter = new FileWriter(file, true);
+			
+			String str =id+" "+name+" "+professor+" "+credit+" "+time+"\n";
+			fileWriter.write(str);
+			
+			fileWriter.close();
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	public void deleteLog(Vector<VLecture> selectedRow) { // 미리담기의 선택된 항목을 삭제한다.  
+		String[] separatedText = null; //아이디 비교를 위해 
+		
 		  try {
 		      //파일 읽기
 			    File file = new File("miridamgiLog/miridamgiLog");
-				Scanner scanner = new Scanner(file); //파일의 경로를 넘김 경로 읽음  
+				Scanner scanner = new Scanner(file); 
 				
 				System.out.println("delete : " + scanner.hasNext()) ;
 				File newFile = new File("miridamgiLog/miridamgiLog"); //덮어 쓸 새 파일 
@@ -121,13 +121,12 @@ public class EMiriDamgi {
 				scanner.close();
 				fw.close();
 		  }
-		  
 		  catch (Exception e) {
 			  e.printStackTrace();
 		  }
 	}
 
-	public boolean checkDouble(Vector<VLecture> lectures) { // 미리담기 내역 중복 체크 
+	public boolean checkDouble(Vector<VLecture> lectures) { // 미리담기 파일 데이터 중복 체크 
 		boolean checkDoublePoint = false; //중복 체크 변수 
 		
 	    File file = new File("miridamgiLog/miridamgiLog");
@@ -142,15 +141,14 @@ public class EMiriDamgi {
 				this.time= scanner.next();
 			}
 			scanner.close();
-			System.out.println("chekcodo:" + lectures.get(0).getId());
-			if (!lectures.get(0).getId().equals(this.id)) { //둘이 같지 않을 때 
+			
+			if (!lectures.get(0).getId().equals(this.id)) { //둘이 같지 않을 때 (아이디) 
 				checkDoublePoint = true; 
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} //파일의 경로를 넘김 경로 읽음
-		System.out.println("고양이가 울었나 볼까? " + checkDoublePoint);
+		} 
 		return checkDoublePoint;
 	}
 }

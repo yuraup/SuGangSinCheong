@@ -13,7 +13,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import Service.SDirectory;
-import Service.SLecture;
 import ValueObject.VDirectory;
 import ValueObject.VLecture;
 
@@ -166,23 +165,15 @@ public class PDirectoryPanel extends JPanel {
 		   }
 		   
 	public  Vector<VLecture> getSelectedLecture() { //선택된 row를 반환 
-		return this.lectureTable.getData(this.lectureTable.getSelectedRows()[0]);
+		return this.lectureTable.getData(this.lectureTable.getSelectedRows()[0]); //인덱스를 배열 형태로 보낸다. 
 	}
 	public void deleteLectures() { // 목록에서 삭제 
-//		String fileName = this.lectureTable.getSelectedRows()[0];
-		Vector<VLecture> selectedRow = this.lectureTable.getData(this.lectureTable.getSelectedRows()[0]);  //선택한 row 
-		System.out.println("P디렉토리 삭제해줘:" + selectedRow.get(0).getName());
-		this.lectureTable.tableModel.removeRow(this.lectureTable.getSelectedRows()[0]); //UI에서 row 삭제 
-//		sLecture.deleteLog(selectedRow); // 파일에서 row 삭제 
-//		
-		
+		this.lectureTable.tableModel.removeRow(this.lectureTable.getSelectedRows()[0]); //row 삭제 
 	}
 	
 	public void addLectures(Vector<VLecture> lectures) { // 목록에 추가 
 		VLecture vLecture = new VLecture();
-		SLecture sLecture = new SLecture();
-		
-		
+
 		JOptionPane.showMessageDialog(null, "선택하신 강좌가 미리담기에서 삭제되었습니다.");
 		vLecture.setId(lectures.get(0).getId());
 		vLecture.setName(lectures.get(0).getName());

@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import ValueObject.VAccount;
 
-public class PMyPage extends JDialog{
+public class PMyPage extends JDialog{ //마이페이지 
 	private static final long serialVersionUID = 1L;
 	
 	public PMyPage(Frame parent, VAccount vAccount) {
@@ -24,14 +24,16 @@ public class PMyPage extends JDialog{
 		
 		JLabel nameTitle = new JLabel("이름: ");
 		JLabel nameInfo = new JLabel(vAccount.getName());
+		
 		JLabel gradeTitle = new JLabel("학년: ");
 		JLabel gradeInfo = new JLabel(vAccount.getGrade());
+		
 		JLabel departmentTitle = new JLabel("학과: ");
 		JLabel departmentInfo = new JLabel(vAccount.getDepartment());
+		
 		JLabel studentCodeTitle = new JLabel("학번: ");
 		JLabel studentCodeInfo = new JLabel( Integer.toString(vAccount.getStudentCode()) );
 
-		
 		myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
 		this.add(myPanel);
 		

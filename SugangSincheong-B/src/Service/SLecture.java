@@ -7,15 +7,12 @@ import ValueObject.VLecture;
 public class SLecture {
 	
 	private ELecture eLecture;
+	
 	public SLecture() {
 		this.eLecture = new ELecture();
 	}
 
-	public Vector<VLecture> getLectures(String fileName) {
+	public Vector<VLecture> getLectures(String fileName) { //파일 네임 전달 
 		return this.eLecture.getLectures(fileName);
 	}
-
-//	public void deleteLog(Vector<VLecture> selectedRow) {
-//		this.eLecture.deleteLog(selectedRow);
-//	}
 }

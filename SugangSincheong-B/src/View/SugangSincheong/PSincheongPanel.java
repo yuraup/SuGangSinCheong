@@ -54,7 +54,7 @@ public class PSincheongPanel extends PLectureTable {
 		sSincheong = new SSincheong(); 
 		boolean checkDoublePoint = sSincheong.checkDouble(lectures);
 		
-		if (checkDoublePoint) { //  true면 추가할 수 있게 
+		if (checkDoublePoint) { //  중복 체크가 true면 추가할 수 있게 
 			JOptionPane.showMessageDialog(null, "선택하신 강좌가 수강신청 목록에 추가되었습니다.");
 			
 			vSincheong.setId(lectures.get(0).getId());
@@ -64,31 +64,28 @@ public class PSincheongPanel extends PLectureTable {
 			vSincheong.setTime(lectures.get(0).getTime());
 			
 			sSincheong.addMiridamgi(vSincheong);
-			setLectures(vSincheong);
+			setLectures(vSincheong); //수강신청에 추가한다. 
 		} else {
 			JOptionPane.showMessageDialog(null, "선택하신 강좌가 수강신청 목록에 이미 존재합니다.");
 		}
- 
 	}
 
-	public Vector<VLecture> getSelectedLecture() {
+	public Vector<VLecture> getSelectedLecture() { //선택 
 		return this.getData(this.getSelectedRows()[0]); 
 	}
 
-	public void deleteLectures() {
+	public void deleteLectures() { //삭제 기능 
 		Vector<VLecture> selectedRow = this.getData(this.getSelectedRows()[0]);  //선택한 row 
-	    this.tableModel.removeRow(this.getSelectedRows()[0]); //UI에서 row 삭제 
-		sSincheong.deleteLog(selectedRow); // 파일에서 row 삭제 
+	    this.tableModel.removeRow(this.getSelectedRows()[0]); //UI row 삭제 
+		sSincheong.deleteLog(selectedRow); // 파일 row 삭제 
 	}
 
-	public int countSincheong() {
+	public int countSincheong() { //수강신청 카운트 
 		Vector<VSincheong> initData = sSincheong.getInitSincheong();
 		int rowCount = 0; // 신청 개수 
 		for (int i = 0; initData.size() > i; i++) {
 		        rowCount += 1; //줄 개수담김 
 		}
-		System.out.println("현재 신청 수 :" + this.tableModel.getRowCount());
 		return rowCount;
 	}
-
 }

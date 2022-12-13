@@ -18,27 +18,7 @@ public class ESincheong {
 	private String time;
 	private boolean checkLog;
 	
-	public void getLectures(VSincheong vSincheong) { //미리담기에 적을 내용을 받아와 파일에 저장한다. 
-		try {
-			this.id = vSincheong.getId();
-			this.name = vSincheong.getName();
-			this.professor = vSincheong.getProfessor();
-			this.credit = vSincheong.getCredit();
-			this.time = vSincheong.getTime();
-				
-			File file = new File("sugangLog/sugangLog");
-			FileWriter fileWriter = new FileWriter(file, true);
-			
-			String str = id+" "+name+" "+professor+" "+credit+" "+time+"\n";
-			fileWriter.write(str);
-			
-			fileWriter.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-	}
-	
-	public boolean checkInitMiridamgi() {
+	public boolean checkInitMiridamgi() { //수강신청 파일에 초기 데이터가 있는지 체크한다. 
 		try {
 			checkLog = false;
 			File file = new File("sugangLog/sugangLog");
@@ -61,7 +41,7 @@ public class ESincheong {
 		return checkLog;
 	}
 
-	public Vector<VSincheong>  getMiridamgiFile() {
+	public Vector<VSincheong>  getMiridamgiFile() { //초기 데이터를 스캔해 가지고 온다. 
 		Vector<VSincheong> row = new Vector<VSincheong>();
 		VSincheong vSincheong = null;
 		
@@ -83,10 +63,10 @@ public class ESincheong {
 				vSincheong.setProfessor(this.professor);
 				vSincheong.setCredit(this.credit);
 				vSincheong.setTime(this.time);
-//				found = true;
+
 				row.add(vSincheong);
 		}
-			if (scanner.hasNext() == false) {
+			if (scanner.hasNext() == false) { //이제 만약 내용이 없다면 
 				scanner.close();		
 			}	
 		} catch (FileNotFoundException e) {
@@ -94,15 +74,34 @@ public class ESincheong {
 		}
 		return row;	
 	}
+	
+	public void getLectures(VSincheong vSincheong) { //목록에서 선택된 내용을 가져와 수강신청 파일에 저장한다.
+		try {
+			this.id = vSincheong.getId();
+			this.name = vSincheong.getName();
+			this.professor = vSincheong.getProfessor();
+			this.credit = vSincheong.getCredit();
+			this.time = vSincheong.getTime();
+				
+			File file = new File("sugangLog/sugangLog");
+			FileWriter fileWriter = new FileWriter(file, true);
+			
+			String str = id+" "+name+" "+professor+" "+credit+" "+time+"\n";
+			fileWriter.write(str);
+			
+			fileWriter.close();
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
 
-	public void deleteLog(Vector<VLecture> selectedRow) {
+	public void deleteLog(Vector<VLecture> selectedRow) { // 수강신청에서 선택된 열 삭제 
 		String[] separatedText = null;
 		  try {
 		      //파일 읽기
 			    File file = new File("sugangLog/sugangLog");
 				Scanner scanner = new Scanner(file); //파일의 경로를 넘김 경로 읽음  
-				
-				System.out.println("야옹" + scanner.hasNext()) ;
 				
 				File newFile = new File("sugangLog/sugangLog"); //덮어 쓸 새 파일 
 				FileWriter fw = new FileWriter(newFile);
@@ -115,7 +114,6 @@ public class ESincheong {
 					if (!separatedText[0].equals(selectedRow.get(0).getId())) { //같지 않은 내용이 안으로 들어감 
 						fw.write(text);
 						fw.write("\n");
-						
 					}
 			}
 				scanner.close();
@@ -125,10 +123,9 @@ public class ESincheong {
 		  catch (Exception e) {
 			  e.printStackTrace();
 		  }
-		
 	}
 
-	public boolean checkDouble(Vector<VLecture> lectures) {
+	public boolean checkDouble(Vector<VLecture> lectures) { // 신청 내역에 중복되는 열이 있는지 검사한다. 
 		boolean checkDoublePoint = false; //중복 체크 변수 
 		
 	    File file = new File("sugangLog/sugangLog");
@@ -148,10 +145,8 @@ public class ESincheong {
 				checkDoublePoint = true; 
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} //파일의 경로를 넘김 경로 읽음
-		System.out.println("고양이가 울었나 볼까? " + checkDoublePoint);
+		} 
 		return checkDoublePoint;
 	}
 }

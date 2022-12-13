@@ -57,23 +57,17 @@ import ValueObject.VLecture;
 	          this.tableModel.addRow(row);
 	  	}
 	     
-	      public Vector<VLecture> getData(int index) {
+	      public Vector<VLecture> getData(int index) { //인덱스 번호를 받아와 값을 읽는다. 
 	    	  	  ArrayList<String> selectData = new ArrayList<>();
 	    	  	  
-	    	  	  for(int i =0;i<5; i++) {
-	    	  		  selectData.add(this.tableModel.getValueAt(index, i).toString());
-	    	  		  System.out.println(this.tableModel.getValueAt(index, i).toString());
+	    	  	  for(int i =0;i<5; i++) { // index 4까지 lecture 정보를 담기 위한 for문 
+	    	  		  selectData.add(this.tableModel.getValueAt(index, i).toString()); //selectData에 값을 담는다. 
 	    	  	  }
 	    		  VLecture VLectureData = new VLecture();
-	    		  VLectureData.setData(selectData); //0~5 
-	    		  Vector<VLecture> a = new Vector<VLecture>();
-	    		  a.add(VLectureData);
-	    	  return a;
+	    		  VLectureData.setData(selectData); //0~4 
+	    		  Vector<VLecture> row = new Vector<VLecture>();
+	    		  row.add(VLectureData);
+	    	  return row;
 	      }
-
-//		public Vector<VLecture> getvDirectories() {
-//			// TODO Auto-generated method stub
-//			return a;
-//		}
 }
 	   

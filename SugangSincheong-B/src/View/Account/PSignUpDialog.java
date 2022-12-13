@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import Service.SSignUp;
 import ValueObject.VAccount;
 
-public class PSignUpDialog extends JDialog {
+public class PSignUpDialog extends JDialog { //회원가입 
 	private static final long serialVersionUID = 1L;
 
 	private JLabel lbId;
@@ -39,11 +39,11 @@ public class PSignUpDialog extends JDialog {
 	
 	private ActionHandler action;
 	
-	private boolean idCheck = true;
-	private boolean pwCheck = false;
+	private boolean idCheck = true; //아이디 중복 체크 변수 
+	private boolean pwCheck = false; //비밀번호 일치 불일치 변수 
 	
-	String pw = "";
-	String pwRe = "";
+	String pw = ""; //비밀번호 
+	String pwRe = ""; //비밀번호 확인 
 	
 	VAccount vAccount;
 	
@@ -134,16 +134,15 @@ public class PSignUpDialog extends JDialog {
 	
 	private void pwDoubleCheck () { //비밀번호 확인 
 		for (int i = 0; i < this.tfPw.getPassword().length; i++ ) {
-			this.pw += this.tfPw.getPassword()[i];
+			this.pw += this.tfPw.getPassword()[i]; //비밀번호 - 하나씩 담아준다. 
 		}
 		for (int j = 0; j < this.tfRePw.getPassword().length; j++) {
-			this.pwRe += this.tfRePw.getPassword()[j]; 
+			this.pwRe += this.tfRePw.getPassword()[j]; //비밀번호 확인 - 하나씩 담아준다. 
 		}
 		
-		if (this.pw.equals(this.pwRe)) {
+		if (this.pw.equals(this.pwRe)) {// 비밀번호 일치 불일치 비
 			JOptionPane.showMessageDialog(null, "확인되었습니다.");
 			pwCheck = true;
-			
 		}  else if (!this.pw.equals(this.pwRe)) {
 			pwCheck = false;
 			JOptionPane.showMessageDialog(null, "비밀번호와 확인을 다시 입력해주세요. ");	
@@ -154,6 +153,7 @@ public class PSignUpDialog extends JDialog {
 			VAccount vAccount = new VAccount();
 			sSignUp = new SSignUp();
 			
+			//입력한 값을 새로 담아준다. 
 			vAccount.setId(this.tfId.getText());
 			vAccount.setPassword(this.pw);
 			vAccount.setName(this.tfName.getText());
@@ -209,5 +209,4 @@ public class PSignUpDialog extends JDialog {
 		this.add(c);
         
 	}
-	
 }

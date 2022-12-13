@@ -2,7 +2,7 @@ package ValueObject;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class VLecture {
+public class VLecture { // 강좌 타입 
 	private String id;
 	private	String name;
 	private String professor;
@@ -49,22 +49,19 @@ public class VLecture {
 		this.time = time;
 	}
 
-	public void read(Scanner scanner) {
+	public void read(Scanner scanner) { //스캐너로 읽은 정보를 vLecture에 저장한다. 
 		this.id = scanner.next();
 		this.name = scanner.next();
 		this.professor = scanner.next();
 		this.credit = scanner.next();
 		this.time = scanner.next();
-		
 	}
 	
-	public void setData(ArrayList<String> LectureData) {
+	public void setData(ArrayList<String> LectureData) { //하나씩 읽어온 값을  vLecture에 저장한다. 
 		this.id = LectureData.get(0);
 		this.name = LectureData.get(1);
 		this.professor = LectureData.get(2);
 		this.credit = LectureData.get(3);
 		this.time = LectureData.get(4);
 	}
-	
-	
 }

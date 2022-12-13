@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import Service.SLogin;
 import ValueObject.VAccount;
 
-public class PPwFindDialog  extends JDialog {
+public class PPwFindDialog  extends JDialog { //비밀번호 찾기 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel idPanel;
@@ -73,12 +73,12 @@ public class PPwFindDialog  extends JDialog {
 			btConfirm.addActionListener(this.action);
 			buttonPanel.add(btConfirm);
 		
-		
 		this.sLogin = new SLogin();
 	}
 	
 	private static int parseInt (char[] beforeStudentCode) {  // char[] 타입을 int로 변환 
 		int afterStudentCode = 0;
+		
 		for (int i = 0; i < beforeStudentCode.length; i++) {
 			int value = Integer.parseInt(String.valueOf(beforeStudentCode[i]));
 			afterStudentCode = afterStudentCode * 10 + value;

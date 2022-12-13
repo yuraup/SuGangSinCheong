@@ -37,7 +37,6 @@ public class PMiriDamgiPanel extends PLectureTable {
 		        this.tableModel.addRow(row);
 		        rowCount += 1; //줄 개수담김 
 		}
-		System.out.println("현재 미리담기 수 :" + this.tableModel.getRowCount());
 		return rowCount;
 	}
 	
@@ -47,7 +46,6 @@ public class PMiriDamgiPanel extends PLectureTable {
 		for (int i = 0; initData.size() > i; i++) {
 		        rowCount += 1; //줄 개수담김 
 		}
-		System.out.println("현재 미리담기 수 :" + this.tableModel.getRowCount());
 		return rowCount;
 	}
 	
