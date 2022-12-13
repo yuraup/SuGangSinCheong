@@ -44,12 +44,11 @@ import View.PControlPanel2;
       this.controlPanel1 = new PControlPanel1("1", actionHandler); //id = 1 
       this.add(this.controlPanel1);
       
-       //미리담기 판넬 
+      //미리담기 판넬 
       miridamgiBox = new JPanel();
       
 	  LayoutManager smallManager = new BoxLayout(miridamgiBox, BoxLayout.Y_AXIS);
 	  miridamgiBox.setLayout(smallManager);
-      
       
       JScrollPane scrollPane = new JScrollPane();
       this.miridamgiPanel = new PMiriDamgiPanel();

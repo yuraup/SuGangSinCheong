@@ -1,4 +1,4 @@
-package View;
+package View.Account;
 
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -54,7 +54,6 @@ public class PSignUpDialog extends JDialog {
 		this.setTitle("회원가입");
 		setLocationRelativeTo(null);
 	
-		
 		this.setLayout(layoutManager);
 		this.setModal(rootPaneCheckingEnabled); //모달
 		
@@ -178,26 +177,21 @@ public class PSignUpDialog extends JDialog {
 			} else if (buttonRoute == "비밀번호 확인") {
 				pwDoubleCheck();
 			} else if (buttonRoute == "가입") { //경우의 수를 나눠 회원가입이 이루어지도록 함.
-			
 				if (idCheck == false && pwCheck == false) {
 					JOptionPane.showMessageDialog(null, "비밀번호 확인이 필요합니다.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
-				}
-				else if (idCheck == true && pwCheck == false && !tfName.getText().equals("") && !tfGrade.getText().equals("")
-						&& !tfDepartment.getText().equals("") && !tfStudentCode.getText().equals("")) {
+				} else if (idCheck == true && pwCheck == false && tfName.getText().equals("") || tfGrade.getText().equals("")
+						|| tfDepartment.getText().equals("") || tfStudentCode.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "아이디 중복 체크를 해주세요.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
-				} 
-				else if (idCheck == false && pwCheck == false && tfName.getText().equals("") || tfGrade.getText().equals("")
+				} else if (idCheck == false && pwCheck == false && tfName.getText().equals("") || tfGrade.getText().equals("")
 						|| tfDepartment.getText().equals("") || tfStudentCode.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "회원정보가 모두 입력되지 않았습니다.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
-				}
-				else if (idCheck == false && pwCheck == true && !tfName.getText().equals("") && !tfGrade.getText().equals("")
+				} else if (idCheck == false && pwCheck == true && !tfName.getText().equals("") && !tfGrade.getText().equals("")
 						&& !tfDepartment.getText().equals("") && !tfStudentCode.getText().equals("")
 					) {
 					createAccount();					
 				} else {
 					JOptionPane.showMessageDialog(null, "입력한 값을 다시 한 번 확인해주세요.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
 				}
-
 			} 
 		}
 	}

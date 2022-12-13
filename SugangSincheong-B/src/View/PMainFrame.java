@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 import Global.Constants;
 import ValueObject.VAccount;
+import View.Account.PAccountPanel;
 import View.SugangSincheong.PSugnasincheongPanel;
 
 public class PMainFrame extends JFrame {

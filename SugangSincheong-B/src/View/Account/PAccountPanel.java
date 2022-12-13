@@ -1,4 +1,4 @@
-package View;
+package View.Account;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -16,6 +16,7 @@ import java.util.Date;
 import javax.swing.*;
 
 import ValueObject.VAccount;
+import View.PMyPage;
 
 public class PAccountPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;

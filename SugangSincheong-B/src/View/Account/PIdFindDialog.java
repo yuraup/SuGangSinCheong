@@ -1,4 +1,4 @@
-package View;
+package View.Account;
 
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;

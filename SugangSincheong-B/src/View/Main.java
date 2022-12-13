@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import ValueObject.VAccount;
+import View.Account.PLoginDialog;
 
 public class Main {
 	PLoginDialog loginDialog;

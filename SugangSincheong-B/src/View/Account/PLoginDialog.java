@@ -1,5 +1,5 @@
 
-package View;
+package View.Account;
 
 import java.awt.Component;
 import java.awt.GridBagConstraints;
@@ -74,7 +74,7 @@ public class PLoginDialog extends JDialog implements ActionListener {
 		this.sLogin = new SLogin();
 	}
 	
-	VAccount login() {
+	public VAccount login() {
 		String id = this.tfId.getText();
 		char[] password =  this.tfPassword.getPassword();
 		String newPw = 	changePasswordType(password);
