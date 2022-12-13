@@ -97,7 +97,7 @@ public class EMiriDamgi {
 		return row;	
 	}
 	
-	public void deleteLog(Vector<VLecture> selectedRow) { // 삭제 기능 
+	public void deleteLog(Vector<VLecture> selectedRow) { // 선택된 항목 삭제 기능 
 		String[] separatedText = null;
 		  try {
 		      //파일 읽기

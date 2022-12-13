@@ -21,6 +21,7 @@ public class EAccount {
 		try {
 			File file = new File("account/account");
 			Scanner scanner = new Scanner(file);
+			
 			// file read
 			boolean found = false;
 			while (scanner.hasNext() && !found) {
@@ -49,7 +50,6 @@ public class EAccount {
 				vAccount.setStudentCode(this.studentCode);
 			}			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 		return vAccount;
@@ -60,7 +60,6 @@ public class EAccount {
 		try {
 			File file = new File("account/account");
 			Scanner scanner = new Scanner(file);
-			
 			// file read
 			boolean found = false;
 			while (scanner.hasNext() && !found) {
@@ -71,12 +70,12 @@ public class EAccount {
 				this.department = scanner.next();
 				this.studentCode = scanner.nextInt();
 				
+				
 				if (this.name.compareTo(name) == 0 && Integer.compare(studentCode, this.studentCode) == 0) {
 					found = true;
 				}
 			}
 			scanner.close();
-			
 			if (found) {
 				VAccount vAccount = new VAccount();
 				vAccount.setId(this.id);
@@ -158,7 +157,7 @@ public class EAccount {
 		return found;		
 	}
 
-	public void signUp(VAccount vAccount) {
+	public void signUp(VAccount vAccount) { // 회원가입 
 		try {
 		this.id = vAccount.getId();
 		this.password = vAccount.getPassword();

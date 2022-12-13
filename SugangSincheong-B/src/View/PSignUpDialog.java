@@ -40,7 +40,7 @@ public class PSignUpDialog extends JDialog {
 	private ActionHandler action;
 	
 	private boolean idCheck = true;
-	private boolean pwCheck = true;
+	private boolean pwCheck = false;
 	
 	String pw = "";
 	String pwRe = "";
@@ -133,23 +133,21 @@ public class PSignUpDialog extends JDialog {
 		}
 	}
 	
-	private void pwDoubleCheck () {
+	private void pwDoubleCheck () { //비밀번호 확인 
 		for (int i = 0; i < this.tfPw.getPassword().length; i++ ) {
 			this.pw += this.tfPw.getPassword()[i];
 		}
 		for (int j = 0; j < this.tfRePw.getPassword().length; j++) {
 			this.pwRe += this.tfRePw.getPassword()[j]; 
 		}
-		if (this.pw.contains("")) {
-			JOptionPane.showMessageDialog(null, "비밀번호를 입력해주세요.");
-			
-		} else if (this.pw.equals(this.pwRe) && !this.pw.contains("")) {
+		
+		if (this.pw.equals(this.pwRe)) {
 			JOptionPane.showMessageDialog(null, "확인되었습니다.");
 			pwCheck = true;
 			
-		} else {
+		}  else if (!this.pw.equals(this.pwRe)) {
 			pwCheck = false;
-			JOptionPane.showMessageDialog(null, "비밀번호 확인이 일치하지 않습니다.");	
+			JOptionPane.showMessageDialog(null, "비밀번호와 확인을 다시 입력해주세요. ");	
 		} 
 	}
 
@@ -181,8 +179,7 @@ public class PSignUpDialog extends JDialog {
 				pwDoubleCheck();
 			} else if (buttonRoute == "가입") { //경우의 수를 나눠 회원가입이 이루어지도록 함.
 			
-				if (idCheck == false && pwCheck == true && !tfName.getText().equals("") && !tfGrade.getText().equals("")
-						&& !tfDepartment.getText().equals("") && !tfStudentCode.getText().equals("")) {
+				if (idCheck == false && pwCheck == false) {
 					JOptionPane.showMessageDialog(null, "비밀번호 확인이 필요합니다.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
 				}
 				else if (idCheck == true && pwCheck == false && !tfName.getText().equals("") && !tfGrade.getText().equals("")
@@ -193,7 +190,7 @@ public class PSignUpDialog extends JDialog {
 						|| tfDepartment.getText().equals("") || tfStudentCode.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "회원정보가 모두 입력되지 않았습니다.", "회원가입", JOptionPane.INFORMATION_MESSAGE);
 				}
-				else if (idCheck == false && pwCheck == false && !tfName.getText().equals("") && !tfGrade.getText().equals("")
+				else if (idCheck == false && pwCheck == true && !tfName.getText().equals("") && !tfGrade.getText().equals("")
 						&& !tfDepartment.getText().equals("") && !tfStudentCode.getText().equals("")
 					) {
 					createAccount();					

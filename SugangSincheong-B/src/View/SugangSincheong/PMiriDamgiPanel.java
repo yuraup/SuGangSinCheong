@@ -23,9 +23,9 @@ public class PMiriDamgiPanel extends PLectureTable {
 
 	private static final long serialVersionUID = 1L;
 
-	public void setInitMiridamgi () { //예전 내역을 파일에서 불러와서 화면에 그린다.
+	public int setInitMiridamgi () { //예전 내역을 파일에서 불러와서 화면에 그린다.
 		Vector<VMiriDamgi> initData = sMiriDamgi.getInitMiridamgi();
-		
+		int rowCount = 0; // 신청 개수 
 		for (int i = 0; initData.size() > i; i++) {
 			Vector<String> row = new Vector<String>(); //초기화를 위해 for문 안에 선언
 			  	row.add(initData.get(i).getId());
@@ -36,6 +36,8 @@ public class PMiriDamgiPanel extends PLectureTable {
 		        
 		        this.tableModel.addRow(row);
 		}
+		System.out.println("현재 미리담기 수 :" + this.tableModel.getRowCount());
+		return rowCount;
 	}
 	
 	public void setLectures (VMiriDamgi vMiridamgi) { //실행 중 새로 선택한 항목을 화면에 그린다.

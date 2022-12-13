@@ -24,7 +24,7 @@ import View.PControlPanel2;
    private PSincheongPanel sincheongPanel;
    
    
-   public PSugnasincheongPanel() {
+   public PSugnasincheongPanel() { // UI 
 	  LayoutManager layoutManager = new BoxLayout(this, BoxLayout.X_AXIS);
 	  this.setLayout(layoutManager);
 	     
@@ -50,11 +50,10 @@ import View.PControlPanel2;
       this.add(scrollPane);
    }
    
-   
    private void moveFromLecturesToMiridamgi() { //목록 -> 미리담기 
 	  Vector<VLecture> lectures = this.directoryPanel.getSelectedLecture(); //lectures == 선택된 row Vector
-      this.miridamgiPanel.addLectures(lectures);
-      this.directoryPanel.deleteLectures();
+      this.miridamgiPanel.addLectures(lectures); //미리담기에 추가 
+      this.directoryPanel.deleteLectures(); //목록에서 삭제
       
    }
    private void moveFromMiridamgiToLectures() { //미리담기 -> 목록 

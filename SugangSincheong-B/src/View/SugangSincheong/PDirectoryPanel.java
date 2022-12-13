@@ -14,10 +14,8 @@ import javax.swing.table.DefaultTableModel;
 
 import Service.SDirectory;
 import Service.SLecture;
-import Service.SMiriDamgi;
 import ValueObject.VDirectory;
 import ValueObject.VLecture;
-import ValueObject.VMiriDamgi;
 
 public class PDirectoryPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +26,7 @@ public class PDirectoryPanel extends JPanel {
 	private PDirectory departmentTable;
 	
 	private PLectureTable lectureTable;
-	private SLecture sLecture;
+
 	int[] selectedIndex; //하나만  
 	
 	String title = "";
@@ -182,7 +180,7 @@ public class PDirectoryPanel extends JPanel {
 	
 	public void addLectures(Vector<VLecture> lectures) { // 목록에 추가 
 		VLecture vLecture = new VLecture();
-		sLecture = new SLecture();
+		SLecture sLecture = new SLecture();
 		
 		
 		JOptionPane.showMessageDialog(null, "선택하신 강좌가 미리담기에서 삭제되었습니다.");

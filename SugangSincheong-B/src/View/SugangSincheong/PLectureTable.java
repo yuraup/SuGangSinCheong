@@ -7,7 +7,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Service.SLecture;
-import ValueObject.VDirectory;
 import ValueObject.VLecture;
 
 	public class PLectureTable extends JTable{

@@ -1,13 +1,16 @@
 package Entity;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.Scanner;
 import java.util.Vector;
 
 import ValueObject.VLecture;
 
 public class ELecture {
+	String fileName;
 	public Vector<VLecture> getLectures(String fileName) {
+		this.fileName = fileName;
 		Vector<VLecture> vLectures = new Vector<VLecture>();
 		try {
 			Scanner scanner = new Scanner(new File("directory/"+fileName));
@@ -20,10 +23,5 @@ public class ELecture {
 			e.printStackTrace();
 		}
 		return vLectures;
-	}
-
-	public void deleteLog(Vector<VLecture> selectedRow) {
-		// TODO Auto-generated method stub
-		
 	}
 }
